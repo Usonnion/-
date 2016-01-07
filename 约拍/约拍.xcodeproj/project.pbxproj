@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		187E9C451C3EA3C100DEEA0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C441C3EA3C100DEEA0B /* main.m */; };
 		187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C471C3EA3C100DEEA0B /* AppDelegate.m */; };
-		187E9C4B1C3EA3C100DEEA0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C4A1C3EA3C100DEEA0B /* ViewController.m */; };
-		187E9C4E1C3EA3C100DEEA0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C4C1C3EA3C100DEEA0B /* Main.storyboard */; };
-		187E9C511C3EA3C100DEEA0B /* __.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C4F1C3EA3C100DEEA0B /* __.xcdatamodeld */; };
 		187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C521C3EA3C100DEEA0B /* Assets.xcassets */; };
 		187E9C561C3EA3C100DEEA0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C541C3EA3C100DEEA0B /* LaunchScreen.storyboard */; };
+		187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +19,10 @@
 		187E9C441C3EA3C100DEEA0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		187E9C461C3EA3C100DEEA0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		187E9C471C3EA3C100DEEA0B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		187E9C491C3EA3C100DEEA0B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		187E9C4A1C3EA3C100DEEA0B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		187E9C4D1C3EA3C100DEEA0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		187E9C501C3EA3C100DEEA0B /* __.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = __.xcdatamodel; sourceTree = "<group>"; };
 		187E9C521C3EA3C100DEEA0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		187E9C551C3EA3C100DEEA0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187E9C571C3EA3C100DEEA0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +57,7 @@
 			children = (
 				187E9C461C3EA3C100DEEA0B /* AppDelegate.h */,
 				187E9C471C3EA3C100DEEA0B /* AppDelegate.m */,
-				187E9C491C3EA3C100DEEA0B /* ViewController.h */,
-				187E9C4A1C3EA3C100DEEA0B /* ViewController.m */,
-				187E9C4C1C3EA3C100DEEA0B /* Main.storyboard */,
+				187E9C5E1C3EA69D00DEEA0B /* ViewController */,
 				187E9C5D1C3EA4D300DEEA0B /* DataCache */,
 				187E9C431C3EA3C100DEEA0B /* Supporting Files */,
 			);
@@ -85,9 +78,24 @@
 		187E9C5D1C3EA4D300DEEA0B /* DataCache */ = {
 			isa = PBXGroup;
 			children = (
-				187E9C4F1C3EA3C100DEEA0B /* __.xcdatamodeld */,
 			);
 			path = DataCache;
+			sourceTree = "<group>";
+		};
+		187E9C5E1C3EA69D00DEEA0B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				187E9C641C3EA76300DEEA0B /* Dashboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		187E9C641C3EA76300DEEA0B /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				187E9C561C3EA3C100DEEA0B /* LaunchScreen.storyboard in Resources */,
+				187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */,
 				187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */,
-				187E9C4E1C3EA3C100DEEA0B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				187E9C4B1C3EA3C100DEEA0B /* ViewController.m in Sources */,
-				187E9C511C3EA3C100DEEA0B /* __.xcdatamodeld in Sources */,
 				187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */,
 				187E9C451C3EA3C100DEEA0B /* main.m in Sources */,
 			);
@@ -171,14 +177,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		187E9C4C1C3EA3C100DEEA0B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				187E9C4D1C3EA3C100DEEA0B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		187E9C541C3EA3C100DEEA0B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -276,6 +274,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "约拍/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.ArtisticPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,6 +287,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "约拍/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.ArtisticPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -313,22 +313,9 @@
 				187E9C5C1C3EA3C100DEEA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		187E9C4F1C3EA3C100DEEA0B /* __.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				187E9C501C3EA3C100DEEA0B /* __.xcdatamodel */,
-			);
-			currentVersion = 187E9C501C3EA3C100DEEA0B /* __.xcdatamodel */;
-			name = __.xcdatamodeld;
-			path = ../__.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 187E9C381C3EA3C100DEEA0B /* Project object */;
 }
