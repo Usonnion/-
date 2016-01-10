@@ -48,51 +48,84 @@
         <!--首页-->
         <scene sceneID="TYV-Nj-Jg5">
             <objects>
-                <viewController id="bto-Eo-WpD" sceneMemberID="viewController">
+                <viewController id="bto-Eo-WpD" customClass="DashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tQQ-bO-xoa"/>
                         <viewControllerLayoutGuide type="bottom" id="wld-3d-gex"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vEe-I4-bT7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ed4-z3-nXl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5r-2X-5Pd">
+                                <rect key="frame" x="0.0" y="20" width="414" height="667"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="IEa-Pg-fMw"/>
-                                </constraints>
+                                <color key="backgroundColor" red="1" green="0.97433167499999995" blue="0.46723047070000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="Aet-Ch-C8z">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <connections>
+                                        <segue destination="3mF-v1-MVP" kind="embed" id="Oej-W6-r8u"/>
+                                    </connections>
+                                </containerView>
                                 <connections>
-                                    <segue destination="YGl-pc-y1w" kind="embed" id="86W-KP-7Fu"/>
+                                    <outlet property="dataSource" destination="bto-Eo-WpD" id="TSV-PH-YQH"/>
+                                    <outlet property="delegate" destination="bto-Eo-WpD" id="zNV-Sn-5Bs"/>
                                 </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phT-yO-cV9">
-                                <rect key="frame" x="0.0" y="199" width="414" height="58"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.41130318889476802" blue="0.314365469952674" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="摄影分类">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.97433167497503248" blue="0.46723047068276069" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ed4-z3-nXl" firstAttribute="leading" secondItem="vEe-I4-bT7" secondAttribute="leading" id="CYe-nY-9zl"/>
-                            <constraint firstItem="Ed4-z3-nXl" firstAttribute="top" secondItem="vEe-I4-bT7" secondAttribute="top" id="GTI-6J-kmD"/>
-                            <constraint firstAttribute="trailing" secondItem="Ed4-z3-nXl" secondAttribute="trailing" id="gkf-4D-SjQ"/>
+                            <constraint firstAttribute="trailing" secondItem="h5r-2X-5Pd" secondAttribute="trailing" id="R1i-pB-s4S"/>
+                            <constraint firstItem="h5r-2X-5Pd" firstAttribute="top" secondItem="tQQ-bO-xoa" secondAttribute="bottom" id="fkf-jd-qmi"/>
+                            <constraint firstItem="h5r-2X-5Pd" firstAttribute="leading" secondItem="vEe-I4-bT7" secondAttribute="leading" id="pEk-VG-00W"/>
+                            <constraint firstItem="wld-3d-gex" firstAttribute="top" secondItem="h5r-2X-5Pd" secondAttribute="bottom" id="rcE-Th-oKP"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="首页" id="rJx-T0-MtF">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="h5r-2X-5Pd" id="a27-Sw-IIQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPt-Nu-oYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="25"/>
+            <point key="canvasLocation" x="580" y="21"/>
+        </scene>
+        <!--Page Control View Controller-->
+        <scene sceneID="Wy2-ww-nF1">
+            <objects>
+                <viewController id="3mF-v1-MVP" customClass="PageControlViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K7Y-35-8tk"/>
+                        <viewControllerLayoutGuide type="bottom" id="JuZ-R7-GTJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gYI-g2-mfe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-gh-fvS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="delegate" destination="3mF-v1-MVP" id="TkR-SR-0Lc"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="oOe-gh-fvS" id="c3y-Ee-HX7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7w-BH-JIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288" y="-179"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gOn-kV-jgY">
@@ -115,20 +148,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECI-yN-TH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-44" y="356"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fN8-4Q-bqj">
-            <objects>
-                <viewController id="YGl-pc-y1w" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WSQ-WU-LYs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zPh-UZ-eyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>
