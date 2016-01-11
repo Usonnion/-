@@ -12,11 +12,12 @@
 
 @interface PageControlViewController ()
 
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, strong) UIScrollView *scrollView;
+//@property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
 
 @property (nonatomic, strong) NSArray <ActionModel *> *actions;
 @property (nonatomic, assign) BOOL firstView;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -36,50 +37,71 @@
     
     if (self.firstView) {
         CGRect frame = self.view.frame;
-        self.scrollView.frame = frame;
-        self.scrollView.contentSize = CGSizeMake(frame.size.width * self.actions.count, frame.size.height);
+        self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.showsHorizontalScrollIndicator = NO;
+        self.scrollView.delegate = self;
         
         for (ActionModel *action in self.actions) {
             NSInteger index = [self.actions indexOfObject:action];
             
-            //        NSURL *imageUrl = [NSURL URLWithString:action.imageURL];
-            //        NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-            //        UIImage *image = [UIImage imageWithData:imageData];
-            //        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            //        imageView.contentMode = UIViewContentModeScaleToFill;
-            //        imageView.frame = CGRectMake(frame.size.width * index, 0, frame.size.width, 200);
-            //        [self.scrollView addSubview:imageView];
-            
-            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width * index, 0, frame.size.width, frame.size.height)];
-            button.tag = index;
-            [button setBackgroundColor:[UIColor blackColor]];
-            [button sd_setImageWithURL:[NSURL URLWithString:action.imageURL] forState:UIControlStateNormal];
-            [self.scrollView addSubview:button];
+            NSURL *imageUrl = [NSURL URLWithString:action.imageURL];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+            UIImage *image = [UIImage imageWithData:imageData];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.contentMode = UIViewContentModeScaleToFill;
+            imageView.frame = CGRectMake(frame.size.width * index, 0, frame.size.width, frame.size.height);
+            [self.scrollView addSubview:imageView];
         }
+        [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.actions.count, frame.size.height)];
+        [self.view addSubview:self.scrollView];
+        
+        ActionModel *firstModel = self.actions.lastObject;
+        UIImage *firstImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:firstModel.imageURL]]];
+        UIImageView *firstImageView = [[UIImageView alloc] initWithImage:firstImage];
+        firstImageView.contentMode = UIViewContentModeScaleToFill;
+        firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
+        [self.scrollView addSubview:firstImageView];
+        
+        ActionModel *latestModel = self.actions.firstObject;
+        UIImage *latestImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:latestModel.imageURL]]];
+        UIImageView *latestImageView = [[UIImageView alloc] initWithImage:latestImage];
+        latestImageView.contentMode = UIViewContentModeScaleToFill;
+        latestImageView.frame = CGRectMake(frame.size.width * self.actions.count, 0, frame.size.width, frame.size.height);
+        [self.scrollView addSubview:latestImageView];
+        
+        [self.scrollView setContentInset:UIEdgeInsetsMake(0, self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width)];
+        
     }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(srollToNextPage) userInfo:nil repeats:YES];
+//    [self.timer setFireDate:[NSDate distantFuture]];
     
     self.firstView = NO;
 
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//
-//#pragma mark - UIScrollViewDelegate
-//
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-//{
-//    CGFloat index = targetContentOffset->x / self.view.frame.size.width;
-//    NSInteger targetIndex = roundf(index);
-//    if (targetIndex >= self.actions.count) {
-//        targetIndex = 0;
-//    }
-//    [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width *targetIndex, targetContentOffset->x) animated:YES];
-//}
 
 #pragma mark - Private methods
+
+- (void)srollToNextPage
+{
+    CGPoint point = self.scrollView.contentOffset;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.scrollView.contentOffset = CGPointMake(point.x + self.view.frame.size.width, point.y);
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
+}
 
 - (void)mockData
 {
@@ -87,22 +109,24 @@
     action1.imageURL = @"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg";
     
     ActionModel *action2 = [[ActionModel alloc] init];
-    action2.imageURL = @"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg";
+    action2.imageURL = @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg";
     
     ActionModel *action3 = [[ActionModel alloc] init];
-    action3.imageURL = @"http://i4.tietuku.com/24abe9720df78b35.jpg";
+    action3.imageURL = @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg";
     
     self.actions = @[action1, action2, action3];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UIScrollViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGPoint point = scrollView.contentOffset;
+    if (point.x < 0) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * (self.actions.count - 1), 0) animated:NO];
+    } else if (point.x >= self.scrollView.frame.size.width * self.actions.count) {
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+    }
 }
-*/
 
 @end
