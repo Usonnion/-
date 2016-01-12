@@ -56,25 +56,29 @@
         [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.actions.count, frame.size.height)];
         [self.view addSubview:self.scrollView];
         
-        ActionModel *firstModel = self.actions.lastObject;
-        UIImage *firstImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:firstModel.imageURL]]];
-        UIImageView *firstImageView = [[UIImageView alloc] initWithImage:firstImage];
-        firstImageView.contentMode = UIViewContentModeScaleToFill;
-        firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
-        [self.scrollView addSubview:firstImageView];
-        
-        ActionModel *latestModel = self.actions.firstObject;
-        UIImage *latestImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:latestModel.imageURL]]];
-        UIImageView *latestImageView = [[UIImageView alloc] initWithImage:latestImage];
-        latestImageView.contentMode = UIViewContentModeScaleToFill;
-        latestImageView.frame = CGRectMake(frame.size.width * self.actions.count, 0, frame.size.width, frame.size.height);
-        [self.scrollView addSubview:latestImageView];
-        
-        [self.scrollView setContentInset:UIEdgeInsetsMake(0, self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width)];
+        if (self.actions.count > 1) {
+            ActionModel *firstModel = self.actions.lastObject;
+            UIImage *firstImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:firstModel.imageURL]]];
+            UIImageView *firstImageView = [[UIImageView alloc] initWithImage:firstImage];
+            firstImageView.contentMode = UIViewContentModeScaleToFill;
+            firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
+            [self.scrollView addSubview:firstImageView];
+            
+            ActionModel *latestModel = self.actions.firstObject;
+            UIImage *latestImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:latestModel.imageURL]]];
+            UIImageView *latestImageView = [[UIImageView alloc] initWithImage:latestImage];
+            latestImageView.contentMode = UIViewContentModeScaleToFill;
+            latestImageView.frame = CGRectMake(frame.size.width * self.actions.count, 0, frame.size.width, frame.size.height);
+            [self.scrollView addSubview:latestImageView];
+            
+            [self.scrollView setContentInset:UIEdgeInsetsMake(0, self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width)];
+        }
         
     }
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(srollToNextPage) userInfo:nil repeats:YES];
-//    [self.timer setFireDate:[NSDate distantFuture]];
+    
+    if (self.actions.count > 1) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(srollToNextPage) userInfo:nil repeats:YES];
+    }
     
     self.firstView = NO;
 
@@ -82,8 +86,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [self.timer invalidate];
-    self.timer = nil;
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

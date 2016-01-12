@@ -7,21 +7,67 @@
 //
 
 #import "ProductsViewController.h"
+#import "ProductCell.h"
+#import "ActionModel.h"
+#import "ConstFile.h"
 
 @interface ProductsViewController ()
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSArray *actions;
 
 @end
 
 @implementation ProductsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self mockData];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ProductCell" bundle:nil] forCellWithReuseIdentifier:@"ProductCell"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.actions.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductCell *productCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCell" forIndexPath:indexPath];
+    [productCell setContentData:self.actions[indexPath.row]];
+    return productCell;
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(1, 1, 1, 1);
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 4)  / 2;
+    return CGSizeMake(width, width + 80);
+}
+
+- (void)mockData
+{
+    ActionModel *action1 = [[ActionModel alloc] init];
+    action1.imageURL = @"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg";
+    
+    ActionModel *action2 = [[ActionModel alloc] init];
+    action2.imageURL = @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg";
+    
+    ActionModel *action3 = [[ActionModel alloc] init];
+    action3.imageURL = @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg";
+    
+    self.actions = @[action1, action2, action3];
 }
 
 @end
