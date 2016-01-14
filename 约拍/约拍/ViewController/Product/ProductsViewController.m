@@ -29,6 +29,18 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductCell" bundle:nil] forCellWithReuseIdentifier:@"ProductCell"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -54,6 +66,15 @@
 {
     CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 4)  / 2;
     return CGSizeMake(width, width + 80);
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
+    UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)mockData
