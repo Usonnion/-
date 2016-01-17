@@ -10,4 +10,8 @@
 
 @interface PhotosViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger selectedPage;
+
+- (void)backToPhotosViewController;
+
 @end

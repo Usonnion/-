@@ -10,66 +10,84 @@
 
 @interface PhotoViewController () <UIScrollViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
-
-@property (nonatomic, strong) NSArray *photos;
-@property (nonatomic, assign) BOOL firstView;
+@property (nonatomic, weak) UIScrollView *scrollView;
+@property (nonatomic, weak) UIImageView *imageView;
 
 @end
 
 @implementation PhotoViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+ 
+    CGRect frame = [UIScreen mainScreen].bounds;
+    NSURL *imageUrl = [NSURL URLWithString:self.photoURL];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+    UIImage *image = [UIImage imageWithData:imageData];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView = imageView;
     
-    [self mockData];
-    self.firstView = YES;
-    self.scrollView.delegate = self;
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    scrollView.backgroundColor = [UIColor blackColor];
+    scrollView.contentSize = imageView.frame.size;
+    [scrollView addSubview:imageView];
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+    scrollView.delegate = self;
+        
+    [self setZoomParametersForSize:self.scrollView.bounds.size];
+    [self recenterImage];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if (self.firstView) {
-        CGRect frame = self.view.frame;
-        self.pageControl.numberOfPages = self.photos.count;
-        
-        for (NSString *photoURL in self.photos) {
-            NSInteger index = [self.photos indexOfObject:photoURL];
-            
-            NSURL *imageUrl = [NSURL URLWithString:photoURL];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-            UIImage *image = [UIImage imageWithData:imageData];
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            imageView.frame = CGRectMake(frame.size.width * index, 10, frame.size.width, frame.size.height - 44);
-            [self.scrollView addSubview:imageView];
-            
-        }
-        
-        [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.photos.count, frame.size.height - 20)];
-    }
-    
-    self.firstView = NO;
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [self setZoomParametersForSize:self.scrollView.bounds.size];
+    [self recenterImage];
 }
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    [self.pageControl setCurrentPage:scrollView.contentOffset.x / self.view.frame.size.width];
+    return self.imageView;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (void)mockData
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    self.photos = @[@"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg", @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg", @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg"];
+    self.superViewController.isScale = scrollView.zoomScale != scrollView.minimumZoomScale;
+    [self recenterImage];
 }
 
+#pragma mark - Private Methods
+
+- (void)recenterImage
+{
+    CGSize scrollViewSize = self.scrollView.bounds.size;
+    CGSize imageSize = self.imageView.frame.size;
+    
+    CGFloat horizontalSpace = imageSize.width < scrollViewSize.width ? (scrollViewSize.width - imageSize.width) / 2 : 0;
+    CGFloat verticalSpace = imageSize.height < scrollViewSize.height ? (scrollViewSize.height - imageSize.height) / 2 : 0;
+    self.scrollView.contentInset = UIEdgeInsetsMake(verticalSpace, horizontalSpace, verticalSpace, horizontalSpace);
+}
+
+- (void)setZoomParametersForSize:(CGSize)scrollSize
+{
+    CGSize imageSize = self.imageView.bounds.size;
+    
+    CGFloat widthScale = scrollSize.width / imageSize.width;
+    CGFloat heightScale = scrollSize.height / imageSize.height;
+    CGFloat minScale = MIN(widthScale, heightScale);
+    
+    self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.maximumZoomScale = 2.0;
+    self.scrollView.zoomScale = minScale;
+}
 
 @end

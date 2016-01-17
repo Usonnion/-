@@ -15,3 +15,5 @@
 #define Device_Height [[UIScreen mainScreen] bounds].size.height
 
 #define getActualHeight(height)  (height * Device_Height / 678)
+
+#define screenBounds [[UIScreen mainScreen] bounds]

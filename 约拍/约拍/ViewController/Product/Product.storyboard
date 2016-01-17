@@ -45,7 +45,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qAP-aF-OSD">
-                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -146,35 +146,24 @@
                     <view key="view" contentMode="scaleToFill" id="5ca-kr-vkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqr-0i-VQH">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="sf2-mS-XHK">
-                                <rect key="frame" x="187" y="669" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" red="1" green="0.41130318890000001" blue="0.31436546999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="1" green="0.97433167499999995" blue="0.46723047070000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ghz-je-95A" firstAttribute="top" secondItem="sf2-mS-XHK" secondAttribute="bottom" constant="30" id="ZW6-p4-j7R"/>
-                            <constraint firstItem="mqr-0i-VQH" firstAttribute="top" secondItem="VsV-hf-cEI" secondAttribute="bottom" id="akd-Mm-fzQ"/>
-                            <constraint firstItem="sf2-mS-XHK" firstAttribute="centerX" secondItem="5ca-kr-vkc" secondAttribute="centerX" id="gpg-eY-gbo"/>
-                            <constraint firstItem="mqr-0i-VQH" firstAttribute="leading" secondItem="5ca-kr-vkc" secondAttribute="leading" id="lQ9-6q-xAz"/>
-                            <constraint firstAttribute="trailing" secondItem="mqr-0i-VQH" secondAttribute="trailing" id="sLk-ZE-qPb"/>
-                            <constraint firstItem="Ghz-je-95A" firstAttribute="top" secondItem="mqr-0i-VQH" secondAttribute="bottom" id="uVg-I9-y1k"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="scrollView" destination="mqr-0i-VQH" id="1RA-dW-svG"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9n-EU-S19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1123" y="-573"/>
+        </scene>
+        <!--Photos Page View Controller-->
+        <scene sceneID="CQb-VD-a1l">
+            <objects>
+                <pageViewController storyboardIdentifier="PhotosPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="6s1-Gb-HgM" customClass="PhotosPageViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jwq-V7-z3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1611" y="-630"/>
         </scene>
     </scenes>
 </document>

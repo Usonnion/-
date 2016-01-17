@@ -13,6 +13,8 @@
 		187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C521C3EA3C100DEEA0B /* Assets.xcassets */; };
 		187E9C561C3EA3C100DEEA0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C541C3EA3C100DEEA0B /* LaunchScreen.storyboard */; };
 		187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */; };
+		1888FD331C4B94980071ABFD /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1888FD321C4B94980071ABFD /* UIView+Snapshot.m */; };
+		1888FD361C4BB6970071ABFD /* UIImage+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1888FD351C4BB6970071ABFD /* UIImage+WebCache.m */; };
 		18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18895D2D1C47CC7F00586CD9 /* PhotoCell.xib */; };
 		18895D311C47CC9F00586CD9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18895D301C47CC9F00586CD9 /* PhotoCell.m */; };
 		18895D341C47CDAC00586CD9 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18895D331C47CDAC00586CD9 /* PhotosViewController.m */; };
@@ -60,6 +62,10 @@
 		187E9C551C3EA3C100DEEA0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187E9C571C3EA3C100DEEA0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = "约拍/ViewController/Dashboard/Dashboard.storyboard"; sourceTree = SOURCE_ROOT; };
+		1888FD311C4B94980071ABFD /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		1888FD321C4B94980071ABFD /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
+		1888FD341C4BB6970071ABFD /* UIImage+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebCache.h"; sourceTree = "<group>"; };
+		1888FD351C4BB6970071ABFD /* UIImage+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebCache.m"; sourceTree = "<group>"; };
 		18895D2D1C47CC7F00586CD9 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		18895D2F1C47CC9F00586CD9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		18895D301C47CC9F00586CD9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 				187E9C5E1C3EA69D00DEEA0B /* ViewController */,
 				188C9CF21C41023900DD1B72 /* View */,
 				188C9CF51C41054D00DD1B72 /* Model */,
+				1888FD2D1C4B94220071ABFD /* Category */,
 				187E9C5D1C3EA4D300DEEA0B /* DataCache */,
 				188C9D0D1C422DE000DD1B72 /* Libray */,
 				187E9C431C3EA3C100DEEA0B /* Supporting Files */,
@@ -204,6 +211,17 @@
 				187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		1888FD2D1C4B94220071ABFD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1888FD311C4B94980071ABFD /* UIView+Snapshot.h */,
+				1888FD321C4B94980071ABFD /* UIView+Snapshot.m */,
+				1888FD341C4BB6970071ABFD /* UIImage+WebCache.h */,
+				1888FD351C4BB6970071ABFD /* UIImage+WebCache.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		188C9CF21C41023900DD1B72 /* View */ = {
@@ -378,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1888FD331C4B94980071ABFD /* UIView+Snapshot.m in Sources */,
 				188C9D0C1C421DFA00DD1B72 /* BaseCellModel.m in Sources */,
 				188C9D371C422E0B00DD1B72 /* SDWebImageManager.m in Sources */,
 				188C9D321C422E0B00DD1B72 /* SDImageCache.m in Sources */,
@@ -393,6 +412,7 @@
 				188C9D351C422E0B00DD1B72 /* SDWebImageDownloader.m in Sources */,
 				188C9D481C423F4E00DD1B72 /* ActionSummaryCell.m in Sources */,
 				188C9CFE1C41067900DD1B72 /* ActionCell.m in Sources */,
+				1888FD361C4BB6970071ABFD /* UIImage+WebCache.m in Sources */,
 				188C9D3C1C422E0B00DD1B72 /* UIImage+WebP.m in Sources */,
 				188C9D3E1C422E0B00DD1B72 /* UIImageView+WebCache.m in Sources */,
 				188C9D341C422E0B00DD1B72 /* SDWebImageDecoder.m in Sources */,

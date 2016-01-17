@@ -8,12 +8,18 @@
 
 #import "PhotosViewController.h"
 #import "PhotoCell.h"
+#import "UIView+Snapshot.h"
+#import "ConstFile.h"
+#import "PhotosPageViewController.h"
+#import "UIImage+WebCache.h"
 
 @interface PhotosViewController ()
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, weak) UIView *maskView;
+@property (nonatomic, weak) UIImageView *currentPhoto;
 
 @end
 
@@ -58,9 +64,46 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithUrl:self.photos[indexPath.row]]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.frame = cell.bounds;
+    imageView.center = cell.center;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -20, screenBounds.size.width, screenBounds.size.height + 20)];
+    view.backgroundColor = [UIColor blackColor];
+    [view addSubview:imageView];
+    self.maskView = view;
+    self.currentPhoto = imageView;
+    
+    [self.view addSubview:view];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
-    UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotoViewController"];
-    [self.navigationController pushViewController:viewController animated:YES];
+    UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosPageViewController"];
+    PhotosPageViewController *photosPageViewController = (PhotosPageViewController *)viewController;
+    photosPageViewController.photosViewController = self;
+    photosPageViewController.page = indexPath.row;
+    photosPageViewController.photos = self.photos;
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        imageView.frame = view.frame;
+        imageView.center = CGPointMake(view.center.x, view.center.y + 30);
+    } completion:^(BOOL finished) {
+        [self presentViewController:viewController animated:NO completion:nil];
+    }];
+}
+
+- (void)backToPhotosViewController
+{
+    [self.currentPhoto setImage:[UIImage imageWithUrl:self.photos[self.selectedPage]]];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedPage inSection:0]];
+    [UIView animateWithDuration:0.4 animations:^{
+        self.currentPhoto.frame = cell.frame;
+        self.currentPhoto.center = cell.center;
+    } completion:^(BOOL finished) {
+        [self.maskView removeFromSuperview];
+    }];
 }
 
 - (void)mockData

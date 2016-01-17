@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotosViewController.h"
 
-@interface PhotosPageViewController : UIPageViewController
+@interface PhotosPageViewController : UIPageViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, assign) BOOL isScale;
+
+@property (nonatomic, weak) PhotosViewController *photosViewController;
 
 @end
