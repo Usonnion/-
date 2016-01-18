@@ -103,6 +103,7 @@
         self.currentPhoto.center = cell.center;
     } completion:^(BOOL finished) {
         [self.maskView removeFromSuperview];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
     }];
 }
 
