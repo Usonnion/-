@@ -117,39 +117,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     
     self.actions = @[action1, action2, action3, action4, action5];
     
-    NSArray *productTypes/Users/apple/Desktop/约拍/约拍/约拍.xcodeproj/project.pbxproj
-/Users/apple/Desktop/约拍/约拍/约拍.xcodeproj/project.xcworkspace/xcuserdata/apple.xcuserdatad/UserInterfaceState.xcuserstate
-/Users/apple/Desktop/约拍/约拍/约拍/AppDelegate.h
-/Users/apple/Desktop/约拍/约拍/约拍/AppDelegate.m
-/Users/apple/Desktop/约拍/约拍/约拍/ConstFile.h
-/Users/apple/Desktop/约拍/约拍/约拍/DataCache/ArtisticPhoto.xcdatamodeld/ArtisticPhoto.xcdatamodel/contents
-/Users/apple/Desktop/约拍/约拍/约拍/DataCache/DiskCacheManager.h
-/Users/apple/Desktop/约拍/约拍/约拍/DataCache/DiskCacheManager.m
-/Users/apple/Desktop/约拍/约拍/约拍/DataCache/Product.h
-/Users/apple/Desktop/约拍/约拍/约拍/DataCache/Product.m
-/Users/apple/Desktop/约拍/约拍/约拍/Info.plist
-/Users/apple/Desktop/约拍/约拍/约拍/Model/ActionModel.h
-/Users/apple/Desktop/约拍/约拍/约拍/Model/ProductModel.h
-/Users/apple/Desktop/约拍/约拍/约拍/Model/ProductModel.m
-/Users/apple/Desktop/约拍/约拍/约拍/Model/StoreModel.h
-/Users/apple/Desktop/约拍/约拍/约拍/Model/StoreModel.m
-/Users/apple/Desktop/约拍/约拍/约拍/Util/NavigatorManager.h
-/Users/apple/Desktop/约拍/约拍/约拍/Util/NavigatorManager.m
-/Users/apple/Desktop/约拍/约拍/约拍/View/PhotoCell.m
-/Users/apple/Desktop/约拍/约拍/约拍/View/ProductCell.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Dashboard/Dashboard.storyboard
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Dashboard/DashboardViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Dashboard/PageControlViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/PhotoViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/PhotosPageViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/PhotosViewController.h
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/PhotosViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/Product.storyboard
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/ProductsViewController.h
-/Users/apple/Desktop/约拍/约拍/约拍/ViewController/Product/ProductsViewController.m
-/Users/apple/Desktop/约拍/约拍/约拍.xcodeproj/project.xcworkspace/xcuserdata/apple.xcuserdatad/WorkspaceSettings.xcsettings
-/Users/apple/Desktop/约拍/约拍/约拍/Default.jpg
-/Users/apple/Desktop/约拍/约拍/约拍/PrefixHeader.pch = @[@"KidsPhoto", @"WeddingPhoto", @"PersonalPhoto", @"Others"];
+    NSArray *productTypes = @[@"KidsPhoto", @"WeddingPhoto", @"PersonalPhoto", @"Others"];
     [[DiskCacheManager sharedManager] removeAllProducts];
     NSMutableArray *products = [@[] mutableCopy];
     for (NSInteger storeIndex = 0; storeIndex < 20; storeIndex ++) {
