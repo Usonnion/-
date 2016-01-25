@@ -7,6 +7,7 @@
 //
 
 #import "PhotoViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate>
 

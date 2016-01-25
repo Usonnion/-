@@ -14,9 +14,18 @@
 
 @implementation AppDelegate
 
++ (AppDelegate *)sharedAppDelegate
+{
+    return [[UIApplication sharedApplication] delegate];
+}
+
++ (NSManagedObjectContext *)sharedContext
+{
+    return [[AppDelegate sharedAppDelegate] managedObjectContext];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
     return YES;
 }
 
@@ -60,7 +69,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"__" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ArtisticPhoto" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }

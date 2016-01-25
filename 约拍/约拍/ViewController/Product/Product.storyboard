@@ -25,7 +25,7 @@
         <!--Products View Controller-->
         <scene sceneID="Rm8-WV-JUZ">
             <objects>
-                <viewController id="jdr-w6-Bu8" customClass="ProductsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsViewController" id="jdr-w6-Bu8" customClass="ProductsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZQn-Ww-jFG"/>
                         <viewControllerLayoutGuide type="bottom" id="KkV-I0-lwv"/>

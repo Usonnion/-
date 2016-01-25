@@ -8,14 +8,14 @@
 
 #import "ProductsViewController.h"
 #import "ProductCell.h"
-#import "ActionModel.h"
-#import "ConstFile.h"
+#import "PhotosViewController.h"
+#import "ProductModel.h"
 
 @interface ProductsViewController ()
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSArray *actions;
+@property (nonatomic, strong) NSArray *products;
 
 @end
 
@@ -32,26 +32,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.actions.count;
+    return self.products.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductCell *productCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCell" forIndexPath:indexPath];
-    [productCell setContentData:self.actions[indexPath.row]];
+    [productCell setContentData:self.products[indexPath.row]];
     return productCell;
 }
 
@@ -72,23 +72,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ProductModel *product = self.products[indexPath.row];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
-    UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosViewController"];
+    PhotosViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosViewController"];
+    viewController.photos = product.images;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)mockData
 {
-    ActionModel *action1 = [[ActionModel alloc] init];
-    action1.imageURL = @"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg";
     
-    ActionModel *action2 = [[ActionModel alloc] init];
-    action2.imageURL = @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg";
-    
-    ActionModel *action3 = [[ActionModel alloc] init];
-    action3.imageURL = @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg";
-    
-    self.actions = @[action1, action2, action3];
+    if (self.action.navigatorType == NavigatorTypeByType) {
+        self.products = [[DiskCacheManager sharedManager] getProductByProductType:self.action.productType];
+    }
 }
 
 @end

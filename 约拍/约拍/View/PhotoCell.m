@@ -7,6 +7,7 @@
 //
 
 #import "PhotoCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface PhotoCell()
 
@@ -19,8 +20,6 @@
 - (void)setImage:(NSString *)imageURL
 {
     NSURL *imageUrl = [NSURL URLWithString:imageURL];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-    UIImage *image = [UIImage imageWithData:imageData];
-    [self.imageView setImage:image];}
+    [self.imageView sd_setImageWithURL:imageUrl];}
 
 @end

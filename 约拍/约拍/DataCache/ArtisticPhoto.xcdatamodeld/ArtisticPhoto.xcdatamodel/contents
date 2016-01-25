@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
     <entity name="Product" representedClassName="Product" syncable="YES">
-        <attribute name="images" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="product" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="StoreInfomation" representedClassName="StoreInfomation" syncable="YES">
-        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="storeAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="storeName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stroeId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stroreImage" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" syncable="YES"/>
+        <attribute name="productType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storeId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoreInfomation" positionX="-524" positionY="-819" width="128" height="118"/>
-        <element name="Product" positionX="-245" positionY="-666" width="164" height="88"/>
+        <element name="Product" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

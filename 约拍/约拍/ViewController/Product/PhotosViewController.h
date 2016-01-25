@@ -11,6 +11,7 @@
 @interface PhotosViewController : UIViewController
 
 @property (nonatomic, assign) NSInteger selectedPage;
+@property (nonatomic, strong) NSArray *photos;
 
 - (void)backToPhotosViewController;
 

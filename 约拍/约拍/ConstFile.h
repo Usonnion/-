@@ -17,3 +17,8 @@
 #define getActualHeight(height)  (height * Device_Height / 678)
 
 #define screenBounds [[UIScreen mainScreen] bounds]
+
+typedef NS_ENUM(NSInteger, NavigatorType) {
+    NavigatorTypeByType,
+    NavigatorTypeByStore
+};

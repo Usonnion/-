@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionModel.h"
 
 @interface ProductsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) ActionModel *action;
 
 @end

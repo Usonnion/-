@@ -7,7 +7,8 @@
 //
 
 #import "ProductCell.h"
-#import "ActionModel.h"
+#import "ProductModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface ProductCell()
 
@@ -19,11 +20,9 @@
 
 - (void)setContentData:(id)contentModel
 {
-    ActionModel *actionModel = (ActionModel *)contentModel;
-    NSURL *imageUrl = [NSURL URLWithString:actionModel.imageURL];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-    UIImage *image = [UIImage imageWithData:imageData];
-    [self.imageView setImage:image];
+    ProductModel *product = (ProductModel *)contentModel;
+    NSURL *imageUrl = [NSURL URLWithString:product.images.firstObject];
+    [self.imageView sd_setImageWithURL:imageUrl];
 }
 
 

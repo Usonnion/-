@@ -17,7 +17,6 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, weak) UIView *maskView;
 @property (nonatomic, weak) UIImageView *currentPhoto;
 
@@ -29,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    [self mockData];
+//    [self mockData];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCell"];
 }
 
@@ -105,6 +104,12 @@
         [self.maskView removeFromSuperview];
         [self.navigationController setNavigationBarHidden:NO animated:NO];
     }];
+}
+
+- (void)setSelectedPage:(NSInteger)selectedPage
+{
+    _selectedPage = selectedPage;
+    [self.currentPhoto setImage:[UIImage imageWithUrl:self.photos[selectedPage]]];
 }
 
 - (void)mockData

@@ -9,6 +9,7 @@
 #import "PageControlViewController.h"
 #import "ActionModel.h"
 #import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 @interface PageControlViewController ()
 
@@ -45,10 +46,8 @@
         for (ActionModel *action in self.actions) {
             NSInteger index = [self.actions indexOfObject:action];
             
-            NSURL *imageUrl = [NSURL URLWithString:action.imageURL];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-            UIImage *image = [UIImage imageWithData:imageData];
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            UIImageView *imageView = [[UIImageView alloc] init];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:action.imageURL]];
             imageView.contentMode = UIViewContentModeScaleToFill;
             imageView.frame = CGRectMake(frame.size.width * index, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:imageView];
@@ -58,15 +57,15 @@
         
         if (self.actions.count > 1) {
             ActionModel *firstModel = self.actions.lastObject;
-            UIImage *firstImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:firstModel.imageURL]]];
-            UIImageView *firstImageView = [[UIImageView alloc] initWithImage:firstImage];
+            UIImageView *firstImageView = [[UIImageView alloc] init];
+            [firstImageView sd_setImageWithURL:[NSURL URLWithString:firstModel.imageURL]];
             firstImageView.contentMode = UIViewContentModeScaleToFill;
             firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:firstImageView];
             
             ActionModel *latestModel = self.actions.firstObject;
-            UIImage *latestImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:latestModel.imageURL]]];
-            UIImageView *latestImageView = [[UIImageView alloc] initWithImage:latestImage];
+            UIImageView *latestImageView = [[UIImageView alloc] init];
+            [latestImageView sd_setImageWithURL:[NSURL URLWithString:latestModel.imageURL]];
             latestImageView.contentMode = UIViewContentModeScaleToFill;
             latestImageView.frame = CGRectMake(frame.size.width * self.actions.count, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:latestImageView];

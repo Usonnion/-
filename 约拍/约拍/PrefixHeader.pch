@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  约拍
+//
+//  Created by apple on 16/1/20.
+//  Copyright © 2016年 ArtisticPhoto. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "AppDelegate.h"
+#import "DiskCacheManager.h"
+#import "ConstFile.h"
+#import "NavigatorManager.h"
+
+#endif /* PrefixHeader_pch */

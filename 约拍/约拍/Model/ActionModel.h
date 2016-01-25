@@ -16,7 +16,10 @@
 @property (nonatomic, strong) NSString *style;
 @property (nonatomic, assign) NSInteger actionId;
 @property (nonatomic, strong) NSString *imageURL;
-
-
+@property (nonatomic, strong) NSString *navigatorIdentify;
+@property (nonatomic, strong) NSString *productType;
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *storeid;
+@property (nonatomic, assign) NavigatorType navigatorType;
 
 @end

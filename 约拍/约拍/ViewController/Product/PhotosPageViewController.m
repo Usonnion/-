@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self mockData];
+//    [self mockData];
     self.dataSource = self;
     [self setViewControllers:@[[self tutorialStepForPage:self.page]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     self.pageCount = self.photos.count;
