@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray <ActionModel *> *actions;
 @property (nonatomic, assign) BOOL firstView;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) CGRect frame;
 
 @end
 
@@ -30,6 +31,18 @@
     
     [self mockData];
     self.firstView = YES;
+//    self.view.frame = self.frame;
+}
+
++ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Dashboard" bundle:nil];
+    PageControlViewController *pageViewController = [storyBoard instantiateViewControllerWithIdentifier:@"PageControlViewController"];
+    pageViewController.frame = frame;
+    pageViewController.view.frame = frame;
+    pageViewController.scrollCircle = scrollCircle;
+    pageViewController.autoScroll = autoScroll;
+    return pageViewController;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -37,6 +50,7 @@
     [super viewDidAppear:animated];
     
     if (self.firstView) {
+        self.view.frame = self.frame;
         CGRect frame = self.view.frame;
         self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
         self.scrollView.pagingEnabled = YES;
@@ -55,7 +69,7 @@
         [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.actions.count, frame.size.height)];
         [self.view addSubview:self.scrollView];
         
-        if (self.actions.count > 1) {
+        if (self.actions.count > 1 && self.scrollCircle) {
             ActionModel *firstModel = self.actions.lastObject;
             UIImageView *firstImageView = [[UIImageView alloc] init];
             [firstImageView sd_setImageWithURL:[NSURL URLWithString:firstModel.imageURL]];
@@ -75,7 +89,7 @@
         
     }
     
-    if (self.actions.count > 1) {
+    if (self.actions.count > 1 && self.autoScroll) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(srollToNextPage) userInfo:nil repeats:YES];
     }
     
@@ -126,11 +140,13 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    CGPoint point = scrollView.contentOffset;
-    if (point.x < 0) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * (self.actions.count - 1), 0) animated:NO];
-    } else if (point.x >= self.scrollView.frame.size.width * self.actions.count) {
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+    if (self.scrollCircle) {
+        CGPoint point = scrollView.contentOffset;
+        if (point.x < 0) {
+            [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * (self.actions.count - 1), 0) animated:NO];
+        } else if (point.x >= self.scrollView.frame.size.width * self.actions.count) {
+            [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+        }
     }
 }
 

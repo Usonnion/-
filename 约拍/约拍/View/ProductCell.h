@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BuyProductDelegate <NSObject>
+
+@optional
+- (void)buyProduct:(id)action;
+
+@end
+
 @interface ProductCell : UICollectionViewCell
 
+@property (nonatomic, weak) id<BuyProductDelegate> delegate;
 - (void)setContentData:(id)contentModel;
 
 @end

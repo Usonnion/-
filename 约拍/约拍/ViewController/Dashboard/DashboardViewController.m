@@ -12,6 +12,7 @@
 #import "ActionCell.h"
 #import "DiskCacheManager.h"
 #import "ProductModel.h"
+#import "PageControlViewController.h"
 
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
@@ -33,6 +34,12 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     self.tableView.estimatedRowHeight = 40;
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionSummaryCell" bundle:nil] forCellReuseIdentifier:@"ActionSummaryCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionCell" bundle:nil] forCellReuseIdentifier:@"ActionCell"];
+    
+    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) scrollCircle:YES autoScroll:YES];
+    [self addChildViewController:pageViewController];
+    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
+    [tableViewHeaderView addSubview:pageViewController.view];
+    self.tableView.tableHeaderView = tableViewHeaderView;
     [self mockData];
 }
 

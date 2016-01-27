@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="7iM-AL-rTC">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRI-jc-BxT">
+                    <rect key="frame" x="16" y="16" width="415" height="27"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                    <color key="textColor" red="0.25098039215686274" green="0.20000000000000001" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-bn-0hu">
+                    <rect key="frame" x="16" y="59" width="415" height="27"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                    <color key="textColor" red="0.84006871729999999" green="0.41178251230000001" blue="0.15916600920000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2uv-bn-0hu" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="0Gq-Sh-QMo"/>
+                <constraint firstItem="VRI-jc-BxT" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="0i0-Ul-e0l"/>
+                <constraint firstAttribute="trailing" secondItem="2uv-bn-0hu" secondAttribute="trailing" constant="16" id="ARQ-v1-Msa"/>
+                <constraint firstAttribute="trailing" secondItem="VRI-jc-BxT" secondAttribute="trailing" constant="16" id="Eb2-Vl-Y0m"/>
+                <constraint firstItem="VRI-jc-BxT" firstAttribute="top" secondItem="7iM-AL-rTC" secondAttribute="top" constant="16" id="SBP-h5-6G9"/>
+                <constraint firstItem="2uv-bn-0hu" firstAttribute="top" secondItem="VRI-jc-BxT" secondAttribute="bottom" constant="16" id="WCP-YQ-nio"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="229.5" y="63"/>
+        </view>
+    </objects>
+</document>

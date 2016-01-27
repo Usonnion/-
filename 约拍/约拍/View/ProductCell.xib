@@ -35,6 +35,9 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-xI-grk">
                         <rect key="frame" x="0.0" y="150" width="150" height="82"/>
+                        <connections>
+                            <action selector="buyButtonPressed:" destination="yqZ-8k-gtY" eventType="touchUpInside" id="c5Y-bM-3fS"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

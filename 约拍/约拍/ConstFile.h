@@ -20,5 +20,6 @@
 
 typedef NS_ENUM(NSInteger, NavigatorType) {
     NavigatorTypeByType,
-    NavigatorTypeByStore
+    NavigatorTypeByStore,
+    NavigatorTypeToPayment
 };

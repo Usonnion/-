@@ -10,4 +10,9 @@
 
 @interface PageControlViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic, assign) BOOL scrollCircle;
+@property (nonatomic, assign) BOOL autoScroll;
+
++ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll;
+
 @end

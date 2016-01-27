@@ -8,6 +8,8 @@
 
 #import "NavigatorManager.h"
 #import "ProductsViewController.h"
+#import "ProductModel.h"
+#import "PaymentViewController.h"
 
 @implementation NavigatorManager
 
@@ -16,6 +18,11 @@
     if (action.navigatorType == NavigatorTypeByType) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
         ProductsViewController *navigatorToViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ProductsViewController"];
+        navigatorToViewController.action = action;
+        [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
+    } else if (action.navigatorType == NavigatorTypeToPayment) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+        PaymentViewController *navigatorToViewController = [storyBoard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
         navigatorToViewController.action = action;
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
     }

@@ -11,7 +11,7 @@
 #import "PhotosViewController.h"
 #import "ProductModel.h"
 
-@interface ProductsViewController ()
+@interface ProductsViewController () <BuyProductDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
@@ -52,6 +52,7 @@
 {
     ProductCell *productCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCell" forIndexPath:indexPath];
     [productCell setContentData:self.products[indexPath.row]];
+    productCell.delegate = self;
     return productCell;
 }
 
@@ -79,9 +80,15 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+#pragma mark - BuyProductDelegate
+
+- (void)buyProduct:(id)action
+{
+    [NavigatorManager navigatorBy:action viewController:self];
+}
+
 - (void)mockData
 {
-    
     if (self.action.navigatorType == NavigatorTypeByType) {
         self.products = [[DiskCacheManager sharedManager] getProductByProductType:self.action.productType];
     }
