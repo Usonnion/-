@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeAllProducts;
 + (NSArray *)getProductByStoreId:(NSString *)storeId;
 + (NSArray *)getProductByProductType:(NSString *)productType;
++ (Product *)getProductByProductId:(NSString *)productId;
 
 @end
 

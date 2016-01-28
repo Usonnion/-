@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    [self mockData];
+    [self setViewData];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductCell" bundle:nil] forCellWithReuseIdentifier:@"ProductCell"];
 }
 
@@ -76,7 +76,7 @@
     ProductModel *product = self.products[indexPath.row];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
     PhotosViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosViewController"];
-    viewController.photos = product.images;
+    viewController.product = product;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -87,7 +87,7 @@
     [NavigatorManager navigatorBy:action viewController:self];
 }
 
-- (void)mockData
+- (void)setViewData
 {
     if (self.action.navigatorType == NavigatorTypeByType) {
         self.products = [[DiskCacheManager sharedManager] getProductByProductType:self.action.productType];

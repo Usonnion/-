@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductModel.h"
+#import "PhotosPageViewController.h"
 
-@interface PhotosViewController : UIViewController
+@interface PhotosViewController : UIViewController <PhotosPageViewControllerDelegate>
 
-@property (nonatomic, assign) NSInteger selectedPage;
-@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) ProductModel *product;
 
 - (void)backToPhotosViewController;
 

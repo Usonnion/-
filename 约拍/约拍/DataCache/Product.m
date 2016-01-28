@@ -53,4 +53,12 @@
     return result;
 }
 
++ (Product *)getProductByProductId:(NSString *)productId
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Product"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"productId == %@", productId];
+    NSArray *result = [[AppDelegate sharedContext] executeFetchRequest:fetchRequest error:nil];
+    return result.firstObject;
+}
+
 @end

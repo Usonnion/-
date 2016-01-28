@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="7iM-AL-rTC">
+        <view contentMode="scaleToFill" id="7iM-AL-rTC" customClass="ProductDescription">
             <rect key="frame" x="0.0" y="0.0" width="447" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -17,8 +17,17 @@
                     <color key="textColor" red="0.25098039215686274" green="0.20000000000000001" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-hm-t6U">
+                    <rect key="frame" x="8" y="65" width="11" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="11" id="uhV-QZ-Drq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                    <color key="textColor" red="0.92323626889999999" green="0.40694145199999998" blue="0.099915464159999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-bn-0hu">
-                    <rect key="frame" x="16" y="59" width="415" height="27"/>
+                    <rect key="frame" x="24" y="59" width="407" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                     <color key="textColor" red="0.84006871729999999" green="0.41178251230000001" blue="0.15916600920000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -26,14 +35,20 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="2uv-bn-0hu" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="0Gq-Sh-QMo"/>
-                <constraint firstItem="VRI-jc-BxT" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="0i0-Ul-e0l"/>
                 <constraint firstAttribute="trailing" secondItem="2uv-bn-0hu" secondAttribute="trailing" constant="16" id="ARQ-v1-Msa"/>
                 <constraint firstAttribute="trailing" secondItem="VRI-jc-BxT" secondAttribute="trailing" constant="16" id="Eb2-Vl-Y0m"/>
+                <constraint firstItem="2uv-bn-0hu" firstAttribute="bottom" secondItem="sgy-hm-t6U" secondAttribute="bottom" id="OEG-Re-Nhv"/>
                 <constraint firstItem="VRI-jc-BxT" firstAttribute="top" secondItem="7iM-AL-rTC" secondAttribute="top" constant="16" id="SBP-h5-6G9"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="top" secondItem="VRI-jc-BxT" secondAttribute="bottom" constant="16" id="WCP-YQ-nio"/>
+                <constraint firstItem="VRI-jc-BxT" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="dsT-BU-Z0M"/>
+                <constraint firstItem="2uv-bn-0hu" firstAttribute="leading" secondItem="sgy-hm-t6U" secondAttribute="trailing" constant="5" id="pqW-ef-hQA"/>
+                <constraint firstItem="sgy-hm-t6U" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="8" id="udX-C6-DS5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="VRI-jc-BxT" id="OJf-QZ-Wyv"/>
+                <outlet property="priceLabel" destination="2uv-bn-0hu" id="Xil-ee-std"/>
+            </connections>
             <point key="canvasLocation" x="229.5" y="63"/>
         </view>
     </objects>

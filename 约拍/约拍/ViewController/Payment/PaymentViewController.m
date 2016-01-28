@@ -11,7 +11,7 @@
 #import "CustomerNavigatorItem.h"
 #import "ProductDescription.h"
 
-@interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate>
+@interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
@@ -26,7 +26,9 @@
 {
     [super viewDidLoad];
     
-    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width) scrollCircle:NO autoScroll:NO];
+    ProductModel *product = [[DiskCacheManager sharedManager] getProductByProductId:self.action.productId];
+    
+    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width) images:product.images scrollCircle:NO autoScroll:NO];
     [self.scrollView addSubview: pageViewController.view];
     self.pageView = pageViewController.view;
     [self addChildViewController:pageViewController];
@@ -35,7 +37,7 @@
     self.customerNavigatorItem = customerNavigatorItem;
     [self.view addSubview:customerNavigatorItem];
     
-    ProductDescription *productDescription = [ProductDescription productDescriptionWithProduct:nil];
+    ProductDescription *productDescription = [ProductDescription productDescriptionWithProduct:product];
     productDescription.frame = CGRectMake(0, screenBounds.size.width, screenBounds.size.width, screenBounds.size.height);
     [self.scrollView addSubview:productDescription];
     
@@ -66,10 +68,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat yPozition = scrollView.contentOffset.y;
-    if (0 < yPozition < screenBounds.size.width) {
+    if (0.0 < yPozition &&  yPozition < screenBounds.size.width) {
         [self.pageView setFrame:CGRectMake(0, yPozition / 2, screenBounds.size.width, screenBounds.size.width)];
         [self.customerNavigatorItem setOffset:yPozition * 2 / screenBounds.size.width ];
     }
+}
+
+#pragma mark - PageControlViewControllerDelegate
+
+- (void)pagePressed:(NSInteger)page
+{
+    
 }
 
 @end

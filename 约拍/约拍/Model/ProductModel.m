@@ -18,6 +18,7 @@
     product.price = [[dictionary objectForKey:@"Price"] doubleValue];
     product.images = [dictionary objectForKey:@"Images"];
     product.productType = [dictionary objectForKey:@"ProductType"];
+    product.productDescription = [dictionary objectForKey:@"ProductDescription"];
     return product;
 }
 
@@ -28,6 +29,7 @@
     [aCoder encodeObject:self.productId forKey:@"Product.ProductId"];
     [aCoder encodeDouble:self.price forKey:@"Product.Price"];
     [aCoder encodeObject:self.productType forKey:@"Product.ProductType"];
+    [aCoder encodeObject:self.productDescription forKey:@"Product.ProductDescription"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -38,6 +40,7 @@
         self.productType = [aDecoder decodeObjectForKey:@"Product.ProductType"];
         self.images = [aDecoder decodeObjectForKey:@"Product.Images"];
         self.price = [aDecoder decodeDoubleForKey:@"Product.Price"];
+        self.productDescription = [aDecoder decodeObjectForKey:@"Product.ProductDescription"];
     }
     return self;
 }

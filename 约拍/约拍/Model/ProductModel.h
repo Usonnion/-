@@ -15,6 +15,7 @@
 @property (nonatomic, assign) double price;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSString *productType;
+@property (nonatomic, strong) NSString *productDescription;
 
 + (ProductModel *)fromDictionary:(NSDictionary *)dictionary;
 

@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PageControlViewControllerDelegate <NSObject>
+
+- (void)pagePressed:(NSInteger)page;
+
+@end
+
 @interface PageControlViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic, weak) id<PageControlViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL scrollCircle;
 @property (nonatomic, assign) BOOL autoScroll;
 
-+ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll;
++ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame images:(NSArray *)images scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "DiskCacheManager.h"
 #import "Product.h"
-#import "ProductModel.h"
 
 @interface DiskCacheManager ()
 
@@ -46,6 +45,16 @@
     }
     
     return productList;
+}
+
+- (ProductModel *)getProductByProductId:(NSString *)prodcutId
+{
+    Product *product = [Product getProductByProductId:prodcutId];
+    if (product) {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:product.product];
+    }
+    
+    return nil;
 }
 
 - (void)removeAllProducts

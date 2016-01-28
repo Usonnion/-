@@ -35,7 +35,10 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionSummaryCell" bundle:nil] forCellReuseIdentifier:@"ActionSummaryCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionCell" bundle:nil] forCellReuseIdentifier:@"ActionCell"];
     
-    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) scrollCircle:YES autoScroll:YES];
+    NSArray *images = @[@"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg",
+                        @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg",
+                        @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg"];
+    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) images:images scrollCircle:YES autoScroll:YES];
     [self addChildViewController:pageViewController];
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
     [tableViewHeaderView addSubview:pageViewController.view];
@@ -134,6 +137,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
                                          @"ProductId" : @(productIndex).stringValue,
                                          @"Price" : @"300",
                                          @"ProductType" : productTypes[productType],
+                                         @"ProductDescription" : @"沛县第一婚纱影楼 个人写真",
                                          @"Images" : @[@"http://i12.tietuku.com/135887956d5d60e0.jpg",
                                                        @"http://i12.tietuku.com/543908eae4e015d2.jpg",
                                                        @"http://i13.tietuku.com/a1a296b92e03d115.jpg",

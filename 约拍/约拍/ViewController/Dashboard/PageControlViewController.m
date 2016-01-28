@@ -13,10 +13,10 @@
 
 @interface PageControlViewController ()
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-//@property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, weak) UIScrollView *scrollView;
+@property (nonatomic, weak) UIPageControl *pageControl;
 
-@property (nonatomic, strong) NSArray <ActionModel *> *actions;
+@property (nonatomic, strong) NSArray *images;
 @property (nonatomic, assign) BOOL firstView;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) CGRect frame;
@@ -29,12 +29,11 @@
 {
     [super viewDidLoad];
     
-    [self mockData];
     self.firstView = YES;
-//    self.view.frame = self.frame;
+    self.pageControl.numberOfPages = self.images.count;
 }
 
-+ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll
++ (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame images:(NSArray *)images scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll
 {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Dashboard" bundle:nil];
     PageControlViewController *pageViewController = [storyBoard instantiateViewControllerWithIdentifier:@"PageControlViewController"];
@@ -42,6 +41,7 @@
     pageViewController.view.frame = frame;
     pageViewController.scrollCircle = scrollCircle;
     pageViewController.autoScroll = autoScroll;
+    pageViewController.images = images;
     return pageViewController;
 }
 
@@ -52,36 +52,46 @@
     if (self.firstView) {
         self.view.frame = self.frame;
         CGRect frame = self.view.frame;
-        self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        self.scrollView = scrollView;
         self.scrollView.pagingEnabled = YES;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         self.scrollView.delegate = self;
         
-        for (ActionModel *action in self.actions) {
-            NSInteger index = [self.actions indexOfObject:action];
+        for (NSString *imageUrl in self.images) {
+            NSInteger index = [self.images indexOfObject:imageUrl];
             
             UIImageView *imageView = [[UIImageView alloc] init];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:action.imageURL]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
             imageView.contentMode = UIViewContentModeScaleToFill;
             imageView.frame = CGRectMake(frame.size.width * index, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:imageView];
         }
-        [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.actions.count, frame.size.height)];
+        [self.scrollView setContentSize:CGSizeMake(frame.size.width * self.images.count, frame.size.height)];
         [self.view addSubview:self.scrollView];
         
-        if (self.actions.count > 1 && self.scrollCircle) {
-            ActionModel *firstModel = self.actions.lastObject;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pagePressed)];
+        [self.scrollView addGestureRecognizer:tapGesture];
+        
+        UIPageControl *pageControl = [[UIPageControl alloc] init];
+        pageControl.numberOfPages = self.images.count;
+        CGSize size = [pageControl sizeForNumberOfPages:self.images.count];
+        pageControl.frame = CGRectMake((frame.size.width - size.width) / 2, frame.size.height - size.height - 6, size.width, size.height);
+        pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+        [self.view addSubview:pageControl];
+        self.pageControl = pageControl;
+        
+        if (self.images.count > 1 && self.scrollCircle) {
             UIImageView *firstImageView = [[UIImageView alloc] init];
-            [firstImageView sd_setImageWithURL:[NSURL URLWithString:firstModel.imageURL]];
+            [firstImageView sd_setImageWithURL:[NSURL URLWithString:self.images.lastObject]];
             firstImageView.contentMode = UIViewContentModeScaleToFill;
             firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:firstImageView];
             
-            ActionModel *latestModel = self.actions.firstObject;
             UIImageView *latestImageView = [[UIImageView alloc] init];
-            [latestImageView sd_setImageWithURL:[NSURL URLWithString:latestModel.imageURL]];
+            [latestImageView sd_setImageWithURL:[NSURL URLWithString:self.images.firstObject]];
             latestImageView.contentMode = UIViewContentModeScaleToFill;
-            latestImageView.frame = CGRectMake(frame.size.width * self.actions.count, 0, frame.size.width, frame.size.height);
+            latestImageView.frame = CGRectMake(frame.size.width * self.images.count, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:latestImageView];
             
             [self.scrollView setContentInset:UIEdgeInsetsMake(0, self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width)];
@@ -89,7 +99,7 @@
         
     }
     
-    if (self.actions.count > 1 && self.autoScroll) {
+    if (self.images.count > 1 && self.autoScroll) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(srollToNextPage) userInfo:nil repeats:YES];
     }
     
@@ -122,31 +132,30 @@
     }];
 }
 
-- (void)mockData
+- (void)pagePressed
 {
-    ActionModel *action1 = [[ActionModel alloc] init];
-    action1.imageURL = @"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg";
-    
-    ActionModel *action2 = [[ActionModel alloc] init];
-    action2.imageURL = @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg";
-    
-    ActionModel *action3 = [[ActionModel alloc] init];
-    action3.imageURL = @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg";
-    
-    self.actions = @[action1, action2, action3];
+    if ([self.delegate respondsToSelector:@selector(pagePressed:)]) {
+        [self.delegate pagePressed:self.pageControl.currentPage];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    CGPoint point = scrollView.contentOffset;
     if (self.scrollCircle) {
-        CGPoint point = scrollView.contentOffset;
         if (point.x < 0) {
-            [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * (self.actions.count - 1), 0) animated:NO];
-        } else if (point.x >= self.scrollView.frame.size.width * self.actions.count) {
+            [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * (self.images.count - 1), 0) animated:NO];
+            self.pageControl.currentPage = self.images.count - 1;
+        } else if (point.x >= self.scrollView.frame.size.width * self.images.count) {
             [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+            self.pageControl.currentPage = 0;
+        } else {
+            self.pageControl.currentPage = point.x / self.scrollView.frame.size.width;
         }
+    } else {
+        self.pageControl.currentPage = point.x / self.scrollView.frame.size.width;
     }
 }
 

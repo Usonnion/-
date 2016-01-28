@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ProductModel.h"
 
 @interface DiskCacheManager : NSObject
 
@@ -15,7 +16,6 @@
 - (void)archiveProductInformation:(NSArray *)array;
 - (void)removeAllProducts;
 - (NSArray *)getProductByProductType:(NSString *)productType;
-//- (NSArray *)loadProductByProperty:(NSString *)property value:(NSString *)value;
-//- (void)archiveStoreInformation:(NSArray *)array;
+- (ProductModel *)getProductByProductId:(NSString *)prodcutId;
 
 @end

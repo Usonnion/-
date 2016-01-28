@@ -17,6 +17,7 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
+@property (nonatomic, assign) NSInteger selectedPage;
 @property (nonatomic, weak) UIView *maskView;
 @property (nonatomic, weak) UIImageView *currentPhoto;
 
@@ -36,13 +37,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.photos.count;
+    return self.product.images.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    [photoCell setImage:self.photos[indexPath.row]];
+    [photoCell setImage:self.product.images[indexPath.row]];
     return photoCell;
 }
 
@@ -65,7 +66,7 @@
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithUrl:self.photos[indexPath.row]]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithUrl:self.product.images[indexPath.row]]];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.frame = cell.bounds;
     imageView.center = cell.center;
@@ -81,9 +82,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
     UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"PhotosPageViewController"];
     PhotosPageViewController *photosPageViewController = (PhotosPageViewController *)viewController;
-    photosPageViewController.photosViewController = self;
+    photosPageViewController.delegate = self;
     photosPageViewController.page = indexPath.row;
-    photosPageViewController.photos = self.photos;
+    photosPageViewController.photos = self.product.images;
     
     [UIView animateWithDuration:0.4 animations:^{
         imageView.frame = view.frame;
@@ -95,7 +96,7 @@
 
 - (void)backToPhotosViewController
 {
-    [self.currentPhoto setImage:[UIImage imageWithUrl:self.photos[self.selectedPage]]];
+    [self.currentPhoto setImage:[UIImage imageWithUrl:self.product.images[self.selectedPage]]];
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedPage inSection:0]];
     [UIView animateWithDuration:0.4 animations:^{
         self.currentPhoto.frame = cell.frame;
@@ -105,17 +106,24 @@
         [self.navigationController setNavigationBarHidden:NO animated:NO];
     }];
 }
+- (IBAction)buyBurronPressed:(id)sender
+{
+    ActionModel *action = [[ActionModel alloc] init];
+    action.navigatorType = NavigatorTypeToPayment;
+    action.productId = self.product.productId;
+    [NavigatorManager navigatorBy:action viewController:self];
+}
 
 - (void)setSelectedPage:(NSInteger)selectedPage
 {
-    _selectedPage = selectedPage;
-    [self.currentPhoto setImage:[UIImage imageWithUrl:self.photos[selectedPage]]];
+//    _selectedPage = selectedPage;
+    [self.currentPhoto setImage:[UIImage imageWithUrl:self.product.images[selectedPage]]];
 }
 
-- (void)mockData
-{
-    self.photos = @[@"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg", @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg", @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg"];
-}
+//- (void)mockData
+//{
+//    self.product.images = @[@"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg", @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg", @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg"];
+//}
 
 
 @end

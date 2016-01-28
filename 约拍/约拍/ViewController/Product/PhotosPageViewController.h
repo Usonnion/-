@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PhotosViewController.h"
+//#import "PhotosViewController.h"
+
+@protocol PhotosPageViewControllerDelegate <NSObject>
+
+- (void)setSelectedPage:(NSInteger)selectedPage;
+- (void)backToPhotosViewController;
+
+@end
 
 @interface PhotosPageViewController : UIPageViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -15,6 +22,6 @@
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, assign) BOOL isScale;
 
-@property (nonatomic, weak) PhotosViewController *photosViewController;
+@property (nonatomic, weak) id<PhotosPageViewControllerDelegate> delegate;
 
 @end
