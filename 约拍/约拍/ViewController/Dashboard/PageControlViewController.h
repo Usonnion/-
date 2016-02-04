@@ -21,5 +21,6 @@
 @property (nonatomic, assign) BOOL autoScroll;
 
 + (PageControlViewController *)pageControlViewControllerWithFrame:(CGRect)frame images:(NSArray *)images scrollCircle:(BOOL)scrollCircle autoScroll:(BOOL)autoScroll;
+- (void)setCurrentPage:(NSInteger)page;
 
 @end

@@ -6,7 +6,12 @@
         <attribute name="productType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storeId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Store" representedClassName="Store" syncable="YES">
+        <attribute name="store" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="storeId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Product" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Store" positionX="-63" positionY="9" width="128" height="75"/>
     </elements>
 </model>

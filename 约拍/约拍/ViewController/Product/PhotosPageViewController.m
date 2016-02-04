@@ -80,9 +80,9 @@
 - (void)tapPhoto:(UIGestureRecognizer *)gestureRecognizer
 {
     if (!self.isScale) {
-        [self.delegate setSelectedPage:self.page];
+        [self.pagedelegate setSelectedPage:self.page];
         [self dismissViewControllerAnimated:NO completion:^{
-            [self.delegate backToPhotosViewController];
+            [self.pagedelegate backToPhotosViewController];
         }];
     }
 }

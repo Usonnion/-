@@ -8,6 +8,7 @@
 
 #import "DiskCacheManager.h"
 #import "Product.h"
+#import "Store.h"
 
 @interface DiskCacheManager ()
 
@@ -27,6 +28,8 @@
     
     return manager;
 }
+
+#pragma mark - Product
 
 - (void)archiveProductInformation:(NSArray *)array
 {
@@ -57,9 +60,55 @@
     return nil;
 }
 
+- (NSArray *)getProductByStoreId:(NSString *)storeId
+{
+    NSArray *products = [Product getProductByStoreId:storeId];
+    
+    NSMutableArray *productList = [@[] mutableCopy];
+    for (Product *product in products) {
+        [productList addObject:[NSKeyedUnarchiver unarchiveObjectWithData:product.product]];
+    }
+    
+    return productList;
+}
+
 - (void)removeAllProducts
 {
     [Product removeAllProducts];
+}
+
+#pragma mark - Store
+
+- (void)removeAllStores
+{
+    [Store removeAllStores];
+}
+
+- (NSArray *)loadAllStores
+{
+    NSMutableArray *storeModels = [@[] mutableCopy];
+    NSArray *stores = [Store loadAllStores];
+    for (Store *store in stores) {
+        [storeModels addObject:[NSKeyedUnarchiver unarchiveObjectWithData:store.store]];
+    }
+    return storeModels;
+}
+
+- (void)archiveStoreInformation:(NSArray *)array
+{
+    for (StoreModel *store in array) {
+        [Store insertStore:store];
+    }
+}
+
+- (StoreModel *)getStoreByStoreId:(NSString *)storeId
+{
+    Store *store = [Store getStoreByStoreId:storeId];
+    if (store) {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:store.store];
+    }
+    
+    return nil;
 }
 
 @end

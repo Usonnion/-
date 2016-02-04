@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import "UIImageView+WebCache.h"
+#import "SDImageCache.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate>
 
@@ -23,9 +24,7 @@
     [super viewDidLoad];
  
     CGRect frame = [UIScreen mainScreen].bounds;
-    NSURL *imageUrl = [NSURL URLWithString:self.photoURL];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-    UIImage *image = [UIImage imageWithData:imageData];
+    UIImage *image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.photoURL];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     self.imageView = imageView;
     

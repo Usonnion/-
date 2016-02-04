@@ -13,6 +13,7 @@
 #import "DiskCacheManager.h"
 #import "ProductModel.h"
 #import "PageControlViewController.h"
+#import "StoreModel.h"
 
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
@@ -52,11 +53,11 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//}
 
 #pragma mark - UITableViewDataSource
 
@@ -129,6 +130,9 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     
     NSArray *productTypes = @[@"KidsPhoto", @"WeddingPhoto", @"PersonalPhoto", @"Others"];
     [[DiskCacheManager sharedManager] removeAllProducts];
+    [[DiskCacheManager sharedManager] removeAllStores];
+    
+    NSMutableArray *stores = [@[] mutableCopy];
     NSMutableArray *products = [@[] mutableCopy];
     for (NSInteger storeIndex = 0; storeIndex < 20; storeIndex ++) {
         for (NSInteger productIndex = 10; productIndex < 20; productIndex ++) {
@@ -146,8 +150,16 @@ NSString *kActionStyleAction = @"ActionStyleAction";
                                                        @"http://i12.tietuku.com/cbfddaa457b1f914.jpg"]};
             [products addObject:[ProductModel fromDictionary:dictionary]];
         }
+        
+        NSDictionary *storeDictionary = @{@"StoreId" : @(storeIndex).stringValue,
+                                          @"StoreName" : @"星星贝贝儿童摄影",
+                                          @"StoreAddress" : @"汉街南门向西100米",
+                                          @"StoreImage" : @"http://i12.tietuku.com/cbfddaa457b1f914.jpg",
+                                          @"PhoneNumber" : @"18801615551"};
+        [stores addObject:[StoreModel fromDictionary:storeDictionary]];
     }
     
+    [[DiskCacheManager sharedManager] archiveStoreInformation:stores];
     [[DiskCacheManager sharedManager] archiveProductInformation:products];
 }
 

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ProductModel.h"
 
+static CGFloat productDescriptionHeight = 94.0;
+
 @interface ProductDescription : UIView
 
 + (ProductDescription *)productDescriptionWithProduct:(ProductModel *)product;

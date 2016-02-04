@@ -15,7 +15,7 @@
 
 + (void)navigatorBy:(ActionModel *)action viewController:(UIViewController *)viewController
 {
-    if (action.navigatorType == NavigatorTypeByType) {
+    if (action.navigatorType == NavigatorTypeByType || action.navigatorType == NavigatorTypeByStore) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Product" bundle:nil];
         ProductsViewController *navigatorToViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ProductsViewController"];
         navigatorToViewController.action = action;

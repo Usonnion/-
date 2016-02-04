@@ -12,8 +12,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z76-Zv-Mca">
-                    <rect key="frame" x="16" y="17" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="16" y="22" width="30" height="30"/>
+                    <state key="normal" title="返回"/>
                     <connections>
                         <action selector="backButtonPressed:" destination="Xbt-cq-ndB" eventType="touchUpInside" id="BVH-fV-9hO"/>
                     </connections>
@@ -21,7 +21,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Z76-Zv-Mca" firstAttribute="centerY" secondItem="Xbt-cq-ndB" secondAttribute="centerY" id="RLC-98-S59"/>
+                <constraint firstItem="Z76-Zv-Mca" firstAttribute="centerY" secondItem="Xbt-cq-ndB" secondAttribute="centerY" constant="5" id="RLC-98-S59"/>
                 <constraint firstItem="Z76-Zv-Mca" firstAttribute="leading" secondItem="Xbt-cq-ndB" secondAttribute="leading" constant="16" id="qxw-kL-NSG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

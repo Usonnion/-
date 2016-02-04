@@ -22,6 +22,6 @@
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, assign) BOOL isScale;
 
-@property (nonatomic, weak) id<PhotosPageViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<PhotosPageViewControllerDelegate> pagedelegate;
 
 @end

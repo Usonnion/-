@@ -18,7 +18,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-hm-t6U">
-                    <rect key="frame" x="8" y="65" width="11" height="21"/>
+                    <rect key="frame" x="16" y="57" width="11" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="11" id="uhV-QZ-Drq"/>
                     </constraints>
@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-bn-0hu">
-                    <rect key="frame" x="24" y="59" width="407" height="27"/>
+                    <rect key="frame" x="32" y="51" width="399" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                     <color key="textColor" red="0.84006871729999999" green="0.41178251230000001" blue="0.15916600920000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -39,10 +39,10 @@
                 <constraint firstAttribute="trailing" secondItem="VRI-jc-BxT" secondAttribute="trailing" constant="16" id="Eb2-Vl-Y0m"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="bottom" secondItem="sgy-hm-t6U" secondAttribute="bottom" id="OEG-Re-Nhv"/>
                 <constraint firstItem="VRI-jc-BxT" firstAttribute="top" secondItem="7iM-AL-rTC" secondAttribute="top" constant="16" id="SBP-h5-6G9"/>
-                <constraint firstItem="2uv-bn-0hu" firstAttribute="top" secondItem="VRI-jc-BxT" secondAttribute="bottom" constant="16" id="WCP-YQ-nio"/>
+                <constraint firstItem="2uv-bn-0hu" firstAttribute="top" secondItem="VRI-jc-BxT" secondAttribute="bottom" constant="8" id="WCP-YQ-nio"/>
                 <constraint firstItem="VRI-jc-BxT" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="dsT-BU-Z0M"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="leading" secondItem="sgy-hm-t6U" secondAttribute="trailing" constant="5" id="pqW-ef-hQA"/>
-                <constraint firstItem="sgy-hm-t6U" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="8" id="udX-C6-DS5"/>
+                <constraint firstItem="sgy-hm-t6U" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="udX-C6-DS5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

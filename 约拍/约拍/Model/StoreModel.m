@@ -21,4 +21,26 @@
     return store;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.storeId forKey:@"Store.StoreId"];
+    [aCoder encodeObject:self.storeName forKey:@"Store.StoreName"];
+    [aCoder encodeObject:self.storeAddress forKey:@"Store.StoreAddress"];
+    [aCoder encodeObject:self.storeImage forKey:@"Store.StoreImage"];
+    [aCoder encodeObject:self.phoneNumber forKey:@"Store.PhoneNumber"];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.storeId = [aDecoder decodeObjectForKey:@"Store.StoreId"];
+        self.storeName = [aDecoder decodeObjectForKey:@"Store.StoreName"];
+        self.storeAddress = [aDecoder decodeObjectForKey:@"Store.StoreAddress"];
+        self.storeImage = [aDecoder decodeObjectForKey:@"Store.StoreImage"];
+        self.phoneNumber = [aDecoder decodeObjectForKey:@"Store.PhoneNumber"];
+    }
+    return self;
+}
+
+
 @end

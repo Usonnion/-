@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--所有店铺-->
         <scene sceneID="ana-rM-89O">
             <objects>
-                <viewController id="1Xs-ao-I3h" sceneMemberID="viewController">
+                <viewController id="1Xs-ao-I3h" customClass="StoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rtD-y2-jid"/>
                         <viewControllerLayoutGuide type="bottom" id="wPw-qQ-dKf"/>
@@ -16,15 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="n3C-Mh-AZ2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-nC-SBT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1Xs-ao-I3h" id="8Z8-7h-pn2"/>
+                                    <outlet property="delegate" destination="1Xs-ao-I3h" id="z76-EW-eBD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xGh-nC-SBT" firstAttribute="leading" secondItem="n3C-Mh-AZ2" secondAttribute="leading" id="6w5-Tp-hY3"/>
+                            <constraint firstItem="xGh-nC-SBT" firstAttribute="top" secondItem="n3C-Mh-AZ2" secondAttribute="topMargin" id="KH2-8O-DyW"/>
+                            <constraint firstItem="wPw-qQ-dKf" firstAttribute="top" secondItem="xGh-nC-SBT" secondAttribute="bottom" id="ZGa-7e-apP"/>
+                            <constraint firstAttribute="trailing" secondItem="xGh-nC-SBT" secondAttribute="trailing" id="j9L-I5-Trr"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Mn6-bk-3zv"/>
+                    <tabBarItem key="tabBarItem" title="所有店铺" id="Mn6-bk-3zv"/>
+                    <connections>
+                        <outlet property="tableView" destination="xGh-nC-SBT" id="37x-qE-xFa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2o-zs-HTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="355" y="1294"/>
         </scene>
-        <!--Item 2-->
+        <!--我的订单-->
         <scene sceneID="MK9-Nv-fTJ">
             <objects>
                 <viewController id="lzS-et-SoV" sceneMemberID="viewController">
@@ -37,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="aQf-lL-e4L"/>
+                    <tabBarItem key="tabBarItem" title="我的订单" id="aQf-lL-e4L"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAg-Hn-Q9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,8 +154,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="bto-Eo-WpD" kind="relationship" relationship="viewControllers" id="Tzf-fj-fg7"/>
-                        <segue destination="lzS-et-SoV" kind="relationship" relationship="viewControllers" id="ymR-kA-5KC"/>
                         <segue destination="1Xs-ao-I3h" kind="relationship" relationship="viewControllers" id="6J3-8z-12A"/>
+                        <segue destination="lzS-et-SoV" kind="relationship" relationship="viewControllers" id="ymR-kA-5KC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECI-yN-TH3" userLabel="First Responder" sceneMemberID="firstResponder"/>

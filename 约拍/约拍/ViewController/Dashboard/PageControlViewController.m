@@ -139,6 +139,11 @@
     }
 }
 
+- (void)setCurrentPage:(NSInteger)page
+{
+    [self.scrollView setContentOffset:CGPointMake(page * self.frame.size.width, 0) animated:NO];
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

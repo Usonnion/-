@@ -24,7 +24,7 @@
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LGX-v7-YZY" secondAttribute="trailing" id="2FN-7x-MTc"/>
                             <constraint firstItem="LGX-v7-YZY" firstAttribute="leading" secondItem="ztV-ae-f2I" secondAttribute="leading" id="Cb0-gg-i51"/>

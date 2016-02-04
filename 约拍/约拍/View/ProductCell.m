@@ -14,6 +14,7 @@
 @interface ProductCell()
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) NSString *productId;
 
 @end
@@ -26,6 +27,7 @@
     NSURL *imageUrl = [NSURL URLWithString:product.images.firstObject];
     [self.imageView sd_setImageWithURL:imageUrl];
     self.productId = product.productId;
+    self.priceLabel.text = [NSString stringWithFormat:@"价格 %@", @(product.price)];
 }
 
 - (IBAction)buyButtonPressed:(id)sender

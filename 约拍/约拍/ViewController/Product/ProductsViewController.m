@@ -32,13 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -56,7 +50,7 @@
     return productCell;
 }
 
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(1, 1, 1, 1);
 }
@@ -66,7 +60,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 4)  / 2;
-    return CGSizeMake(width, width + 80);
+    return CGSizeMake(width, width + 60);
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -91,6 +85,11 @@
 {
     if (self.action.navigatorType == NavigatorTypeByType) {
         self.products = [[DiskCacheManager sharedManager] getProductByProductType:self.action.productType];
+        self.title = self.action.title;
+    } else if (self.action.navigatorType == NavigatorTypeByStore) {
+        self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.action.storeid];
+        StoreModel *store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeid];
+        self.title = store.storeName;
     }
 }
 

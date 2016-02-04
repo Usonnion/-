@@ -33,6 +33,8 @@
 		18895D341C47CDAC00586CD9 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18895D331C47CDAC00586CD9 /* PhotosViewController.m */; };
 		18895D401C47E07900586CD9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18895D3F1C47E07900586CD9 /* PhotoViewController.m */; };
 		18895D431C47E9C000586CD9 /* PhotosPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18895D421C47E9C000586CD9 /* PhotosPageViewController.m */; };
+		188A7F2D1C5DE10100D63BC6 /* StoreDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A7F2C1C5DE10100D63BC6 /* StoreDescription.m */; };
+		188A7F2F1C5DE14600D63BC6 /* StoreDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A7F2E1C5DE14600D63BC6 /* StoreDescription.xib */; };
 		188C9CF41C41040900DD1B72 /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C9CF31C41040900DD1B72 /* ActionCell.xib */; };
 		188C9CFB1C4105A900DD1B72 /* ActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C9CFA1C4105A900DD1B72 /* ActionModel.m */; };
 		188C9CFE1C41067900DD1B72 /* ActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C9CFD1C41067900DD1B72 /* ActionCell.m */; };
@@ -62,6 +64,11 @@
 		189610A91C43D9EB00F3F037 /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189610A81C43D9EB00F3F037 /* Product.storyboard */; };
 		189610AD1C44015900F3F037 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189610AC1C44015900F3F037 /* ProductCell.xib */; };
 		189AA6221C4FB5CB00E1915E /* Default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189AA6211C4FB5CB00E1915E /* Default.jpg */; };
+		18CF31651C5DF4800094BF7F /* Store+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31621C5DF4800094BF7F /* Store+CoreDataProperties.m */; };
+		18CF31661C5DF4800094BF7F /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31641C5DF4800094BF7F /* Store.m */; };
+		18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF31671C5E00040094BF7F /* StoreCell.xib */; };
+		18CF316E1C5E005F0094BF7F /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF316D1C5E005F0094BF7F /* StoreCell.m */; };
+		18CF31711C5E02AF0094BF7F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31701C5E02AF0094BF7F /* StoreViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +118,9 @@
 		18895D3F1C47E07900586CD9 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		18895D411C47E9C000586CD9 /* PhotosPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosPageViewController.h; sourceTree = "<group>"; };
 		18895D421C47E9C000586CD9 /* PhotosPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosPageViewController.m; sourceTree = "<group>"; };
+		188A7F2B1C5DE10100D63BC6 /* StoreDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDescription.h; sourceTree = "<group>"; };
+		188A7F2C1C5DE10100D63BC6 /* StoreDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDescription.m; sourceTree = "<group>"; };
+		188A7F2E1C5DE14600D63BC6 /* StoreDescription.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreDescription.xib; sourceTree = "<group>"; };
 		188C9CF31C41040900DD1B72 /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
 		188C9CF91C4105A900DD1B72 /* ActionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionModel.h; sourceTree = "<group>"; };
 		188C9CFA1C4105A900DD1B72 /* ActionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionModel.m; sourceTree = "<group>"; };
@@ -166,6 +176,15 @@
 		189610AC1C44015900F3F037 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		189AA6211C4FB5CB00E1915E /* Default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Default.jpg; sourceTree = "<group>"; };
 		189AA66E1C4FCF6300E1915E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		18CF31611C5DF4800094BF7F /* Store+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Store+CoreDataProperties.h"; sourceTree = "<group>"; };
+		18CF31621C5DF4800094BF7F /* Store+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Store+CoreDataProperties.m"; sourceTree = "<group>"; };
+		18CF31631C5DF4800094BF7F /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		18CF31641C5DF4800094BF7F /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		18CF31671C5E00040094BF7F /* StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
+		18CF316C1C5E005F0094BF7F /* StoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCell.h; sourceTree = "<group>"; };
+		18CF316D1C5E005F0094BF7F /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
+		18CF316F1C5E02AF0094BF7F /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		18CF31701C5E02AF0094BF7F /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +226,9 @@
 				186AFB521C59012A0099BC6F /* ProductDescription.h */,
 				186AFB531C59012A0099BC6F /* ProductDescription.m */,
 				186AFB501C5900F10099BC6F /* ProductDescription.xib */,
+				188A7F2B1C5DE10100D63BC6 /* StoreDescription.h */,
+				188A7F2C1C5DE10100D63BC6 /* StoreDescription.m */,
+				188A7F2E1C5DE14600D63BC6 /* StoreDescription.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -262,6 +284,10 @@
 		187E9C5D1C3EA4D300DEEA0B /* DataCache */ = {
 			isa = PBXGroup;
 			children = (
+				18CF31611C5DF4800094BF7F /* Store+CoreDataProperties.h */,
+				18CF31621C5DF4800094BF7F /* Store+CoreDataProperties.m */,
+				18CF31631C5DF4800094BF7F /* Store.h */,
+				18CF31641C5DF4800094BF7F /* Store.m */,
 				1869C4411C565AC900F02EE7 /* Product+CoreDataProperties.h */,
 				1869C4421C565AC900F02EE7 /* Product+CoreDataProperties.m */,
 				1869C4431C565AC900F02EE7 /* Product.h */,
@@ -290,6 +316,8 @@
 				188C9D081C42166B00DD1B72 /* PageControlViewController.m */,
 				188C9D401C423E9F00DD1B72 /* DashboardViewController.h */,
 				188C9D411C423E9F00DD1B72 /* DashboardViewController.m */,
+				18CF316F1C5E02AF0094BF7F /* StoreViewController.h */,
+				18CF31701C5E02AF0094BF7F /* StoreViewController.m */,
 				187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */,
 			);
 			path = Dashboard;
@@ -323,6 +351,9 @@
 				18895D2F1C47CC9F00586CD9 /* PhotoCell.h */,
 				18895D301C47CC9F00586CD9 /* PhotoCell.m */,
 				18895D2D1C47CC7F00586CD9 /* PhotoCell.xib */,
+				18CF316C1C5E005F0094BF7F /* StoreCell.h */,
+				18CF316D1C5E005F0094BF7F /* StoreCell.m */,
+				18CF31671C5E00040094BF7F /* StoreCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				186D4CA41C57BB9900FF6957 /* CustomerNavigatorItem.xib in Resources */,
+				18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */,
 				18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */,
 				186D4C9C1C57A9E100FF6957 /* Payment.storyboard in Resources */,
 				187E9C561C3EA3C100DEEA0B /* LaunchScreen.storyboard in Resources */,
@@ -472,6 +504,7 @@
 				188C9CF41C41040900DD1B72 /* ActionCell.xib in Resources */,
 				189610AD1C44015900F3F037 /* ProductCell.xib in Resources */,
 				188C9D4A1C423F6200DD1B72 /* ActionSummaryCell.xib in Resources */,
+				188A7F2F1C5DE14600D63BC6 /* StoreDescription.xib in Resources */,
 				187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */,
 				189610A91C43D9EB00F3F037 /* Product.storyboard in Resources */,
 				189AA6221C4FB5CB00E1915E /* Default.jpg in Resources */,
@@ -486,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CF316E1C5E005F0094BF7F /* StoreCell.m in Sources */,
 				187F262A1C4E76510007FA4E /* DiskCacheManager.m in Sources */,
 				1888FD331C4B94980071ABFD /* UIView+Snapshot.m in Sources */,
 				188C9D0C1C421DFA00DD1B72 /* BaseCellModel.m in Sources */,
@@ -497,12 +531,15 @@
 				188C9CFB1C4105A900DD1B72 /* ActionModel.m in Sources */,
 				188C9D391C422E0B00DD1B72 /* UIButton+WebCache.m in Sources */,
 				188C9D311C422E0B00DD1B72 /* NSData+ImageContentType.m in Sources */,
+				18CF31651C5DF4800094BF7F /* Store+CoreDataProperties.m in Sources */,
 				18895D401C47E07900586CD9 /* PhotoViewController.m in Sources */,
 				18895D431C47E9C000586CD9 /* PhotosPageViewController.m in Sources */,
 				186AFB541C59012A0099BC6F /* ProductDescription.m in Sources */,
+				188A7F2D1C5DE10100D63BC6 /* StoreDescription.m in Sources */,
 				188C9D381C422E0B00DD1B72 /* SDWebImagePrefetcher.m in Sources */,
 				186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */,
 				188C9D351C422E0B00DD1B72 /* SDWebImageDownloader.m in Sources */,
+				18CF31661C5DF4800094BF7F /* Store.m in Sources */,
 				188C9D481C423F4E00DD1B72 /* ActionSummaryCell.m in Sources */,
 				1840A75A1C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld in Sources */,
 				188C9CFE1C41067900DD1B72 /* ActionCell.m in Sources */,
@@ -526,6 +563,7 @@
 				188C9D3B1C422E0B00DD1B72 /* UIImage+MultiFormat.m in Sources */,
 				180DF7391C54BC6500DE4C21 /* NavigatorManager.m in Sources */,
 				18895D311C47CC9F00586CD9 /* PhotoCell.m in Sources */,
+				18CF31711C5E02AF0094BF7F /* StoreViewController.m in Sources */,
 				188C9D3D1C422E0B00DD1B72 /* UIImageView+HighlightedWebCache.m in Sources */,
 				189610A71C43D9CE00F3F037 /* ProductsViewController.m in Sources */,
 				188C9D3A1C422E0B00DD1B72 /* UIImage+GIF.m in Sources */,
