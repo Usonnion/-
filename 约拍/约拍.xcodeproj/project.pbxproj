@@ -64,6 +64,8 @@
 		189610A91C43D9EB00F3F037 /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189610A81C43D9EB00F3F037 /* Product.storyboard */; };
 		189610AD1C44015900F3F037 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189610AC1C44015900F3F037 /* ProductCell.xib */; };
 		189AA6221C4FB5CB00E1915E /* Default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189AA6211C4FB5CB00E1915E /* Default.jpg */; };
+		18B36B891C709EA200BF5E38 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B36B881C709EA200BF5E38 /* Store.storyboard */; };
+		18B36B8F1C70A4AD00BF5E38 /* StoreManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B36B8E1C70A4AD00BF5E38 /* StoreManagerViewController.m */; };
 		18CF31651C5DF4800094BF7F /* Store+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31621C5DF4800094BF7F /* Store+CoreDataProperties.m */; };
 		18CF31661C5DF4800094BF7F /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31641C5DF4800094BF7F /* Store.m */; };
 		18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF31671C5E00040094BF7F /* StoreCell.xib */; };
@@ -176,6 +178,9 @@
 		189610AC1C44015900F3F037 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		189AA6211C4FB5CB00E1915E /* Default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Default.jpg; sourceTree = "<group>"; };
 		189AA66E1C4FCF6300E1915E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		18B36B881C709EA200BF5E38 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
+		18B36B8D1C70A4AD00BF5E38 /* StoreManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManagerViewController.h; sourceTree = "<group>"; };
+		18B36B8E1C70A4AD00BF5E38 /* StoreManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManagerViewController.m; sourceTree = "<group>"; };
 		18CF31611C5DF4800094BF7F /* Store+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Store+CoreDataProperties.h"; sourceTree = "<group>"; };
 		18CF31621C5DF4800094BF7F /* Store+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Store+CoreDataProperties.m"; sourceTree = "<group>"; };
 		18CF31631C5DF4800094BF7F /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
@@ -302,6 +307,7 @@
 		187E9C5E1C3EA69D00DEEA0B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18B36B871C709E8900BF5E38 /* Store */,
 				1840A72D1C4D12C0009767C9 /* Payment */,
 				187E9C641C3EA76300DEEA0B /* Dashboard */,
 				18E1D92C1C427AE900CB0AA4 /* Product */,
@@ -421,6 +427,16 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		18B36B871C709E8900BF5E38 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				18B36B8D1C70A4AD00BF5E38 /* StoreManagerViewController.h */,
+				18B36B8E1C70A4AD00BF5E38 /* StoreManagerViewController.m */,
+				18B36B881C709EA200BF5E38 /* Store.storyboard */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		18E1D92C1C427AE900CB0AA4 /* Product */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +523,7 @@
 				188A7F2F1C5DE14600D63BC6 /* StoreDescription.xib in Resources */,
 				187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */,
 				189610A91C43D9EB00F3F037 /* Product.storyboard in Resources */,
+				18B36B891C709EA200BF5E38 /* Store.storyboard in Resources */,
 				189AA6221C4FB5CB00E1915E /* Default.jpg in Resources */,
 				187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */,
 			);
@@ -535,6 +552,7 @@
 				18895D401C47E07900586CD9 /* PhotoViewController.m in Sources */,
 				18895D431C47E9C000586CD9 /* PhotosPageViewController.m in Sources */,
 				186AFB541C59012A0099BC6F /* ProductDescription.m in Sources */,
+				18B36B8F1C70A4AD00BF5E38 /* StoreManagerViewController.m in Sources */,
 				188A7F2D1C5DE10100D63BC6 /* StoreDescription.m in Sources */,
 				188C9D381C422E0B00DD1B72 /* SDWebImagePrefetcher.m in Sources */,
 				186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */,
