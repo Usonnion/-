@@ -59,7 +59,7 @@
     
     StoreModel *store = self.stores[indexPath.row];
     ActionModel *action = [[ActionModel alloc] init];
-    action.storeid = store.storeId;
+    action.storeId = store.storeId;
     action.navigatorType = NavigatorTypeByStore;
     [NavigatorManager navigatorBy:action viewController:self];
 }

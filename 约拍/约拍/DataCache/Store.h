@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)loadAllStores;
 + (void)insertStore:(StoreModel *)store;
 + (Store *)getStoreByStoreId:(NSString *)storeId;
++ (void)updateStoreInformation:(StoreModel *)store;
 
 @end
 

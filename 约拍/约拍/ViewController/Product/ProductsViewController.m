@@ -87,8 +87,8 @@
         self.products = [[DiskCacheManager sharedManager] getProductByProductType:self.action.productType];
         self.title = self.action.title;
     } else if (self.action.navigatorType == NavigatorTypeByStore) {
-        self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.action.storeid];
-        StoreModel *store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeid];
+        self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.action.storeId];
+        StoreModel *store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeId];
         self.title = store.storeName;
     }
 }

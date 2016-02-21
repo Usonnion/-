@@ -24,5 +24,6 @@
 - (NSArray *)loadAllStores;
 - (void)archiveStoreInformation:(NSArray *)array;
 - (StoreModel *)getStoreByStoreId:(NSString *)storeId;
+- (void)updateStoreInformation:(StoreModel *)store;
 
 @end

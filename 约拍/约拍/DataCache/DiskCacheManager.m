@@ -111,4 +111,9 @@
     return nil;
 }
 
+- (void)updateStoreInformation:(StoreModel *)store
+{
+    [Store updateStoreInformation:store];
+}
+
 @end

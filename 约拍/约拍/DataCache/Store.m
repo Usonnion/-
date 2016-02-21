@@ -42,4 +42,14 @@
     return result.firstObject;
 }
 
++ (void)updateStoreInformation:(StoreModel *)store
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Store"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"storeId == %@", store.storeId];
+    NSArray *result = [[AppDelegate sharedContext] executeFetchRequest:fetchRequest error:nil];
+    Store *storeData = result.firstObject;
+    storeData.store = [NSKeyedArchiver archivedDataWithRootObject:store];
+    [[AppDelegate sharedContext] save:nil];
+}
+
 @end

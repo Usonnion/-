@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionModel.h"
 
 @interface StoreManagerViewController : UIViewController
+
+@property (nonatomic, strong) ActionModel *action;
 
 @end
