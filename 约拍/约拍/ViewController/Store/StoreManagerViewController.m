@@ -34,6 +34,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditting:)];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
     self.store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeId];
 
     [self endEditting];
@@ -45,11 +48,16 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Actions
 
 - (IBAction)editIconButtonPressed:(id)sender
 {
-    [ImagePickHelper imagePickup:self];
+    [ImagePickHelper imagePickup:self allowsEditing:YES];
 }
 
 - (IBAction)photoGroupButtonPressed:(id)sender
@@ -113,6 +121,11 @@
     [[DiskCacheManager sharedManager] updateStoreInformation:self.store];
     
     [self endEditting];
+}
+
+- (void)endEditting:(UIGestureRecognizer *)recognizer
+{
+    [self.view endEditing:YES];
 }
 
 - (void)keyboardWillShow:(NSNotification*)aNotification

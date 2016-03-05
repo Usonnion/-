@@ -13,5 +13,7 @@
 #import "DiskCacheManager.h"
 #import "ConstFile.h"
 #import "NavigatorManager.h"
+#import "NSDictionary+DataAccess.h"
+#import "MBProgressHUD.h"
 
 #endif /* PrefixHeader_pch */

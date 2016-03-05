@@ -10,6 +10,6 @@
 
 @interface ImagePickHelper : UICollectionViewCell
 
-+ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)viewController;
++ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)viewController allowsEditing:(BOOL)allowsEditing;
 
 @end

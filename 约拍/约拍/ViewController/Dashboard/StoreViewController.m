@@ -8,6 +8,7 @@
 
 #import "StoreViewController.h"
 #import "StoreCell.h"
+#import "StoreBLL.h"
 
 @interface StoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -21,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[[StoreBLL alloc] init] getAllStores];
     self.stores = [[DiskCacheManager sharedManager] loadAllStores];
     [self.tableView registerNib:[UINib nibWithNibName:@"StoreCell" bundle:nil] forCellReuseIdentifier:@"StoreCell"];
 }

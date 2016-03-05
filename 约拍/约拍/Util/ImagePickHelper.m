@@ -10,7 +10,7 @@
 
 @implementation ImagePickHelper
 
-+ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)viewController
++ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)viewController allowsEditing:(BOOL)allowsEditing
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -22,7 +22,7 @@
             imagePickcontroller.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
         imagePickcontroller.delegate = weakviewController;
-        imagePickcontroller.allowsEditing = NO;
+        imagePickcontroller.allowsEditing = allowsEditing;
         [weakviewController presentViewController:imagePickcontroller animated:YES completion:nil];
         
     }]];
@@ -33,7 +33,7 @@
             imagePickcontroller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
         imagePickcontroller.delegate = weakviewController;
-        imagePickcontroller.allowsEditing = NO;
+        imagePickcontroller.allowsEditing = allowsEditing;
         [weakviewController presentViewController:imagePickcontroller animated:YES completion:nil];
         
     }]];

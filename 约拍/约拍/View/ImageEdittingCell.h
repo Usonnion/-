@@ -10,6 +10,8 @@
 
 @interface ImageEdittingCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIView *snapshot;
+@property (nonatomic, assign) BOOL moving;
 @property (nonatomic, strong) UIImage *image;
 
 @end

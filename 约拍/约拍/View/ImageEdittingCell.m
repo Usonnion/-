@@ -27,4 +27,21 @@
     [self.imageView setImage:image];
 }
 
+- (void)setMoving:(BOOL)moving
+{
+    _moving = moving;
+    CGFloat alpha = moving ? 0 : 1;
+    self.imageView.alpha = alpha;
+}
+
+- (UIView *)snapshot
+{
+    UIView *snapshot = [self snapshotViewAfterScreenUpdates:true];
+    snapshot.layer.masksToBounds = YES;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
+    return snapshot;
+}
+
 @end
