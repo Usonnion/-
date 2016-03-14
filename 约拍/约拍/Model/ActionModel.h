@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSString *productType;
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *storeId;
-@property (nonatomic, strong) NSString *invitationId;
 @property (nonatomic, assign) NavigatorType navigatorType;
 
 @end

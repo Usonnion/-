@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DNImagePickerController.h"
 
 @interface ImagePickHelper : UICollectionViewCell
 
-+ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)viewController allowsEditing:(BOOL)allowsEditing;
++ (void)imagePickup:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DNImagePickerControllerDelegate> *)viewController allowsEditing:(BOOL)allowsEditing singleSelected:(BOOL)singleSelected;
 
 @end

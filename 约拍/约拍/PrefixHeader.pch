@@ -14,6 +14,7 @@
 #import "ConstFile.h"
 #import "NavigatorManager.h"
 #import "NSDictionary+DataAccess.h"
-#import "MBProgressHUD.h"
+#import "LoadingManager.h"
+#import "NSString+Format.h"
 
 #endif /* PrefixHeader_pch */

@@ -11,5 +11,7 @@
 @interface StoreBLL : NSObject
 
 - (void)getAllStores;
+- (void)getStoreByInvivationId:(NSString *)invivationId success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
+- (void)updateStore:(StoreModel *)store success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
 
 @end

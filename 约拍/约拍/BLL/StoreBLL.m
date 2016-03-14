@@ -19,6 +19,24 @@
     }];
 }
 
-- (void)
+- (void)getStoreByInvivationId:(NSString *)invivationId success:(void (^)(NSDictionary *json))success failure:(void (^)())failure
+{
+    NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
+    [[HTTPSessionManager sharedManager] PUT:urlString parameters:@{@"InvitationCode":invivationId} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure();
+    }];
+}
+
+- (void)updateStore:(StoreModel *)store success:(void (^)(NSDictionary *json))success failure:(void (^)())failure
+{
+    NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
+    [[HTTPSessionManager sharedManager] POST:urlString parameters:[store toDictionary] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure();
+    }];
+}
 
 @end

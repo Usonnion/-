@@ -9,8 +9,12 @@
 #import "ProductManagerViewController.h"
 #import "ImageEdittingCell.h"
 #import "ImagePickHelper.h"
+#import "DNImagePickerController.h"
+#import "DNAsset.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "DNImageFlowViewController.h"
 
-@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
@@ -19,6 +23,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *productTypeLabel;
 @property (nonatomic, weak) IBOutlet UIPickerView *prickView;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIView *placeHolderView;
 
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSArray *productTypes;
@@ -48,7 +53,7 @@
     [self.collectionView addGestureRecognizer:longPressGesture];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditting:)];
-    [self.view addGestureRecognizer:tapGestureRecognizer];
+    [self.placeHolderView addGestureRecognizer:tapGestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -69,7 +74,45 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageEdittingCell *imageEdittingCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageEdittingCell" forIndexPath:indexPath];
-    [imageEdittingCell setImage:self.images[indexPath.row]];
+    id cellData = self.images[indexPath.row];
+    if ([cellData isKindOfClass:[UIImage class]]) {
+        [imageEdittingCell setImage:self.images[indexPath.row]];
+    } else if ([cellData isKindOfClass:[DNAsset class]]) {
+        DNAsset *dnasset = cellData;
+        
+        ALAssetsLibrary *lib = [ALAssetsLibrary new];
+        __block ImageEdittingCell *blockCell = imageEdittingCell;
+        [lib assetForURL:dnasset.url resultBlock:^(ALAsset *asset){
+            if (asset) {
+                UIImage *image = [UIImage imageWithCGImage:asset.thumbnail];
+                [blockCell setImage:image];
+            } else {
+                // On iOS 8.1 [library assetForUrl] Photo Streams always returns nil. Try to obtain it in an alternative way
+                [lib enumerateGroupsWithTypes:ALAssetsGroupPhotoStream
+                                   usingBlock:^(ALAssetsGroup *group, BOOL *stop)
+                 {
+                     [group enumerateAssetsWithOptions:NSEnumerationReverse
+                                            usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                                                
+                                                if([[result valueForProperty:ALAssetPropertyAssetURL] isEqual:dnasset.url])
+                                                {
+                                                    UIImage *image = [UIImage imageWithCGImage:asset.thumbnail];
+                                                    [blockCell setImage:image];
+                                                    *stop = YES;
+                                                }
+                                            }];
+                 }
+                                 failureBlock:^(NSError *error)
+                 {
+                     UIImage *image = [UIImage imageWithCGImage:asset.thumbnail];
+                     [blockCell setImage:image];
+                 }];
+            }
+            
+        } failureBlock:^(NSError *error){
+
+        }];
+    }
     return imageEdittingCell;
 }
 
@@ -80,25 +123,45 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == self.images.count - 1) {
-        [ImagePickHelper imagePickup:self allowsEditing:NO];
+        if (self.images.count >= 10) {
+            [[LoadingManager sharedManager] showError:@"不得超过9张图片" toView:self.view];
+        } else {
+            [ImagePickHelper imagePickup:self allowsEditing:NO singleSelected:NO];
+            [LoadingManager sharedManager].maxLoadingImageCount = 10 - self.images.count;
+        }
     }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
+- (void)dnImagePickerController:(DNImagePickerController *)imagePicker
+                     sendImages:(NSArray *)imageAssets
+                    isFullImage:(BOOL)fullImage
 {
     NSMutableArray *mutableImages = [self.images mutableCopy];
-    NSRange range = NSMakeRange(0, 1);
+    NSRange range = NSMakeRange(0, imageAssets.count);
     NSIndexSet *indexset = [NSIndexSet indexSetWithIndexesInRange:range];
-    [mutableImages insertObjects:@[image] atIndexes:indexset];
+    [mutableImages insertObjects:imageAssets atIndexes:indexset];
     self.images = mutableImages;
     [self.collectionView reloadData];
-//    self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height;
-    [self.view layoutIfNeeded];
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
+
+    [self.collectionView reloadData];
 }
+
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
+//{
+//    NSMutableArray *mutableImages = [self.images mutableCopy];
+//    NSRange range = NSMakeRange(0, 1);
+//    NSIndexSet *indexset = [NSIndexSet indexSetWithIndexesInRange:range];
+//    [mutableImages insertObjects:@[image] atIndexes:indexset];
+//    self.images = mutableImages;
+//    [self.collectionView reloadData];
+////    self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height;
+//    [self.view layoutIfNeeded];
+//    
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark - UIPickerViewDataSource
 
@@ -123,7 +186,13 @@
 
 - (IBAction)productTypeEditted:(id)sender
 {
+    [self.view endEditing:YES];
     self.prickView.hidden = NO;
+    [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 216, 0)];
+//    NSInteger scrollViewContentHeight = 490;
+//    [self.productTypeLabel becomeFirstResponder];
+    CGFloat contentOffset = 216 + 490 - screenBounds.size.height + 64;
+    [self.scrollView setContentOffset:CGPointMake(0, MAX(contentOffset, 0))];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -138,9 +207,11 @@
     UIColor *color = separatorLineColor;
     self.productDescriptionTextVIew.layer.borderColor = color.CGColor;
     self.productDescriptionTextVIew.layer.borderWidth = 1;
-    
+    self.productDescriptionTextVIew.layer.cornerRadius = 5;
+
     self.productPriceTexrField.layer.borderColor = color.CGColor;
     self.productPriceTexrField.layer.borderWidth = 1;
+    self.productPriceTexrField.layer.cornerRadius = 5;
 }
 
 - (void)setContentData
@@ -165,13 +236,6 @@
 {
     self.productTypes = @[@"儿童摄影", @"婚纱摄影", @"个人写真", @"其他"];
 }
-
-//- (CGFloat)collectionViewEstimateHeight
-//{
-//    CGFloat collectionViewWidth = screenBounds.size.width - 32.0;
-//    NSInteger oneRowCount = collectionViewWidth / 54;
-//    return ceil(self.images.count / oneRowCount ) * 52.0;
-//}
 
 - (void)longPress:(UILongPressGestureRecognizer *)recognizer;
 {
@@ -224,6 +288,8 @@
 - (void)endEditting:(UIGestureRecognizer *)recognizer
 {
     [self.view endEditing:YES];
+    self.prickView.hidden = YES;
+    [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 - (void)keyboardWillShow:(NSNotification*)aNotification
@@ -231,10 +297,6 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, kbSize.height + 10, 0)];
-
-    if (self.productDescriptionTextVIew.isFirstResponder) {
-        [self.scrollView setContentOffset:CGPointMake(0.0, 240.0) animated:YES];
-    }
 }
 
 - (void)keyboardWillHide:(NSNotification*)aNotification

@@ -21,7 +21,13 @@
         sharedManager.token = [root stringForKey:@"Token"];
         sharedManager.baseUrlStr = [root stringForKey:@"ServiceUrl"];
         
-        sharedManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        AFHTTPRequestSerializer *requestSerializer = [[AFJSONRequestSerializer alloc] init];
+//        [requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        sharedManager.requestSerializer = requestSerializer;
+        
+        AFHTTPResponseSerializer *responseSerializer = [[AFJSONResponseSerializer alloc] init];
+        sharedManager.responseSerializer = responseSerializer;
     });
     return sharedManager;
 }

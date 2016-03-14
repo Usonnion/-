@@ -10,11 +10,20 @@
 
 @implementation Store
 
-+ (void)insertStore:(StoreModel *)store
++ (void)archiveStores:(StoreModel *)store
 {
-    Store *storeEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Store" inManagedObjectContext:[AppDelegate sharedContext]];
-    storeEntity.storeId = store.storeId;
-    storeEntity.store = [NSKeyedArchiver archivedDataWithRootObject:store];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Store"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"storeId == %@", store.storeId];
+    NSArray *result = [[AppDelegate sharedContext] executeFetchRequest:fetchRequest error:nil];
+    Store *storeData = result.firstObject;
+    if (storeData) {
+        storeData.store = [NSKeyedArchiver archivedDataWithRootObject:store];
+    } else {
+        Store *storeEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Store" inManagedObjectContext:[AppDelegate sharedContext]];
+        storeEntity.storeId = store.storeId;
+        storeEntity.store = [NSKeyedArchiver archivedDataWithRootObject:store];
+    }
+    
     [[AppDelegate sharedContext] save:nil];
 }
 

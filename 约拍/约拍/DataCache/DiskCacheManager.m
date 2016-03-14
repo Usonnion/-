@@ -94,11 +94,16 @@
     return storeModels;
 }
 
-- (void)archiveStoreInformation:(NSArray *)array
+- (void)archiveStores:(NSArray *)array
 {
     for (StoreModel *store in array) {
-        [Store insertStore:store];
+        [Store archiveStores:store];
     }
+}
+
+- (void)archiveStore:(StoreModel *)store
+{
+    [Store updateStoreInformation:store];
 }
 
 - (StoreModel *)getStoreByStoreId:(NSString *)storeId

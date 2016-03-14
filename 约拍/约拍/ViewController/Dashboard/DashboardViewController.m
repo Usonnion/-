@@ -159,7 +159,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
         [stores addObject:[StoreModel fromDictionary:storeDictionary]];
     }
     
-    [[DiskCacheManager sharedManager] archiveStoreInformation:stores];
+    [[DiskCacheManager sharedManager] archiveStores:stores];
     [[DiskCacheManager sharedManager] archiveProductInformation:products];
 }
 

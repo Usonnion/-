@@ -21,6 +21,7 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 + (NSManagedObjectContext *)sharedContext;
++ (AppDelegate *)sharedAppDelegate;
 
 @end
 

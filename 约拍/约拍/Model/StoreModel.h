@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 
 + (StoreModel *)fromDictionary:(NSDictionary *)dictionary;
+- (NSDictionary *)toDictionary;
 
 @end

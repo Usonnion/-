@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mCF-eg-6Pe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mCF-eg-6Pe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -210,14 +210,31 @@
                                     <constraint firstItem="dBe-7a-hsD" firstAttribute="top" secondItem="Cyq-HW-S0W" secondAttribute="top" id="uj7-TC-G4W"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gV-8l-5Ur">
+                                <rect key="frame" x="0.0" y="632" width="414" height="40"/>
+                                <color key="backgroundColor" red="0.65490196079999996" green="0.25098039220000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Hj-2T-f2Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="退出编辑">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelEdit:" destination="fsX-wZ-FyI" eventType="touchUpInside" id="nRZ-cO-EA3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Cyq-HW-S0W" secondAttribute="trailing" id="Miv-eC-l39"/>
                             <constraint firstAttribute="bottom" secondItem="Cyq-HW-S0W" secondAttribute="bottom" id="MzU-WN-btK"/>
+                            <constraint firstAttribute="trailing" secondItem="9gV-8l-5Ur" secondAttribute="trailing" id="RLj-FU-oEu"/>
                             <constraint firstItem="Cyq-HW-S0W" firstAttribute="leading" secondItem="rJQ-pR-ERk" secondAttribute="leading" id="SZz-jB-Z6R"/>
                             <constraint firstItem="Cyq-HW-S0W" firstAttribute="top" secondItem="YBa-Se-UAc" secondAttribute="bottom" id="aSD-NF-XMw"/>
                             <constraint firstItem="3BO-HD-wan" firstAttribute="width" secondItem="rJQ-pR-ERk" secondAttribute="width" id="gIa-ks-Vhf"/>
+                            <constraint firstItem="Sbj-rl-u1F" firstAttribute="top" secondItem="9gV-8l-5Ur" secondAttribute="bottom" id="owo-ay-Y44"/>
+                            <constraint firstItem="9gV-8l-5Ur" firstAttribute="leading" secondItem="rJQ-pR-ERk" secondAttribute="leading" id="zvV-56-q0V"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -317,6 +334,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd7-yS-rhb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOZ-6i-Vmf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="490"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-bk-SIl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
                                         <subviews>
@@ -374,7 +395,6 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-Pg-g7g">
                                                 <rect key="frame" x="16" y="39" width="382" height="96"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -454,7 +474,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="aGh-Vj-coP" firstAttribute="leading" secondItem="Cd7-yS-rhb" secondAttribute="leading" id="3Dj-U5-UwT"/>
                                     <constraint firstItem="aGh-Vj-coP" firstAttribute="top" secondItem="fLu-Dx-xQ9" secondAttribute="bottom" constant="30" id="4rr-re-5tN"/>
@@ -462,6 +481,10 @@
                                     <constraint firstAttribute="trailing" secondItem="aGh-Vj-coP" secondAttribute="trailing" id="6Lb-6K-173"/>
                                     <constraint firstItem="O0S-JA-P2z" firstAttribute="top" secondItem="b4l-bk-SIl" secondAttribute="bottom" constant="30" id="ChR-hD-ka5"/>
                                     <constraint firstAttribute="trailing" secondItem="O0S-JA-P2z" secondAttribute="trailing" id="Gjk-av-nvh"/>
+                                    <constraint firstItem="fOZ-6i-Vmf" firstAttribute="top" secondItem="Cd7-yS-rhb" secondAttribute="top" id="I7T-iZ-Vj9"/>
+                                    <constraint firstItem="fOZ-6i-Vmf" firstAttribute="leading" secondItem="Cd7-yS-rhb" secondAttribute="leading" id="ImG-xj-se8"/>
+                                    <constraint firstAttribute="trailing" secondItem="fOZ-6i-Vmf" secondAttribute="trailing" id="M71-HW-FQ6"/>
+                                    <constraint firstAttribute="bottom" secondItem="fOZ-6i-Vmf" secondAttribute="bottom" id="Mcl-iI-R7N"/>
                                     <constraint firstItem="O0S-JA-P2z" firstAttribute="leading" secondItem="Cd7-yS-rhb" secondAttribute="leading" id="TWl-mj-CFZ"/>
                                     <constraint firstItem="b4l-bk-SIl" firstAttribute="leading" secondItem="Cd7-yS-rhb" secondAttribute="leading" id="UXJ-fg-9WZ"/>
                                     <constraint firstItem="fLu-Dx-xQ9" firstAttribute="leading" secondItem="Cd7-yS-rhb" secondAttribute="leading" id="aGT-Nk-bXM"/>
@@ -496,6 +519,7 @@
                     <connections>
                         <outlet property="collectionView" destination="TbF-zy-PYT" id="H2h-rT-3bg"/>
                         <outlet property="collectionViewHeightConstraint" destination="s8H-Yg-yQw" id="ieC-ZS-dPV"/>
+                        <outlet property="placeHolderView" destination="fOZ-6i-Vmf" id="DoV-wr-s9N"/>
                         <outlet property="prickView" destination="dff-Ic-aKt" id="3aa-5f-1Dg"/>
                         <outlet property="productDescriptionTextVIew" destination="hL1-Pg-g7g" id="Z03-0h-APh"/>
                         <outlet property="productPriceTexrField" destination="ZxP-pW-j4i" id="d2p-e3-zR6"/>

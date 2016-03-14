@@ -10,8 +10,12 @@
 #import "StoreModel.h"
 #import "UIImageView+WebCache.h"
 #import "ImagePickHelper.h"
+#import "FileUploadBLL.h"
+#import "HTTPSessionManager.h"
+#import "StoreBLL.h"
+#import "DNImagePickerController.h"
 
-@interface StoreManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface StoreManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DNImagePickerControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *storeNameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *storeAddressTextField;
@@ -38,7 +42,8 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     self.store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeId];
-
+    
+    [self setStoreImage];
     [self endEditting];
 }
 
@@ -57,12 +62,12 @@
 
 - (IBAction)editIconButtonPressed:(id)sender
 {
-    [ImagePickHelper imagePickup:self allowsEditing:YES];
+    [ImagePickHelper imagePickup:self allowsEditing:YES singleSelected:YES];
 }
 
-- (IBAction)photoGroupButtonPressed:(id)sender
+- (IBAction)cancelEdit:(id)sender
 {
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -106,7 +111,6 @@
     self.storeNameTextField.text = self.store.storeName;
     self.storeAddressTextField.text = self.store.storeAddress;
     self.storePhoneTextField.text = self.store.phoneNumber;
-    [self.storeImageView sd_setImageWithURL:[NSURL URLWithString:self.store.storeImage] placeholderImage:[UIImage imageNamed:@"DefaultStore"]];
     
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(BeginEditting)];
     self.navigationItem.leftBarButtonItem = editBarButtonItem;
@@ -118,7 +122,22 @@
     self.store.storeName = self.storeNameTextField.text;
     self.store.storeAddress = self.storeAddressTextField.text;
     self.store.phoneNumber = self.storePhoneTextField.text;
-    [[DiskCacheManager sharedManager] updateStoreInformation:self.store];
+    
+    __weak typeof(self) weakSelf = self;
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:@"上传图片中"];
+    [[[FileUploadBLL alloc] init] uploadImage:UIImageJPEGRepresentation(self.storeImageView.image, 0.1) imageIndex:0 success:^(NSDictionary *json, NSInteger index) {
+        NSString *url = [NSString stringWithFormat:@"%@/Images/%@", [HTTPSessionManager sharedManager].baseUrlStr, json[@"filename"]];
+        weakSelf.store.storeImage = url;
+        [[[StoreBLL alloc] init] updateStore:weakSelf.store success:^(NSDictionary *json) {
+            [[LoadingManager sharedManager] hideLoadingWithmessage:@"恭喜您，更新成功" success:YES];
+        } failure:^{
+            [[LoadingManager sharedManager] hideLoadingWithmessage:@"对不起，更新失败，请从新尝试" success:NO];
+        }];
+        [[DiskCacheManager sharedManager] updateStoreInformation:weakSelf.store];
+    } failure:^{
+        [[LoadingManager sharedManager] hideLoadingWithmessage:@"对不起，上传图片失败，请从新尝试" success:NO];
+        [weakSelf setStoreImage];
+    }];
     
     [self endEditting];
 }
@@ -139,6 +158,13 @@
 - (void)keyboardWillHide:(NSNotification*)aNotification
 {
     [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (void)setStoreImage
+{
+    if (![NSString isNilOrEmpty:self.store.storeImage]) {
+        [self.storeImageView sd_setImageWithURL:[NSURL URLWithString:self.store.storeImage] placeholderImage:[UIImage imageNamed:@"DefaultStore"]];
+    }
 }
 
 @end

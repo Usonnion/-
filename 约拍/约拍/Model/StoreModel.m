@@ -13,11 +13,11 @@
 + (StoreModel *)fromDictionary:(NSDictionary *)dictionary
 {
     StoreModel *store = [[StoreModel alloc] init];
-    store.storeId = [dictionary objectForKey:@"StoreId"];
-    store.storeName = [dictionary objectForKey:@"StoreName"];
-    store.storeAddress = [dictionary objectForKey:@"StoreAddress"];
-    store.storeImage = [dictionary objectForKey:@"StoreImage"];
-    store.phoneNumber = [dictionary objectForKey:@"PhoneNumber"];
+    store.storeId = [dictionary stringForKey:@"StoreId"];
+    store.storeName = [dictionary stringForKey:@"StoreName"];
+    store.storeAddress = [dictionary stringForKey:@"StoreAddress"];
+    store.storeImage = [dictionary stringForKey:@"StoreImage"];
+    store.phoneNumber = [dictionary stringForKey:@"PhoneNumber"];
     return store;
 }
 
@@ -42,5 +42,13 @@
     return self;
 }
 
+- (NSDictionary *)toDictionary
+{
+    return @{@"StoreId" : self.storeId,
+             @"StoreName" : self.storeName,
+             @"StoreAddress" : self.storeAddress,
+             @"StoreImage" : self.storeImage,
+             @"PhoneNumber" : self.phoneNumber};
+}
 
 @end

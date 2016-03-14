@@ -22,7 +22,7 @@
 
 - (void)removeAllStores;
 - (NSArray *)loadAllStores;
-- (void)archiveStoreInformation:(NSArray *)array;
+- (void)archiveStores:(NSArray *)array;
 - (StoreModel *)getStoreByStoreId:(NSString *)storeId;
 - (void)updateStoreInformation:(StoreModel *)store;
 

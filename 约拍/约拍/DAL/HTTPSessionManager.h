@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ArtisticPhoto. All rights reserved.
 //
 
-#import "AFHTTPSessionManager.h"
+#import "AFNetworking.h"
 
 @interface HTTPSessionManager: AFHTTPSessionManager
 
