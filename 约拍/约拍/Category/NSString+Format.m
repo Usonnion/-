@@ -15,4 +15,9 @@
     return [str isKindOfClass:[NSNull class]] || !str || [str isEqualToString:@""];
 }
 
++ (NSString *)getEmptyIfNull:(NSString *)str
+{
+    return [NSString isNilOrEmpty:str] ? @"" : str;
+}
+
 @end

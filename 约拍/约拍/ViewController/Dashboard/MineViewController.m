@@ -43,7 +43,7 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"进入店铺" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *textField = alertController.textFields[0];
-        [[LoadingManager sharedManager] showLoadingWithBlockUI:weakSelf.view description:@""];
+        [[LoadingManager sharedManager] showLoadingWithBlockUI:weakSelf.tabBarController.view description:@""];
         [self goToMyStore:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     }]];
     

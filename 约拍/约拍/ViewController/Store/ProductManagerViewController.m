@@ -13,8 +13,11 @@
 #import "DNAsset.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "DNImageFlowViewController.h"
+#import "FileUploadBLL.h"
+#import "HTTPSessionManager.h"
+#import "ProductBLL.h"
 
-@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate>
+@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
@@ -30,6 +33,11 @@
 @property (nonatomic, strong) NSIndexPath *sourceIndex;
 @property (nonatomic, strong) UIView *snapshot;
 @property (nonatomic, assign) float moving;
+@property (nonatomic, assign) BOOL isFullImage;
+@property (nonatomic, strong) NSMutableArray *imageURLs;
+@property (nonatomic, assign) NSInteger successCount;
+@property (nonatomic, assign) NSInteger failedCount;
+@property (nonatomic, strong) FileUploadBLL *fileUploadBLLInstance;
 
 @end
 
@@ -42,9 +50,9 @@
     [self mockData];
     [self setContentData];
     [self setContentStyle];
+    
+    self.fileUploadBLLInstance = [[FileUploadBLL alloc] init];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ImageEdittingCell" bundle:nil] forCellWithReuseIdentifier:@"ImageEdittingCell"];
-    self.images = @[[UIImage imageNamed:@"DefaultStore"]];
-    [self.collectionView reloadData];
     
     UIBarButtonItem *completedBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(completeEditting)];
     self.navigationItem.rightBarButtonItem = completedBarButtonItem;
@@ -77,6 +85,8 @@
     id cellData = self.images[indexPath.row];
     if ([cellData isKindOfClass:[UIImage class]]) {
         [imageEdittingCell setImage:self.images[indexPath.row]];
+    } else if ([cellData isKindOfClass:[NSString class]]) {
+        [imageEdittingCell setImageUrl:cellData];
     } else if ([cellData isKindOfClass:[DNAsset class]]) {
         DNAsset *dnasset = cellData;
         
@@ -148,21 +158,6 @@
     [self.collectionView reloadData];
 }
 
-//
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
-//{
-//    NSMutableArray *mutableImages = [self.images mutableCopy];
-//    NSRange range = NSMakeRange(0, 1);
-//    NSIndexSet *indexset = [NSIndexSet indexSetWithIndexesInRange:range];
-//    [mutableImages insertObjects:@[image] atIndexes:indexset];
-//    self.images = mutableImages;
-//    [self.collectionView reloadData];
-////    self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height;
-//    [self.view layoutIfNeeded];
-//    
-//    [picker dismissViewControllerAnimated:YES completion:nil];
-//}
-
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -189,15 +184,20 @@
     [self.view endEditing:YES];
     self.prickView.hidden = NO;
     [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 216, 0)];
-//    NSInteger scrollViewContentHeight = 490;
-//    [self.productTypeLabel becomeFirstResponder];
     CGFloat contentOffset = 216 + 490 - screenBounds.size.height + 64;
-    [self.scrollView setContentOffset:CGPointMake(0, MAX(contentOffset, 0))];
+    [self.scrollView setContentOffset:CGPointMake(0, MAX(contentOffset, 0)) animated:YES];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.productTypeLabel.text = self.productTypes[row];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.text = [NSString stringWithFormat:@"%0.1f", [textField.text doubleValue]];
 }
 
 #pragma mark - Private Methods
@@ -212,6 +212,10 @@
     self.productPriceTexrField.layer.borderColor = color.CGColor;
     self.productPriceTexrField.layer.borderWidth = 1;
     self.productPriceTexrField.layer.cornerRadius = 5;
+    
+    self.productPriceTexrField.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 10)];
+    self.productPriceTexrField.rightViewMode = UITextFieldViewModeAlways;
+    self.productPriceTexrField.delegate = self;
 }
 
 - (void)setContentData
@@ -220,16 +224,29 @@
     self.images = self.product.images;
     self.productDescriptionTextVIew.text = self.product.productDescription;
     self.productPriceTexrField.text = [NSString stringWithFormat:@"%@", self.product.price ? @(self.product.price) : @""];
+    self.productTypeLabel.text = self.product.productType;
+    self.images = [self.product.images ? self.product.images : @[]  arrayByAddingObject:[UIImage imageNamed:@"DefaultStore"]];
+    [self.collectionView reloadData];
 }
 
 - (void)completeEditting
 {
     self.product.price = [self.productPriceTexrField.text doubleValue];
     self.product.productDescription = self.productDescriptionTextVIew.text;
-    self.product.images = self.images;
+//    self.product.images = self.images;
     self.product.productType = self.productTypeLabel.text;
-    [self.myProductsViewController editProductSuccess:self.product];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (![self checkEditting]) {
+        return;
+    }
+    
+    self.successCount = 0;
+    self.failedCount = 0;
+    self.imageURLs = [self.images mutableCopy];
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:@"正在更新，请耐心等待"];
+    for (NSInteger index = 0; index < self.images.count - 1; index++) {
+        [self imageByIndex:index];
+    }
 }
 
 - (void)mockData
@@ -247,19 +264,23 @@
     CGPoint location = [recognizer locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
     
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-            self.sourceIndex = indexPath;
-            ImageEdittingCell *cell = (ImageEdittingCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-            self.snapshot = cell.snapshot;
-            [self updateSnapshotView:snapshotLocation transform:CGAffineTransformIdentity alpha:0.0];
-            [self.view addSubview:self.snapshot];
-            [UIView animateWithDuration:0.25 animations:^{
-                [self updateSnapshotView:snapshotLocation transform:CGAffineTransformMakeScale(1.05, 1.05) alpha:0.95];
-                cell.moving = YES;
-            }];
+        if (indexPath.row == self.images.count -1) {
+            return;
+        }
+        self.sourceIndex = indexPath;
+        ImageEdittingCell *cell = (ImageEdittingCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        self.snapshot = cell.snapshot;
+        [self updateSnapshotView:snapshotLocation transform:CGAffineTransformIdentity alpha:0.0];
+        [self.view addSubview:self.snapshot];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self updateSnapshotView:snapshotLocation transform:CGAffineTransformMakeScale(1.05, 1.05) alpha:0.95];
+            cell.moving = YES;
+        }];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         self.snapshot.center = snapshotLocation;
-        if (indexPath) {
+        if (indexPath && indexPath.row != self.images.count - 1) {
             NSMutableArray *images = [self.images mutableCopy];
             [images exchangeObjectAtIndex:self.sourceIndex.row withObjectAtIndex:indexPath.row];
             self.images = images;
@@ -267,7 +288,7 @@
             self.sourceIndex = indexPath;
         }
     } else {
-        ImageEdittingCell *cell = (ImageEdittingCell *)[self.collectionView cellForItemAtIndexPath:indexPath ? indexPath : self.sourceIndex];
+        ImageEdittingCell *cell = (ImageEdittingCell *)[self.collectionView cellForItemAtIndexPath:indexPath && indexPath.row != self.images.count - 1 ? indexPath : self.sourceIndex];
         [UIView animateWithDuration:0.25 animations:^{
             [self updateSnapshotView:cell.center transform:CGAffineTransformIdentity alpha:0.0];
             cell.moving = NO;
@@ -302,6 +323,111 @@
 - (void)keyboardWillHide:(NSNotification*)aNotification
 {
     [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (void)imageByIndex:(NSInteger)index
+{
+    DNAsset *dnasset = self.images[index];
+    if (![dnasset isKindOfClass:[DNAsset class]]) {
+        self.successCount ++;
+        [self updateProcessStatus];
+        return;
+    }
+    __block UIImage *image;
+    ALAssetsLibrary *lib = [ALAssetsLibrary new];
+    __weak typeof(self) weakSelf = self;
+    [lib assetForURL:dnasset.url resultBlock:^(ALAsset *asset){
+        if (asset) {
+            image = [self imageByasset:asset];
+        } else {
+            // On iOS 8.1 [library assetForUrl] Photo Streams always returns nil. Try to obtain it in an alternative way
+            [lib enumerateGroupsWithTypes:ALAssetsGroupPhotoStream
+                               usingBlock:^(ALAssetsGroup *group, BOOL *stop)
+             {
+                 [group enumerateAssetsWithOptions:NSEnumerationReverse
+                                        usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                                            
+                                            if([[result valueForProperty:ALAssetPropertyAssetURL] isEqual:dnasset.url])
+                                            {
+                                                image = [self imageByasset:result];
+                                                *stop = YES;
+                                            }
+                                        }];
+             }
+                             failureBlock:^(NSError *error)
+             {
+                 image = [self imageByasset:asset];
+             }];
+        }
+        
+        [self.fileUploadBLLInstance uploadImage:UIImageJPEGRepresentation(image, 0.1) imageIndex:index success:^(NSDictionary *json, NSInteger index) {
+            NSString *url = [NSString stringWithFormat:@"%@/Images/%@", [HTTPSessionManager sharedManager].baseUrlStr, json[@"filename"]];
+            [weakSelf.imageURLs setObject:url atIndexedSubscript:index];
+            weakSelf.successCount ++;
+            [weakSelf updateProcessStatus];
+        } failure:^{
+            [weakSelf.imageURLs setObject:@"" atIndexedSubscript:index];
+            weakSelf.failedCount ++;
+            [weakSelf updateProcessStatus];
+        }];
+
+        
+    } failureBlock:^(NSError *error){
+        weakSelf.failedCount ++;
+    }];
+}
+
+- (UIImage *)imageByasset:(ALAsset *)asset
+{
+    
+    if (!asset) {
+        return [UIImage imageNamed:@"assets_placeholder_picture"];
+    }
+    return [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+}
+
+- (void)updateProcessStatus
+{
+    if (self.successCount + self.failedCount == self.images.count - 1) {
+        [self.imageURLs removeLastObject];
+        self.product.images = self.imageURLs;
+        [[[ProductBLL alloc] init] updateProduct:self.product success:^(NSDictionary *json) {
+            self.product = [ProductModel fromDictionary:json];
+            [[DiskCacheManager sharedManager] updateProductInformation:self.product];
+            [[LoadingManager sharedManager] hideLoadingWithmessage:@"更新成功" success:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^{
+            [[LoadingManager sharedManager] hideLoadingWithmessage:@"更新失败" success:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+    } else {
+    }
+}
+
+- (BOOL)checkEditting
+{
+    if (self.images.count <= 1) {
+        [[LoadingManager sharedManager] showError:@"请添加图片" toView:self.view];
+        return NO;
+    }
+    
+    if ([NSString isNilOrEmpty:self.product.productDescription]) {
+        [[LoadingManager sharedManager] showError:@"请填写商品描述" toView:self.view];
+        return NO;
+    }
+    
+    if (self.product.price == 0.0) {
+        [[LoadingManager sharedManager] showError:@"请填写金额" toView:self.view];
+        return NO;
+    }
+    
+    if ([NSString isNilOrEmpty:self.product.productType]) {
+        [[LoadingManager sharedManager] showError:@"请选择分类" toView:self.view];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

@@ -77,6 +77,11 @@
     [Product removeAllProducts];
 }
 
+- (void)updateProductInformation:(ProductModel *)product
+{
+    [Product updateProductInformation:product];
+}
+
 #pragma mark - Store
 
 - (void)removeAllStores

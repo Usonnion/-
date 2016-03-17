@@ -11,11 +11,18 @@
 
 @implementation StoreBLL
 
-- (void)getAllStores
+- (void)getAllStoresSuccess:(void (^)())success failue:(void (^)())failue
 {
     NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
     [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSMutableArray *stores = [NSMutableArray new];
+        for (NSDictionary *storeDic in responseObject) {
+            [stores addObject:[StoreModel fromDictionary:storeDic]];
+        }
+        [[DiskCacheManager sharedManager] archiveStores:stores];
+        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failue();
     }];
 }
 

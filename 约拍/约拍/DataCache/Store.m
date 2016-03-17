@@ -57,8 +57,13 @@
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"storeId == %@", store.storeId];
     NSArray *result = [[AppDelegate sharedContext] executeFetchRequest:fetchRequest error:nil];
     Store *storeData = result.firstObject;
-    storeData.store = [NSKeyedArchiver archivedDataWithRootObject:store];
-    [[AppDelegate sharedContext] save:nil];
+    if (storeData) {
+        storeData.store = [NSKeyedArchiver archivedDataWithRootObject:store];
+        [[AppDelegate sharedContext] save:nil];
+    } else {
+        [Store archiveStores:store];
+    }
+    
 }
 
 @end

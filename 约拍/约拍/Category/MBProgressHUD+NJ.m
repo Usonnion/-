@@ -32,7 +32,7 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:2.5];
+    [hud hide:YES afterDelay:1.5];
 }
 
 /**

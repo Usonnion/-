@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UIView *snapshot;
 @property (nonatomic, assign) BOOL moving;
 @property (nonatomic, strong) UIImage *image;
+- (void)setImageUrl:(NSString *)imagrUrl;
 
 @end

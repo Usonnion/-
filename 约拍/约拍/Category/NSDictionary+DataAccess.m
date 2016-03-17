@@ -19,4 +19,10 @@
     return value;
 }
 
+- (double)doubleForKey:(NSString *)key
+{
+    NSNumber *value = [self objectForKey:key];
+    return value.doubleValue;
+}
+
 @end

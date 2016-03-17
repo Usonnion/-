@@ -16,7 +16,10 @@
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSString *productType;
 @property (nonatomic, strong) NSString *productDescription;
+@property (nonatomic, strong) NSDate *updatedTime;
 
 + (ProductModel *)fromDictionary:(NSDictionary *)dictionary;
+
+- (NSDictionary *)toDictionary;
 
 @end

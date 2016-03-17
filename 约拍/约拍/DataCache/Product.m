@@ -61,4 +61,18 @@
     return result.firstObject;
 }
 
++ (void)updateProductInformation:(ProductModel *)product
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Product"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"productId == %@", product.productId];
+    NSArray *result = [[AppDelegate sharedContext] executeFetchRequest:fetchRequest error:nil];
+    if (result && result.count >= 1) {
+        Product *productData = result.firstObject;
+        productData.product = [NSKeyedArchiver archivedDataWithRootObject:product];
+        [[AppDelegate sharedContext] save:nil];
+    } else {
+        [Product insertProduct:product];
+    }
+}
+
 @end

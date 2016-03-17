@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WQ4-uh-pqN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WQ4-uh-pqN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -26,23 +26,32 @@
                                     <outlet property="delegate" destination="1Xs-ao-I3h" id="z76-EW-eBD"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无店家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twn-WX-EcA">
+                                <rect key="frame" x="173" y="358" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Twn-WX-EcA" firstAttribute="centerX" secondItem="n3C-Mh-AZ2" secondAttribute="centerX" id="1Zb-JG-2pH"/>
                             <constraint firstItem="xGh-nC-SBT" firstAttribute="leading" secondItem="n3C-Mh-AZ2" secondAttribute="leading" id="6w5-Tp-hY3"/>
                             <constraint firstItem="xGh-nC-SBT" firstAttribute="top" secondItem="n3C-Mh-AZ2" secondAttribute="topMargin" id="KH2-8O-DyW"/>
                             <constraint firstItem="wPw-qQ-dKf" firstAttribute="top" secondItem="xGh-nC-SBT" secondAttribute="bottom" id="ZGa-7e-apP"/>
                             <constraint firstAttribute="trailing" secondItem="xGh-nC-SBT" secondAttribute="trailing" id="j9L-I5-Trr"/>
+                            <constraint firstItem="Twn-WX-EcA" firstAttribute="centerY" secondItem="n3C-Mh-AZ2" secondAttribute="centerY" id="vuq-ei-0bK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="所有店铺" id="Mn6-bk-3zv"/>
                     <connections>
+                        <outlet property="noStoresLabel" destination="Twn-WX-EcA" id="dwb-HC-h5k"/>
                         <outlet property="tableView" destination="xGh-nC-SBT" id="37x-qE-xFa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2o-zs-HTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="1294"/>
+            <point key="canvasLocation" x="357" y="1322"/>
         </scene>
         <!--我-->
         <scene sceneID="MK9-Nv-fTJ">

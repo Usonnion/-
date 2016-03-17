@@ -28,10 +28,16 @@
     [super viewDidLoad];
     
     self.title = @"所有商品";
-    self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.storeId];
-    self.noProductsLabel.hidden = self.products.count;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MyProductCell" bundle:nil] forCellReuseIdentifier:@"MyProductCell"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.storeId];
+    self.noProductsLabel.hidden = self.products.count;
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender
@@ -74,6 +80,7 @@
 - (IBAction)addProductButtonPressed:(id)sender
 {
     ProductModel *product = [[ProductModel alloc] init];
+    product.storeId = self.storeId;
     NSMutableArray *mutableProducts = [self.products mutableCopy];
     [mutableProducts insertObject:product atIndex:0];
     self.editProductIndex = 0;

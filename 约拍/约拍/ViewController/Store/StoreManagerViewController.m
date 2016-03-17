@@ -14,6 +14,7 @@
 #import "HTTPSessionManager.h"
 #import "StoreBLL.h"
 #import "DNImagePickerController.h"
+#import "MyProductsViewController.h"
 
 @interface StoreManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DNImagePickerControllerDelegate>
 
@@ -26,6 +27,7 @@
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, strong) StoreModel *store;
+@property (nonatomic, strong) id storeImage;
 
 @end
 
@@ -75,6 +77,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
 {
     [self.storeImageView setImage:image];
+    self.storeImage = image;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -111,6 +114,7 @@
     self.storeNameTextField.text = self.store.storeName;
     self.storeAddressTextField.text = self.store.storeAddress;
     self.storePhoneTextField.text = self.store.phoneNumber;
+    [self setStoreImage];
     
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(BeginEditting)];
     self.navigationItem.leftBarButtonItem = editBarButtonItem;
@@ -123,8 +127,12 @@
     self.store.storeAddress = self.storeAddressTextField.text;
     self.store.phoneNumber = self.storePhoneTextField.text;
     
+    if (![self checkEditting]) {
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
-    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:@"上传图片中"];
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.navigationController.view description:@"上传图片中"];
     [[[FileUploadBLL alloc] init] uploadImage:UIImageJPEGRepresentation(self.storeImageView.image, 0.1) imageIndex:0 success:^(NSDictionary *json, NSInteger index) {
         NSString *url = [NSString stringWithFormat:@"%@/Images/%@", [HTTPSessionManager sharedManager].baseUrlStr, json[@"filename"]];
         weakSelf.store.storeImage = url;
@@ -165,6 +173,46 @@
     if (![NSString isNilOrEmpty:self.store.storeImage]) {
         [self.storeImageView sd_setImageWithURL:[NSURL URLWithString:self.store.storeImage] placeholderImage:[UIImage imageNamed:@"DefaultStore"]];
     }
+    self.storeImage = self.store.storeImage;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    UIViewController *viewController = segue.destinationViewController;
+    if ([viewController isKindOfClass:[MyProductsViewController class]]) {
+        ((MyProductsViewController *)viewController).storeId = self.store.storeId;
+    }
+}
+
+- (BOOL)checkEditting
+{
+    if (!self.storeImage) {
+        [[LoadingManager sharedManager] showError:@"请选择图片" toView:self.view];
+        return NO;
+    }
+    
+    if ([self.storeImage isKindOfClass:[NSString class]] && [NSString isNilOrEmpty:self.storeImage]) {
+        [[LoadingManager sharedManager] showError:@"请选择图片" toView:self.view];
+        return NO;
+    }
+    
+    if ([NSString isNilOrEmpty:self.store.storeName]) {
+        [[LoadingManager sharedManager] showError:@"请填写店名" toView:self.view];
+        return NO;
+    }
+    
+    if ([NSString isNilOrEmpty:self.store.storeAddress]) {
+        [[LoadingManager sharedManager] showError:@"请填写地址" toView:self.view];
+        return NO;
+    }
+    
+    if ([NSString isNilOrEmpty:self.store.phoneNumber]) {
+        [[LoadingManager sharedManager] showError:@"请选择电话" toView:self.view];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

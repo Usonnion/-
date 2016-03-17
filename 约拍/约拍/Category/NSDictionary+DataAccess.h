@@ -11,5 +11,6 @@
 @interface NSDictionary (DataAccess)
 
 - (NSString *)stringForKey:(NSString *)key;
+- (double)doubleForKey:(NSString *)key;
 
 @end

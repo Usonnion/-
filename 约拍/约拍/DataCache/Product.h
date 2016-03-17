@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)getProductByStoreId:(NSString *)storeId;
 + (NSArray *)getProductByProductType:(NSString *)productType;
 + (Product *)getProductByProductId:(NSString *)productId;
++ (void)updateProductInformation:(ProductModel *)product;
 
 @end
 

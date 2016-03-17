@@ -11,5 +11,6 @@
 @interface NSString (Format)
 
 + (BOOL)isNilOrEmpty:(NSString *)str;
++ (NSString *)getEmptyIfNull:(NSString *)str;
 
 @end

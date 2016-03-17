@@ -85,6 +85,7 @@
 		18B3080D1C799C7D00851C25 /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3080C1C799C7D00851C25 /* ImagePickHelper.m */; };
 		18B36B891C709EA200BF5E38 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B36B881C709EA200BF5E38 /* Store.storyboard */; };
 		18B36B8F1C70A4AD00BF5E38 /* StoreManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B36B8E1C70A4AD00BF5E38 /* StoreManagerViewController.m */; };
+		18B7BCD81C9983C40083E624 /* ProductBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BCD71C9983C40083E624 /* ProductBLL.m */; };
 		18CBC4F71C75FC7600EEE301 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4F61C75FC7600EEE301 /* MineViewController.m */; };
 		18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4F91C760CFD00EEE301 /* MyProductsViewController.m */; };
 		18CBC4FD1C760FC300EEE301 /* MyProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4FC1C760FC300EEE301 /* MyProductCell.m */; };
@@ -264,6 +265,8 @@
 		18B36B881C709EA200BF5E38 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		18B36B8D1C70A4AD00BF5E38 /* StoreManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManagerViewController.h; sourceTree = "<group>"; };
 		18B36B8E1C70A4AD00BF5E38 /* StoreManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManagerViewController.m; sourceTree = "<group>"; };
+		18B7BCD61C9983C40083E624 /* ProductBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductBLL.h; sourceTree = "<group>"; };
+		18B7BCD71C9983C40083E624 /* ProductBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductBLL.m; sourceTree = "<group>"; };
 		18CBC4F51C75FC7600EEE301 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		18CBC4F61C75FC7600EEE301 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		18CBC4F81C760CFD00EEE301 /* MyProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductsViewController.h; sourceTree = "<group>"; };
@@ -623,6 +626,8 @@
 				18A4703A1C88770F00038F40 /* StoreBLL.m */,
 				18A470521C8AFE3B00038F40 /* FileUploadBLL.h */,
 				18A470531C8AFE3B00038F40 /* FileUploadBLL.m */,
+				18B7BCD61C9983C40083E624 /* ProductBLL.h */,
+				18B7BCD71C9983C40083E624 /* ProductBLL.m */,
 			);
 			path = BLL;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 				188C9D311C422E0B00DD1B72 /* NSData+ImageContentType.m in Sources */,
 				18CF31651C5DF4800094BF7F /* Store+CoreDataProperties.m in Sources */,
 				18895D401C47E07900586CD9 /* PhotoViewController.m in Sources */,
+				18B7BCD81C9983C40083E624 /* ProductBLL.m in Sources */,
 				18895D431C47E9C000586CD9 /* PhotosPageViewController.m in Sources */,
 				18DE40EF1C96E167000DB3B1 /* DNAssetsViewCell.m in Sources */,
 				18DE40E41C96E167000DB3B1 /* DNImageFlowViewController.m in Sources */,

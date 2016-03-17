@@ -19,6 +19,7 @@
 - (NSArray *)getProductByStoreId:(NSString *)storeId;
 - (NSArray *)getProductByProductType:(NSString *)productType;
 - (ProductModel *)getProductByProductId:(NSString *)prodcutId;
+- (void)updateProductInformation:(ProductModel *)product;
 
 - (void)removeAllStores;
 - (NSArray *)loadAllStores;

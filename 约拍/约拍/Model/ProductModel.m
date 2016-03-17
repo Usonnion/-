@@ -13,12 +13,13 @@
 + (ProductModel *)fromDictionary:(NSDictionary *)dictionary
 {
     ProductModel *product = [[ProductModel alloc] init];
-    product.storeId = [dictionary objectForKey:@"StoreId"];
-    product.productId = [dictionary objectForKey:@"ProductId"];
-    product.price = [[dictionary objectForKey:@"Price"] doubleValue];
-    product.images = [dictionary objectForKey:@"Images"];
+    product.storeId = [dictionary stringForKey:@"StoreId"];
+    product.productId = [dictionary stringForKey:@"ProductId"];
+    product.price = [dictionary doubleForKey:@"Price"];
+    product.images = [[dictionary stringForKey:@"Images"] componentsSeparatedByString:@","];
     product.productType = [dictionary objectForKey:@"ProductType"];
     product.productDescription = [dictionary objectForKey:@"ProductDescription"];
+    product.updatedTime = [dictionary objectForKey:@"UpdatedTime"];
     return product;
 }
 
@@ -43,6 +44,24 @@
         self.productDescription = [aDecoder decodeObjectForKey:@"Product.ProductDescription"];
     }
     return self;
+}
+
+- (NSDictionary *)toDictionary
+{
+    NSMutableString *imagesString = [@"" mutableCopy];
+    for (NSString *imageString in self.images) {
+        NSInteger index= [self.images indexOfObject:imageString];
+        if (index) {
+            [imagesString appendString:@","];
+        }
+        [imagesString appendString:imageString];
+    }
+    return @{@"StoreId":[NSString getEmptyIfNull:self.storeId],
+             @"ProductId":[NSString getEmptyIfNull:self.productId],
+             @"Price":@(self.price),
+             @"ProductType":self.productType,
+             @"ProductDescription":self.productDescription,
+             @"Images":imagesString};
 }
 
 @end

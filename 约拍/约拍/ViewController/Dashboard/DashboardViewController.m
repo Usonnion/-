@@ -14,6 +14,8 @@
 #import "ProductModel.h"
 #import "PageControlViewController.h"
 #import "StoreModel.h"
+#import "StoreBLL.h"
+#import "ProductBLL.h"
 
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
@@ -23,6 +25,8 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray<ActionModel *> *actions;
+@property (nonatomic, assign) BOOL loadingStoreDone;
+@property (nonatomic, assign) BOOL loadingPorudctDone;
 
 @end
 
@@ -103,64 +107,83 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     action2.style = kActionStyleAction;
     action2.cellIdentifier = @"ActionCell";
     action2.navigatorType = NavigatorTypeByType;
-    action2.productType = @"KidsPhoto";
+    action2.productType = @"儿童摄影";
     
     ActionModel *action3 = [[ActionModel alloc] init];
     action3.title = @"婚纱摄影";
     action3.style = kActionStyleAction;
     action3.cellIdentifier = @"ActionCell";
     action3.navigatorType = NavigatorTypeByType;
-    action3.productType = @"WeddingPhoto";
+    action3.productType = @"婚纱摄影";
     
     ActionModel *action4 = [[ActionModel alloc] init];
     action4.title = @"个人写真";
     action4.style = kActionStyleAction;
     action4.cellIdentifier = @"ActionCell";
     action4.navigatorType = NavigatorTypeByType;
-    action4.productType = @"PersonalPhoto";
+    action4.productType = @"个人写真";
     
     ActionModel *action5 = [[ActionModel alloc] init];
     action5.title = @"其他";
     action5.style = kActionStyleAction;
     action5.cellIdentifier = @"ActionCell";
     action5.navigatorType = NavigatorTypeByType;
-    action5.productType = @"Others";
+    action5.productType = @"其他";
     
     self.actions = @[action1, action2, action3, action4, action5];
     
-    NSArray *productTypes = @[@"KidsPhoto", @"WeddingPhoto", @"PersonalPhoto", @"Others"];
     [[DiskCacheManager sharedManager] removeAllProducts];
     [[DiskCacheManager sharedManager] removeAllStores];
     
-    NSMutableArray *stores = [@[] mutableCopy];
-    NSMutableArray *products = [@[] mutableCopy];
-    for (NSInteger storeIndex = 0; storeIndex < 20; storeIndex ++) {
-        for (NSInteger productIndex = 10; productIndex < 20; productIndex ++) {
-            NSInteger productType = arc4random() % 4;
-            NSDictionary *dictionary = @{@"StoreId" : @(storeIndex).stringValue,
-                                         @"ProductId" : @(productIndex).stringValue,
-                                         @"Price" : @"300",
-                                         @"ProductType" : productTypes[productType],
-                                         @"ProductDescription" : @"沛县第一婚纱影楼 个人写真",
-                                         @"Images" : @[@"http://i12.tietuku.com/135887956d5d60e0.jpg",
-                                                       @"http://i12.tietuku.com/543908eae4e015d2.jpg",
-                                                       @"http://i13.tietuku.com/a1a296b92e03d115.jpg",
-                                                       @"http://i12.tietuku.com/3af3552dd6c92720.jpg",
-                                                       @"http://i11.tietuku.com/a7710901a121e021.jpg",
-                                                       @"http://i12.tietuku.com/cbfddaa457b1f914.jpg"]};
-            [products addObject:[ProductModel fromDictionary:dictionary]];
-        }
-        
-        NSDictionary *storeDictionary = @{@"StoreId" : @(storeIndex).stringValue,
-                                          @"StoreName" : @"星星贝贝儿童摄影",
-                                          @"StoreAddress" : @"汉街南门向西100米",
-                                          @"StoreImage" : @"http://i12.tietuku.com/cbfddaa457b1f914.jpg",
-                                          @"PhoneNumber" : @"18801615551"};
-        [stores addObject:[StoreModel fromDictionary:storeDictionary]];
-    }
+    __weak typeof(self) weakSelf = self;
+    self.loadingStoreDone = NO;
+    self.loadingPorudctDone = NO;
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.tabBarController.view description:@"加载数据中"];
+    [[[StoreBLL alloc] init] getAllStoresSuccess:^{
+        weakSelf.loadingStoreDone = YES;
+        [weakSelf checkDataLoading];
+    } failue:^{
+         weakSelf.loadingStoreDone = YES;
+        [weakSelf checkDataLoading];
+    }];
     
-    [[DiskCacheManager sharedManager] archiveStores:stores];
-    [[DiskCacheManager sharedManager] archiveProductInformation:products];
+    [[[ProductBLL alloc] init] getAllProductsSuccess:^{
+        weakSelf.loadingPorudctDone = YES;
+        [weakSelf checkDataLoading];
+    } failue:^{
+        weakSelf.loadingPorudctDone = YES;
+        [weakSelf checkDataLoading];
+    }];
+    
+//    NSMutableArray *stores = [@[] mutableCopy];
+//    NSMutableArray *products = [@[] mutableCopy];
+//    for (NSInteger storeIndex = 0; storeIndex < 20; storeIndex ++) {
+//        for (NSInteger productIndex = 10; productIndex < 20; productIndex ++) {
+//            NSInteger productType = arc4random() % 4;
+//            NSDictionary *dictionary = @{@"StoreId" : @(storeIndex).stringValue,
+//                                         @"ProductId" : @(productIndex).stringValue,
+//                                         @"Price" : @"300",
+//                                         @"ProductType" : productTypes[productType],
+//                                         @"ProductDescription" : @"沛县第一婚纱影楼 个人写真",
+//                                         @"Images" : @"http://i12.tietuku.com/135887956d5d60e0.jpg, http://i12.tietuku.com/543908eae4e015d2.jpg, http://i13.tietuku.com/a1a296b92e03d115.jpg, http://i12.tietuku.com/3af3552dd6c92720.jpg,http://i11.tietuku.com/a7710901a121e021.jpg, http://i12.tietuku.com/cbfddaa457b1f914.jpg"};
+//            [products addObject:[ProductModel fromDictionary:dictionary]];
+//        }
+//        
+//        NSDictionary *storeDictionary = @{@"StoreId" : @(storeIndex).stringValue,
+//                                          @"StoreName" : @"星星贝贝儿童摄影",
+//                                          @"StoreAddress" : @"汉街南门向西100米",
+//                                          @"StoreImage" : @"http://i12.tietuku.com/cbfddaa457b1f914.jpg",
+//                                          @"PhoneNumber" : @"18801615551"};
+//        [stores addObject:[StoreModel fromDictionary:storeDictionary]];
+//    }
+    
+}
+
+- (void)checkDataLoading
+{
+    if (self.loadingPorudctDone && self.loadingStoreDone) {
+        [[LoadingManager sharedManager] hideLoadingWithmessage:@"加载数据完成" success:YES];
+    }
 }
 
 @end

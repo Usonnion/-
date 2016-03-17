@@ -63,7 +63,8 @@
             
             UIImageView *imageView = [[UIImageView alloc] init];
             [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-            imageView.contentMode = UIViewContentModeScaleToFill;
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
             imageView.frame = CGRectMake(frame.size.width * index, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:imageView];
         }

@@ -13,6 +13,7 @@
 @interface StoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UILabel *noStoresLabel;
 
 @property (nonatomic, strong) NSArray *stores;
 
@@ -22,8 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[[StoreBLL alloc] init] getAllStores];
     self.stores = [[DiskCacheManager sharedManager] loadAllStores];
+    if (self.stores && self.stores.count > 0) {
+        self.noStoresLabel.hidden = YES;
+    } else {
+        self.noStoresLabel.hidden = NO;
+    }
     [self.tableView registerNib:[UINib nibWithNibName:@"StoreCell" bundle:nil] forCellReuseIdentifier:@"StoreCell"];
 }
 

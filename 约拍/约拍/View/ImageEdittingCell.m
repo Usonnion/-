@@ -7,6 +7,7 @@
 //
 
 #import "ImageEdittingCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface ImageEdittingCell()
 
@@ -42,6 +43,11 @@
     snapshot.layer.shadowRadius = 5.0;
     snapshot.layer.shadowOpacity = 0.4;
     return snapshot;
+}
+
+- (void)setImageUrl:(NSString *)imagrUrl
+{
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imagrUrl]];
 }
 
 @end

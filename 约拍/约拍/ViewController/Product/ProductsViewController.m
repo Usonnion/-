@@ -14,6 +14,7 @@
 @interface ProductsViewController () <BuyProductDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UILabel *noProductLabel;
 
 @property (nonatomic, strong) NSArray *products;
 
@@ -90,6 +91,12 @@
         self.products = [[DiskCacheManager sharedManager] getProductByStoreId:self.action.storeId];
         StoreModel *store = [[DiskCacheManager sharedManager] getStoreByStoreId:self.action.storeId];
         self.title = store.storeName;
+    }
+    
+    if (self.products && self.products.count > 0) {
+        self.noProductLabel.hidden = YES;
+    } else {
+        self.noProductLabel.hidden = NO;
     }
 }
 
