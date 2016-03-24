@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PhotosPageViewController.h"
 
-@interface PhotoViewController : UIViewController
+@interface PhotoViewController : BaseController
 
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSString *photoURL;

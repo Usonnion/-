@@ -29,6 +29,10 @@
     } else {
         self.noStoresLabel.hidden = NO;
     }
+    
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, screenBounds.size.width, 0, 0);
+    self.tabBarController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"StoreCell" bundle:nil] forCellReuseIdentifier:@"StoreCell"];
 }
 
@@ -69,6 +73,5 @@
     action.navigatorType = NavigatorTypeByStore;
     [NavigatorManager navigatorBy:action viewController:self];
 }
-
 
 @end

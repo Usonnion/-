@@ -36,6 +36,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 {
     [super viewDidLoad];
     
+    self.tabBarController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
     self.tableView.estimatedRowHeight = 40;
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionSummaryCell" bundle:nil] forCellReuseIdentifier:@"ActionSummaryCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionCell" bundle:nil] forCellReuseIdentifier:@"ActionCell"];
@@ -56,12 +57,6 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
-
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
-//}
 
 #pragma mark - UITableViewDataSource
 

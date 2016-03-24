@@ -25,6 +25,16 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UICKeyChainStore *keyChainStore = [UICKeyChainStore keyChainStore];
+    NSString *deviceIdentity = [keyChainStore stringForKey:@"DeviceIdentity"];
+    if ([NSString isNilOrEmpty:deviceIdentity]) {
+        CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+        CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+        CFRelease(uuid_ref);
+        NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
+        CFRelease(uuid_string_ref);
+        [UICKeyChainStore setString:uuid forKey:@"DeviceIdentity"];
+    }
     
     return YES;
 }

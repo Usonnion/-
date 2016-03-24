@@ -20,7 +20,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-nC-SBT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1Xs-ao-I3h" id="8Z8-7h-pn2"/>
                                     <outlet property="delegate" destination="1Xs-ao-I3h" id="z76-EW-eBD"/>
@@ -93,6 +93,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAg-Hn-Q9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="902" y="861"/>
+        </scene>
+        <!--购物车-->
+        <scene sceneID="gpV-vB-g39">
+            <objects>
+                <viewController id="xPD-io-ont" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fPb-FB-DLI"/>
+                        <viewControllerLayoutGuide type="bottom" id="pgm-5l-seD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9lf-Wb-OdA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U9o-uY-RnE">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xPD-io-ont" id="xka-oO-yfm"/>
+                                    <outlet property="delegate" destination="xPD-io-ont" id="9hq-17-pzC"/>
+                                </connections>
+                            </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无订单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-MI-eS8">
+                                <rect key="frame" x="0.0" y="358" width="414" height="21"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pgm-5l-seD" firstAttribute="top" secondItem="U9o-uY-RnE" secondAttribute="bottom" id="D2w-RA-5WL"/>
+                            <constraint firstItem="U9o-uY-RnE" firstAttribute="top" secondItem="fPb-FB-DLI" secondAttribute="bottom" id="JHy-Fc-PGF"/>
+                            <constraint firstItem="m2N-MI-eS8" firstAttribute="leading" secondItem="9lf-Wb-OdA" secondAttribute="leading" id="K4U-Nr-LvR"/>
+                            <constraint firstAttribute="trailing" secondItem="U9o-uY-RnE" secondAttribute="trailing" id="QIK-5X-eJ5"/>
+                            <constraint firstItem="m2N-MI-eS8" firstAttribute="centerY" secondItem="9lf-Wb-OdA" secondAttribute="centerY" id="kwc-9d-CUs"/>
+                            <constraint firstAttribute="trailing" secondItem="m2N-MI-eS8" secondAttribute="trailing" id="mFw-an-AqO"/>
+                            <constraint firstItem="U9o-uY-RnE" firstAttribute="leading" secondItem="9lf-Wb-OdA" secondAttribute="leading" id="ofh-4s-KpE"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="购物车" id="ZHm-B2-RJg"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-Zs-Ye2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="-435"/>
         </scene>
         <!--首页-->
         <scene sceneID="TYV-Nj-Jg5">
@@ -186,6 +233,7 @@
                     <connections>
                         <segue destination="bto-Eo-WpD" kind="relationship" relationship="viewControllers" id="Tzf-fj-fg7"/>
                         <segue destination="1Xs-ao-I3h" kind="relationship" relationship="viewControllers" id="6J3-8z-12A"/>
+                        <segue destination="xPD-io-ont" kind="relationship" relationship="viewControllers" id="AMj-Jj-8u0"/>
                         <segue destination="lzS-et-SoV" kind="relationship" relationship="viewControllers" id="ymR-kA-5KC"/>
                     </connections>
                 </tabBarController>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PaymentViewController : UIViewController
+@interface PaymentViewController : BaseController
 
 @property (nonatomic, strong) ActionModel *action;
 

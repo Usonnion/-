@@ -14,7 +14,7 @@
 
 @end
 
-@interface PageControlViewController : UIViewController <UIScrollViewDelegate>
+@interface PageControlViewController : BaseController <UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<PageControlViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL scrollCircle;

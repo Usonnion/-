@@ -10,8 +10,9 @@
 #import "ProductModel.h"
 #import "BaseTableViewCell.h"
 #import "ProductManagerViewController.h"
+#import "MyProductCell.h"
 
-@interface MyProductsViewController ()
+@interface MyProductsViewController () <PreviewDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noProductsLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -30,6 +31,13 @@
     self.title = @"所有商品";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MyProductCell" bundle:nil] forCellReuseIdentifier:@"MyProductCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,8 +64,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyProductCell"];
+    MyProductCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyProductCell"];
     [cell setContentData:self.products[indexPath.row]];
+    cell.delegate = self;
     return cell;
 }
 
@@ -73,6 +82,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     self.editProductIndex = indexPath.row;
     [self performSegueWithIdentifier:@"ShowProductManagerSegue" sender:self.products[indexPath.row]];
+}
+
+#pragma mark - PreviewDelegate
+
+- (void)previewProduct:(id)action
+{
+    [NavigatorManager navigatorBy:action viewController:self];
 }
 
 #pragma mark - Actions

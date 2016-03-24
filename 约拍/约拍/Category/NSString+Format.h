@@ -12,5 +12,6 @@
 
 + (BOOL)isNilOrEmpty:(NSString *)str;
 + (NSString *)getEmptyIfNull:(NSString *)str;
++ (NSString *)stringByDate:(NSDate *)date;
 
 @end

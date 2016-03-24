@@ -20,4 +20,12 @@
     return [NSString isNilOrEmpty:str] ? @"" : str;
 }
 
++ (NSString *)stringByDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateIntervalFormatterMediumStyle;
+    dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
+    return [dateFormatter stringFromDate:date];
+}
+
 @end

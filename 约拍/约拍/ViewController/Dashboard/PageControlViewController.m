@@ -85,13 +85,13 @@
         if (self.images.count > 1 && self.scrollCircle) {
             UIImageView *firstImageView = [[UIImageView alloc] init];
             [firstImageView sd_setImageWithURL:[NSURL URLWithString:self.images.lastObject]];
-            firstImageView.contentMode = UIViewContentModeScaleToFill;
+            firstImageView.contentMode = UIViewContentModeScaleAspectFill;
             firstImageView.frame = CGRectMake(-frame.size.width, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:firstImageView];
             
             UIImageView *latestImageView = [[UIImageView alloc] init];
             [latestImageView sd_setImageWithURL:[NSURL URLWithString:self.images.firstObject]];
-            latestImageView.contentMode = UIViewContentModeScaleToFill;
+            latestImageView.contentMode = UIViewContentModeScaleAspectFill;
             latestImageView.frame = CGRectMake(frame.size.width * self.images.count, 0, frame.size.width, frame.size.height);
             [self.scrollView addSubview:latestImageView];
             

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ActionModel.h"
 
-@interface StoreManagerViewController : UIViewController
+@interface StoreManagerViewController : BaseController
 
 @property (nonatomic, strong) ActionModel *action;
 

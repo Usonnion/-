@@ -10,7 +10,7 @@
 #import "ProductModel.h"
 #import "PhotosPageViewController.h"
 
-@interface PhotosViewController : UIViewController <PhotosPageViewControllerDelegate>
+@interface PhotosViewController : BaseController <PhotosPageViewControllerDelegate>
 
 @property (nonatomic, strong) ProductModel *product;
 

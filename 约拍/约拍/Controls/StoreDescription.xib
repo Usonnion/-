@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="6oB-ra-9cI" customClass="StoreDescription">
-            <rect key="frame" x="0.0" y="0.0" width="412" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="412" height="136"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWC-0W-D7A">
@@ -48,10 +48,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhD-bc-hdh">
-                    <rect key="frame" x="366" y="50" width="30" height="30"/>
+                    <rect key="frame" x="346" y="15" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="Dch-mM-IYv"/>
-                        <constraint firstAttribute="height" constant="30" id="eJC-fT-EWy"/>
+                        <constraint firstAttribute="width" constant="50" id="Dch-mM-IYv"/>
+                        <constraint firstAttribute="height" constant="50" id="eJC-fT-EWy"/>
+                    </constraints>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-9K-jBl">
+                    <rect key="frame" x="346" y="71" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="e28-qf-cVm"/>
+                        <constraint firstAttribute="height" constant="50" id="x1R-3g-hzl"/>
                     </constraints>
                 </button>
             </subviews>
@@ -61,14 +68,16 @@
                 <constraint firstItem="I85-Qr-qmK" firstAttribute="bottom" secondItem="yef-84-U7t" secondAttribute="bottom" id="Btk-pd-wLE"/>
                 <constraint firstItem="Etb-EQ-hvL" firstAttribute="leading" secondItem="EWC-0W-D7A" secondAttribute="trailing" constant="4" id="IcN-fm-xX0"/>
                 <constraint firstItem="Etb-EQ-hvL" firstAttribute="bottom" secondItem="EWC-0W-D7A" secondAttribute="bottom" id="Ioa-Oj-oeQ"/>
-                <constraint firstItem="OhD-bc-hdh" firstAttribute="centerY" secondItem="6oB-ra-9cI" secondAttribute="centerY" id="Vg4-24-lfP"/>
                 <constraint firstAttribute="trailing" secondItem="OhD-bc-hdh" secondAttribute="trailing" constant="16" id="XID-9Y-eKq"/>
                 <constraint firstItem="uPA-Ow-fie" firstAttribute="leading" secondItem="6oB-ra-9cI" secondAttribute="leading" constant="16" id="Xcz-HP-6Uc"/>
                 <constraint firstItem="0hq-q2-F2u" firstAttribute="top" secondItem="6oB-ra-9cI" secondAttribute="top" constant="20" id="Z7j-rY-bSg"/>
+                <constraint firstItem="V1U-9K-jBl" firstAttribute="top" secondItem="OhD-bc-hdh" secondAttribute="bottom" constant="6" id="bVY-wW-36s"/>
                 <constraint firstItem="yef-84-U7t" firstAttribute="leading" secondItem="uPA-Ow-fie" secondAttribute="leading" id="cgI-fA-NFU"/>
+                <constraint firstItem="OhD-bc-hdh" firstAttribute="top" secondItem="6oB-ra-9cI" secondAttribute="top" constant="15" id="fP2-nC-Juh"/>
                 <constraint firstItem="I85-Qr-qmK" firstAttribute="leading" secondItem="yef-84-U7t" secondAttribute="trailing" constant="4" id="kLz-CM-nQw"/>
                 <constraint firstItem="I85-Qr-qmK" firstAttribute="top" secondItem="Etb-EQ-hvL" secondAttribute="bottom" constant="8" id="op2-v1-Zgf"/>
                 <constraint firstItem="0hq-q2-F2u" firstAttribute="leading" secondItem="uPA-Ow-fie" secondAttribute="trailing" constant="4" id="pk1-z6-GE8"/>
+                <constraint firstAttribute="trailing" secondItem="V1U-9K-jBl" secondAttribute="trailing" constant="16" id="sWQ-TE-QDt"/>
                 <constraint firstItem="EWC-0W-D7A" firstAttribute="leading" secondItem="uPA-Ow-fie" secondAttribute="leading" id="wUC-w0-YzY"/>
                 <constraint firstItem="Etb-EQ-hvL" firstAttribute="top" secondItem="0hq-q2-F2u" secondAttribute="bottom" constant="4" id="xh2-lX-iyv"/>
             </constraints>
@@ -78,7 +87,7 @@
                 <outlet property="storeDescriptionLabel" destination="0hq-q2-F2u" id="JZi-XV-0fy"/>
                 <outlet property="storePhoneLabel" destination="I85-Qr-qmK" id="9My-fv-AcU"/>
             </connections>
-            <point key="canvasLocation" x="325" y="210"/>
+            <point key="canvasLocation" x="325" y="213"/>
         </view>
     </objects>
 </document>

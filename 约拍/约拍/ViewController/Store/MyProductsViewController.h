@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyProductsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MyProductsViewController : BaseController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *storeId;
 

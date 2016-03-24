@@ -24,6 +24,7 @@
         AFHTTPRequestSerializer *requestSerializer = [[AFJSONRequestSerializer alloc] init];
 //        [requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        requestSerializer.timeoutInterval = 20000;
         sharedManager.requestSerializer = requestSerializer;
         
         AFHTTPResponseSerializer *responseSerializer = [[AFJSONResponseSerializer alloc] init];

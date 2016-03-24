@@ -10,7 +10,7 @@
 #import "ProductModel.h"
 #import "MyProductsViewController.h"
 
-@interface ProductManagerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+@interface ProductManagerViewController : BaseController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property (nonatomic, strong) ProductModel *product;
 @property (nonatomic, weak) MyProductsViewController *myProductsViewController;

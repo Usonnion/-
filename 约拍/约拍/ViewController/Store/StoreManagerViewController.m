@@ -137,6 +137,7 @@
         NSString *url = [NSString stringWithFormat:@"%@/Images/%@", [HTTPSessionManager sharedManager].baseUrlStr, json[@"filename"]];
         weakSelf.store.storeImage = url;
         [[[StoreBLL alloc] init] updateStore:weakSelf.store success:^(NSDictionary *json) {
+            [[DiskCacheManager sharedManager] updateStoreInformation:weakSelf.store ];
             [[LoadingManager sharedManager] hideLoadingWithmessage:@"恭喜您，更新成功" success:YES];
         } failure:^{
             [[LoadingManager sharedManager] hideLoadingWithmessage:@"对不起，更新失败，请从新尝试" success:NO];

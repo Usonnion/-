@@ -16,13 +16,15 @@
 @property (nonatomic, weak) IBOutlet UILabel *productNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *productPriceLabel;
 
+@property (nonatomic, weak) ProductModel *product;
+
 @end
 
 @implementation MyProductCell
 
 - (void)awakeFromNib
 {
-    
+    [super awakeFromNib];
 }
 
 - (void)setContentData:(id)contentModel
@@ -35,6 +37,17 @@
         [self.productImageView setImage:firstImage];
     } else if ([firstImage isKindOfClass:[NSString class]]) {
         [self.productImageView sd_setImageWithURL:[NSURL URLWithString:firstImage]];
+    }
+    self.product = product;
+}
+
+- (IBAction)previewButtonPressed
+{
+    ActionModel *action = [[ActionModel alloc] init];
+    action.navigatorType = NavigatorTypeToPayment;
+    action.productId = self.product.productId;
+    if ([self.delegate respondsToSelector:@selector(previewProduct:)]) {
+        [self.delegate previewProduct:action];
     }
 }
 

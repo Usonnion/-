@@ -16,5 +16,7 @@
 #import "NSDictionary+DataAccess.h"
 #import "LoadingManager.h"
 #import "NSString+Format.h"
+#import "BaseController.h"
+#import "UICKeyChainStore.h"
 
 #endif /* PrefixHeader_pch */

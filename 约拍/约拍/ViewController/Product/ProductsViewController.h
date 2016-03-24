@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ActionModel.h"
 
-@interface ProductsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ProductsViewController : BaseController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ActionModel *action;
 

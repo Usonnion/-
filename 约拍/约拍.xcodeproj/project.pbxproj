@@ -10,9 +10,16 @@
 		180DF7321C54B39500DE4C21 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7311C54B39500DE4C21 /* ProductModel.m */; };
 		180DF7351C54B59100DE4C21 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7341C54B59100DE4C21 /* StoreModel.m */; };
 		180DF7391C54BC6500DE4C21 /* NavigatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7381C54BC6500DE4C21 /* NavigatorManager.m */; };
+		1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645C1CA2C538008BA391 /* CreateOrderViewController.m */; };
+		181764601CA2D8F8008BA391 /* CustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645F1CA2D8F8008BA391 /* CustomerModel.m */; };
 		1840A75A1C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1840A7581C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld */; };
+		18697BC81C9E6F7C0028F271 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18697BC71C9E6F7C0028F271 /* BaseController.m */; };
+		18697BD21CA0336E0028F271 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 18697BD01CA0336E0028F271 /* UICKeyChainStore.m */; };
 		1869C4451C565AC900F02EE7 /* Product+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869C4421C565AC900F02EE7 /* Product+CoreDataProperties.m */; };
 		1869C4461C565AC900F02EE7 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869C4441C565AC900F02EE7 /* Product.m */; };
+		186AAB2E1CA413A9005D633B /* ShoppingCarts.m in Sources */ = {isa = PBXBuildFile; fileRef = 186AAB2D1CA413A9005D633B /* ShoppingCarts.m */; };
+		186AAB311CA415D5005D633B /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186AAB301CA415D5005D633B /* OrderCell.m */; };
+		186AAB331CA415EB005D633B /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186AAB321CA415EB005D633B /* OrderCell.xib */; };
 		186AFB4F1C58EF390099BC6F /* CustomerNavigatorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 186AFB4E1C58EF390099BC6F /* CustomerNavigatorItem.m */; };
 		186AFB511C5900F10099BC6F /* ProductDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186AFB501C5900F10099BC6F /* ProductDescription.xib */; };
 		186AFB541C59012A0099BC6F /* ProductDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 186AFB531C59012A0099BC6F /* ProductDescription.m */; };
@@ -128,11 +135,24 @@
 		180DF7341C54B59100DE4C21 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
 		180DF7371C54BC6500DE4C21 /* NavigatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigatorManager.h; sourceTree = "<group>"; };
 		180DF7381C54BC6500DE4C21 /* NavigatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigatorManager.m; sourceTree = "<group>"; };
+		1817645B1CA2C538008BA391 /* CreateOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderViewController.h; sourceTree = "<group>"; };
+		1817645C1CA2C538008BA391 /* CreateOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderViewController.m; sourceTree = "<group>"; };
+		1817645E1CA2D8F8008BA391 /* CustomerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerModel.h; sourceTree = "<group>"; };
+		1817645F1CA2D8F8008BA391 /* CustomerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerModel.m; sourceTree = "<group>"; };
 		1840A7591C4D2407009767C9 /* ArtisticPhoto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArtisticPhoto.xcdatamodel; sourceTree = "<group>"; };
+		18697BC61C9E6F7C0028F271 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
+		18697BC71C9E6F7C0028F271 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
+		18697BCF1CA0336E0028F271 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		18697BD01CA0336E0028F271 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 		1869C4411C565AC900F02EE7 /* Product+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Product+CoreDataProperties.h"; sourceTree = "<group>"; };
 		1869C4421C565AC900F02EE7 /* Product+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Product+CoreDataProperties.m"; sourceTree = "<group>"; };
 		1869C4431C565AC900F02EE7 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		1869C4441C565AC900F02EE7 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		186AAB2C1CA413A9005D633B /* ShoppingCarts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCarts.h; sourceTree = "<group>"; };
+		186AAB2D1CA413A9005D633B /* ShoppingCarts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarts.m; sourceTree = "<group>"; };
+		186AAB2F1CA415D5005D633B /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		186AAB301CA415D5005D633B /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		186AAB321CA415EB005D633B /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		186AFB4D1C58EF390099BC6F /* CustomerNavigatorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerNavigatorItem.h; sourceTree = "<group>"; };
 		186AFB4E1C58EF390099BC6F /* CustomerNavigatorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerNavigatorItem.m; sourceTree = "<group>"; };
 		186AFB501C5900F10099BC6F /* ProductDescription.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDescription.xib; sourceTree = "<group>"; };
@@ -358,9 +378,29 @@
 			children = (
 				186D4C9D1C57A9F600FF6957 /* PaymentViewController.h */,
 				186D4C9E1C57A9F600FF6957 /* PaymentViewController.m */,
+				1817645B1CA2C538008BA391 /* CreateOrderViewController.h */,
+				1817645C1CA2C538008BA391 /* CreateOrderViewController.m */,
 				186D4C9B1C57A9E100FF6957 /* Payment.storyboard */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		18697BC51C9E6F4F0028F271 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18697BC61C9E6F7C0028F271 /* BaseController.h */,
+				18697BC71C9E6F7C0028F271 /* BaseController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18697BCD1CA0336E0028F271 /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				18697BCF1CA0336E0028F271 /* UICKeyChainStore.h */,
+				18697BD01CA0336E0028F271 /* UICKeyChainStore.m */,
+			);
+			path = UICKeyChainStore;
 			sourceTree = "<group>";
 		};
 		186D4CA01C57BB4300FF6957 /* Controls */ = {
@@ -456,6 +496,7 @@
 				1840A72D1C4D12C0009767C9 /* Payment */,
 				187E9C641C3EA76300DEEA0B /* Dashboard */,
 				18E1D92C1C427AE900CB0AA4 /* Product */,
+				18697BC51C9E6F4F0028F271 /* Common */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -471,6 +512,8 @@
 				18CF31701C5E02AF0094BF7F /* StoreViewController.m */,
 				18CBC4F51C75FC7600EEE301 /* MineViewController.h */,
 				18CBC4F61C75FC7600EEE301 /* MineViewController.m */,
+				186AAB2C1CA413A9005D633B /* ShoppingCarts.h */,
+				186AAB2D1CA413A9005D633B /* ShoppingCarts.m */,
 				187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */,
 			);
 			path = Dashboard;
@@ -519,6 +562,9 @@
 				186BA7951C761F1500D7FA1F /* ImageEdittingCell.h */,
 				186BA7961C761F1500D7FA1F /* ImageEdittingCell.m */,
 				186BA7971C761F1500D7FA1F /* ImageEdittingCell.xib */,
+				186AAB2F1CA415D5005D633B /* OrderCell.h */,
+				186AAB301CA415D5005D633B /* OrderCell.m */,
+				186AAB321CA415EB005D633B /* OrderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,6 +580,8 @@
 				180DF7311C54B39500DE4C21 /* ProductModel.m */,
 				180DF7331C54B59100DE4C21 /* StoreModel.h */,
 				180DF7341C54B59100DE4C21 /* StoreModel.m */,
+				1817645E1CA2D8F8008BA391 /* CustomerModel.h */,
+				1817645F1CA2D8F8008BA391 /* CustomerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +589,7 @@
 		188C9D0D1C422DE000DD1B72 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				18697BCD1CA0336E0028F271 /* UICKeyChainStore */,
 				18DE40B71C96E167000DB3B1 /* DNImagePicker */,
 				18A470461C8AECE200038F40 /* MBProgressHUD */,
 				18A470231C88765C00038F40 /* AFNetworking */,
@@ -798,6 +847,7 @@
 				18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */,
 				18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */,
 				186D4C9C1C57A9E100FF6957 /* Payment.storyboard in Resources */,
+				186AAB331CA415EB005D633B /* OrderCell.xib in Resources */,
 				187E9C561C3EA3C100DEEA0B /* LaunchScreen.storyboard in Resources */,
 				18DE40E61C96E167000DB3B1 /* DNImagePickerController.strings in Resources */,
 				186AFB511C5900F10099BC6F /* ProductDescription.xib in Resources */,
@@ -862,6 +912,7 @@
 				186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */,
 				18A4704B1C8AECE300038F40 /* MBProgressHUD.m in Sources */,
 				188C9D351C422E0B00DD1B72 /* SDWebImageDownloader.m in Sources */,
+				186AAB2E1CA413A9005D633B /* ShoppingCarts.m in Sources */,
 				18CF31661C5DF4800094BF7F /* Store.m in Sources */,
 				188C9D481C423F4E00DD1B72 /* ActionSummaryCell.m in Sources */,
 				186BA7941C761C4600D7FA1F /* ProductManagerViewController.m in Sources */,
@@ -879,6 +930,7 @@
 				18DE40F11C96E167000DB3B1 /* DNBrowserCell.m in Sources */,
 				18A470451C887B0000038F40 /* NSDictionary+DataAccess.m in Sources */,
 				18DE40E71C96E167000DB3B1 /* DNPhotoBrowser.m in Sources */,
+				18697BD21CA0336E0028F271 /* UICKeyChainStore.m in Sources */,
 				1869C4461C565AC900F02EE7 /* Product.m in Sources */,
 				18A470351C88765C00038F40 /* AFURLResponseSerialization.m in Sources */,
 				18B3080D1C799C7D00851C25 /* ImagePickHelper.m in Sources */,
@@ -888,10 +940,12 @@
 				188C9D341C422E0B00DD1B72 /* SDWebImageDecoder.m in Sources */,
 				18DE40E51C96E167000DB3B1 /* DNImagePickerController.m in Sources */,
 				188C9D4D1C42441800DD1B72 /* BaseTableViewCell.m in Sources */,
+				186AAB311CA415D5005D633B /* OrderCell.m in Sources */,
 				18A4703B1C88770F00038F40 /* StoreBLL.m in Sources */,
 				187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */,
 				188C9D421C423E9F00DD1B72 /* DashboardViewController.m in Sources */,
 				188C9D301C422E0B00DD1B72 /* MKAnnotationView+WebCache.m in Sources */,
+				181764601CA2D8F8008BA391 /* CustomerModel.m in Sources */,
 				187DC03C1C45392700D8AE6F /* ProductCell.m in Sources */,
 				188C9D331C422E0B00DD1B72 /* SDWebImageCompat.m in Sources */,
 				18A470321C88765C00038F40 /* AFNetworkReachabilityManager.m in Sources */,
@@ -909,7 +963,9 @@
 				188C9D3D1C422E0B00DD1B72 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18DE40F31C96E167000DB3B1 /* DNSendButton.m in Sources */,
 				18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */,
+				18697BC81C9E6F7C0028F271 /* BaseController.m in Sources */,
 				18A470511C8AF5A200038F40 /* LoadingManager.m in Sources */,
+				1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */,
 				18DE40E31C96E167000DB3B1 /* DNAsset.m in Sources */,
 				18A470541C8AFE3B00038F40 /* FileUploadBLL.m in Sources */,
 				189610A71C43D9CE00F3F037 /* ProductsViewController.m in Sources */,
@@ -1024,7 +1080,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/约拍/Libray/AlipaySDK",
@@ -1034,7 +1091,7 @@
 				INFOPLIST_FILE = "约拍/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.ArtisticPhotos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1043,7 +1100,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/约拍/Libray/AlipaySDK",
@@ -1053,7 +1111,7 @@
 				INFOPLIST_FILE = "约拍/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.ArtisticPhotos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

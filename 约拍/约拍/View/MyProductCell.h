@@ -8,6 +8,21 @@
 
 #import "BaseTableViewCell.h"
 
+//@protocol BuyProductDelegate <NSObject>
+//
+//@optional
+//- (void)buyProduct:(id)action;
+//
+//@end
+@protocol PreviewDelegate <NSObject>
+
+@optional
+- (void)previewProduct:(id)action;
+
+@end
+
 @interface MyProductCell : BaseTableViewCell
+
+@property (nonatomic, weak) id<PreviewDelegate> delegate;
 
 @end
