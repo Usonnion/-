@@ -225,7 +225,7 @@
     self.productDescriptionTextVIew.text = self.product.productDescription;
     self.productPriceTexrField.text = [NSString stringWithFormat:@"%@", self.product.price ? @(self.product.price) : @""];
     self.productTypeLabel.text = self.product.productType;
-    self.images = [self.product.images ? self.product.images : @[]  arrayByAddingObject:[UIImage imageNamed:@"DefaultStore"]];
+    self.images = [self.product.images ? self.product.images : @[]  arrayByAddingObject:[UIImage imageNamed:@"Add"]];
     [self.collectionView reloadData];
 }
 

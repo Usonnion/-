@@ -8,8 +8,9 @@
 
 #import "ShoppingCarts.h"
 #import "OrderCell.h"
+#import "OrderBLL.h"
 
-@interface ShoppingCarts()
+@interface ShoppingCarts() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noOrdersLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     
     self.tabBarController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, screenBounds.size.width, 0, 0);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
 }
@@ -33,6 +35,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self refreshData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -65,6 +68,25 @@
 //    action.storeId = store.storeId;
 //    action.navigatorType = NavigatorTypeByStore;
 //    [NavigatorManager navigatorBy:action viewController:self];
+}
+
+- (void)refreshData
+{
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
+    __weak typeof(self) weakSelf = self;
+    [[[OrderBLL alloc] init] getAllOrdersSuccess:^(NSArray *result) {
+        NSMutableArray *array = [NSMutableArray new];
+        for (NSDictionary *orderDic in result) {
+            OrderModel *order = [OrderModel fromDictionary:orderDic];
+            [array addObject:order];
+        }
+        weakSelf.orders = array;
+        [weakSelf.tableView reloadData];
+        self.noOrdersLabel.hidden = array.count;
+        [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+    } failure:^{
+        [[LoadingManager sharedManager] hideLoadingWithmessage:@"获取订单失败，请重试。" success:NO];
+    }];
 }
 
 @end

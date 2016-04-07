@@ -10,8 +10,12 @@
 
 @interface CustomerModel : NSObject
 
+@property (nonatomic, strong) NSString *customerId;
 @property (nonatomic, strong) NSString *customerName;
 @property (nonatomic, strong) NSString *customerPhone;
-@property (nonatomic, strong) NSDate *orderDate;
+@property (nonatomic, strong) NSString *customerAddress;
+
++ (CustomerModel *)fromDictionary:(NSDictionary *)dictionary;
+- (NSDictionary *)toDictionary;
 
 @end

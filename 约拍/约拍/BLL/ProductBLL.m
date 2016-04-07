@@ -11,7 +11,7 @@
 
 @implementation ProductBLL
 
-- (void)getAllProductsSuccess:(void (^)())success failue:(void (^)())failue
+- (void)getAllProductsSuccess:(void (^)())success failure:(void (^)())failure
 {
     NSString *urlString = [NSString stringWithFormat: @"/api/products?token=%@", [[HTTPSessionManager sharedManager] token]];
     [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -22,7 +22,7 @@
         [[DiskCacheManager sharedManager] archiveProductInformation:products];
         success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failue();
+        failure();
     }];
 }
 

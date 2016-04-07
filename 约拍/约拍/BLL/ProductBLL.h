@@ -10,7 +10,7 @@
 
 @interface ProductBLL : NSString
 
-- (void)getAllProductsSuccess:(void (^)())success failue:(void (^)())failue;
+- (void)getAllProductsSuccess:(void (^)())success failure:(void (^)())failure;
 - (void)updateProduct:(ProductModel *)product success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation StoreBLL
 
-- (void)getAllStoresSuccess:(void (^)())success failue:(void (^)())failue
+- (void)getAllStoresSuccess:(void (^)())success failure:(void (^)())failure
 {
     NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
     [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -22,7 +22,7 @@
         [[DiskCacheManager sharedManager] archiveStores:stores];
         success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failue();
+        failure();
     }];
 }
 

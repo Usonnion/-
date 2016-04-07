@@ -7,6 +7,7 @@
 //
 
 #import "HTTPSessionManager.h"
+#import "DeviceBLL.h"
 
 @implementation HTTPSessionManager
 
@@ -22,8 +23,8 @@
         sharedManager.baseUrlStr = [root stringForKey:@"ServiceUrl"];
         
         AFHTTPRequestSerializer *requestSerializer = [[AFJSONRequestSerializer alloc] init];
-//        [requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [requestSerializer setValue:[UICKeyChainStore stringForKey:@"DeviceIdentity"] forHTTPHeaderField:@"DeviceIdentity"];
         requestSerializer.timeoutInterval = 20000;
         sharedManager.requestSerializer = requestSerializer;
         

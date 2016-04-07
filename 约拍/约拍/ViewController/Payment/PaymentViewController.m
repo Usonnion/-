@@ -15,6 +15,7 @@
 #import "SDImageCache.h"
 #import "PhotosPageViewController.h"
 #import "UIImageView+WebCache.h"
+#import "CreateOrderViewController.h"
 
 @interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate, PhotosPageViewControllerDelegate>
 
@@ -66,6 +67,16 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    UIViewController *controller = segue.destinationViewController;
+    if ([controller isKindOfClass:[CreateOrderViewController class]]) {
+        ((CreateOrderViewController *)controller).product = self.product;
+    }
 }
 
 #pragma mark - CustomerNavigatorItemDelegate

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DeviceBLL.h"
+#import "HTTPSessionManager.h"
 
 @interface AppDelegate ()
 
@@ -33,7 +35,13 @@
         CFRelease(uuid_ref);
         NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
         CFRelease(uuid_string_ref);
-        [UICKeyChainStore setString:uuid forKey:@"DeviceIdentity"];
+        
+        [[[DeviceBLL alloc] init] registerDevice:uuid Success:^{
+            [UICKeyChainStore setString:uuid forKey:@"DeviceIdentity"];
+            [[HTTPSessionManager sharedManager].requestSerializer setValue:uuid forHTTPHeaderField:@"DeviceIdentity"];
+        } failure:^{
+            
+        }];
     }
     
     return YES;

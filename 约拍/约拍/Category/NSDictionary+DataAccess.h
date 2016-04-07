@@ -12,5 +12,6 @@
 
 - (NSString *)stringForKey:(NSString *)key;
 - (double)doubleForKey:(NSString *)key;
+- (NSInteger)integerForKey:(NSString *)key;
 
 @end

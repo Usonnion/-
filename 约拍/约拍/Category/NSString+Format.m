@@ -28,4 +28,11 @@
     return [dateFormatter stringFromDate:date];
 }
 
++ (NSString *)jsonByDate:(NSDate *)date
+{
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
+    return [outputFormatter stringFromDate:date];
+}
+
 @end

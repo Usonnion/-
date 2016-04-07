@@ -47,19 +47,21 @@
                     <color key="textColor" red="0.25098039220000001" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhD-bc-hdh">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhD-bc-hdh">
                     <rect key="frame" x="346" y="15" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Dch-mM-IYv"/>
                         <constraint firstAttribute="height" constant="50" id="eJC-fT-EWy"/>
                     </constraints>
+                    <state key="normal" image="Calling"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-9K-jBl">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-9K-jBl">
                     <rect key="frame" x="346" y="71" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="e28-qf-cVm"/>
                         <constraint firstAttribute="height" constant="50" id="x1R-3g-hzl"/>
                     </constraints>
+                    <state key="normal" image="Chat"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,4 +92,8 @@
             <point key="canvasLocation" x="325" y="213"/>
         </view>
     </objects>
+    <resources>
+        <image name="Calling" width="25" height="25"/>
+        <image name="Chat" width="25" height="25"/>
+    </resources>
 </document>

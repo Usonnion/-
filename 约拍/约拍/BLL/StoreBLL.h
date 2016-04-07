@@ -10,7 +10,7 @@
 
 @interface StoreBLL : NSObject
 
-- (void)getAllStoresSuccess:(void (^)())success failue:(void (^)())failue;
+- (void)getAllStoresSuccess:(void (^)())success failure:(void (^)())failure;
 - (void)getStoreByInvivationId:(NSString *)invivationId success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
 - (void)updateStore:(StoreModel *)store success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
 

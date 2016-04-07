@@ -13,5 +13,6 @@
 + (BOOL)isNilOrEmpty:(NSString *)str;
 + (NSString *)getEmptyIfNull:(NSString *)str;
 + (NSString *)stringByDate:(NSDate *)date;
++ (NSString *)jsonByDate:(NSDate *)date;
 
 @end

@@ -97,7 +97,7 @@
         <!--购物车-->
         <scene sceneID="gpV-vB-g39">
             <objects>
-                <viewController id="xPD-io-ont" sceneMemberID="viewController">
+                <viewController id="xPD-io-ont" customClass="ShoppingCarts" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fPb-FB-DLI"/>
                         <viewControllerLayoutGuide type="bottom" id="pgm-5l-seD"/>
@@ -136,6 +136,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="购物车" id="ZHm-B2-RJg"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="noOrdersLabel" destination="m2N-MI-eS8" id="UA5-9F-ao6"/>
+                        <outlet property="tableView" destination="U9o-uY-RnE" id="fOk-Vn-z6f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-Zs-Ye2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

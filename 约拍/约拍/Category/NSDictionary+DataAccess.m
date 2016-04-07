@@ -25,4 +25,9 @@
     return value.doubleValue;
 }
 
+- (NSInteger)integerForKey:(NSString *)key
+{
+    return [[self objectForKey:key] integerValue];
+}
+
 @end

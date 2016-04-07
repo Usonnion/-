@@ -137,7 +137,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [[[StoreBLL alloc] init] getAllStoresSuccess:^{
         weakSelf.loadingStoreDone = YES;
         [weakSelf checkDataLoading];
-    } failue:^{
+    } failure:^{
          weakSelf.loadingStoreDone = YES;
         [weakSelf checkDataLoading];
     }];
@@ -145,7 +145,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [[[ProductBLL alloc] init] getAllProductsSuccess:^{
         weakSelf.loadingPorudctDone = YES;
         [weakSelf checkDataLoading];
-    } failue:^{
+    } failure:^{
         weakSelf.loadingPorudctDone = YES;
         [weakSelf checkDataLoading];
     }];

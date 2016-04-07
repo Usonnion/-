@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomerModel.h"
 
 @interface CreateOrderViewController : BaseController
 
