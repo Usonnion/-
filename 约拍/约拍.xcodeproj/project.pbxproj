@@ -94,6 +94,7 @@
 		18B6292D1CA6956E006A92E4 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B6292C1CA6956E006A92E4 /* CustomerCell.m */; };
 		18B6292F1CA6957F006A92E4 /* CustomerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B6292E1CA6957F006A92E4 /* CustomerCell.xib */; };
 		18B7BCD81C9983C40083E624 /* ProductBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BCD71C9983C40083E624 /* ProductBLL.m */; };
+		18C6A4B61CBA3FDC0054853B /* StoreOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A4B51CBA3FDC0054853B /* StoreOrderViewController.m */; };
 		18CBC4F71C75FC7600EEE301 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4F61C75FC7600EEE301 /* MineViewController.m */; };
 		18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4F91C760CFD00EEE301 /* MyProductsViewController.m */; };
 		18CBC4FD1C760FC300EEE301 /* MyProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC4FC1C760FC300EEE301 /* MyProductCell.m */; };
@@ -103,6 +104,7 @@
 		18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF31671C5E00040094BF7F /* StoreCell.xib */; };
 		18CF316E1C5E005F0094BF7F /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF316D1C5E005F0094BF7F /* StoreCell.m */; };
 		18CF31711C5E02AF0094BF7F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF31701C5E02AF0094BF7F /* StoreViewController.m */; };
+		18D477BE1CB8F5EE00AB5A52 /* NSArray+DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D477BD1CB8F5EE00AB5A52 /* NSArray+DataAccess.m */; };
 		18DE40E21C96E167000DB3B1 /* DNAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE40B91C96E167000DB3B1 /* DNAlbumTableViewController.m */; };
 		18DE40E31C96E167000DB3B1 /* DNAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE40BB1C96E167000DB3B1 /* DNAsset.m */; };
 		18DE40E41C96E167000DB3B1 /* DNImageFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE40BD1C96E167000DB3B1 /* DNImageFlowViewController.m */; };
@@ -297,6 +299,8 @@
 		18B6292E1CA6957F006A92E4 /* CustomerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerCell.xib; sourceTree = "<group>"; };
 		18B7BCD61C9983C40083E624 /* ProductBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductBLL.h; sourceTree = "<group>"; };
 		18B7BCD71C9983C40083E624 /* ProductBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductBLL.m; sourceTree = "<group>"; };
+		18C6A4B41CBA3FDC0054853B /* StoreOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreOrderViewController.h; sourceTree = "<group>"; };
+		18C6A4B51CBA3FDC0054853B /* StoreOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreOrderViewController.m; sourceTree = "<group>"; };
 		18CBC4F51C75FC7600EEE301 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		18CBC4F61C75FC7600EEE301 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		18CBC4F81C760CFD00EEE301 /* MyProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductsViewController.h; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 		18CF316D1C5E005F0094BF7F /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
 		18CF316F1C5E02AF0094BF7F /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		18CF31701C5E02AF0094BF7F /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		18D477BC1CB8F5EE00AB5A52 /* NSArray+DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DataAccess.h"; sourceTree = "<group>"; };
+		18D477BD1CB8F5EE00AB5A52 /* NSArray+DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DataAccess.m"; sourceTree = "<group>"; };
 		18DE40B81C96E167000DB3B1 /* DNAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAlbumTableViewController.h; sourceTree = "<group>"; };
 		18DE40B91C96E167000DB3B1 /* DNAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNAlbumTableViewController.m; sourceTree = "<group>"; };
 		18DE40BA1C96E167000DB3B1 /* DNAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAsset.h; sourceTree = "<group>"; };
@@ -556,6 +562,8 @@
 				18A4704D1C8AF13F00038F40 /* NSString+Format.m */,
 				18FD7C231C91B8A0008B85A6 /* MBProgressHUD+NJ.h */,
 				18FD7C241C91B8A0008B85A6 /* MBProgressHUD+NJ.m */,
+				18D477BC1CB8F5EE00AB5A52 /* NSArray+DataAccess.h */,
+				18D477BD1CB8F5EE00AB5A52 /* NSArray+DataAccess.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -736,6 +744,8 @@
 				18CBC4F91C760CFD00EEE301 /* MyProductsViewController.m */,
 				186BA7921C761C4600D7FA1F /* ProductManagerViewController.h */,
 				186BA7931C761C4600D7FA1F /* ProductManagerViewController.m */,
+				18C6A4B41CBA3FDC0054853B /* StoreOrderViewController.h */,
+				18C6A4B51CBA3FDC0054853B /* StoreOrderViewController.m */,
 				18B36B881C709EA200BF5E38 /* Store.storyboard */,
 			);
 			path = Store;
@@ -947,6 +957,7 @@
 				186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */,
 				18A4704B1C8AECE300038F40 /* MBProgressHUD.m in Sources */,
 				18B6292A1CA6949C006A92E4 /* SelectCustomerViewController.m in Sources */,
+				18D477BE1CB8F5EE00AB5A52 /* NSArray+DataAccess.m in Sources */,
 				188C9D351C422E0B00DD1B72 /* SDWebImageDownloader.m in Sources */,
 				18B6292D1CA6956E006A92E4 /* CustomerCell.m in Sources */,
 				186AAB2E1CA413A9005D633B /* ShoppingCarts.m in Sources */,
@@ -1002,6 +1013,7 @@
 				18A470361C88765C00038F40 /* AFURLSessionManager.m in Sources */,
 				18895D311C47CC9F00586CD9 /* PhotoCell.m in Sources */,
 				18CF31711C5E02AF0094BF7F /* StoreViewController.m in Sources */,
+				18C6A4B61CBA3FDC0054853B /* StoreOrderViewController.m in Sources */,
 				188C9D3D1C422E0B00DD1B72 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18DE40F31C96E167000DB3B1 /* DNSendButton.m in Sources */,
 				18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */,

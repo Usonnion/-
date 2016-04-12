@@ -14,5 +14,7 @@
 + (NSString *)getEmptyIfNull:(NSString *)str;
 + (NSString *)stringByDate:(NSDate *)date;
 + (NSString *)jsonByDate:(NSDate *)date;
+- (NSString *)orderStatus;
+- (NSDate *)toDate;
 
 @end

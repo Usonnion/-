@@ -62,6 +62,7 @@
         action.storeId = store.storeId;
         [[DiskCacheManager sharedManager] archiveStores:@[store]];
         [NavigatorManager navigatorBy:action viewController:self];
+        [DiskCacheManager sharedManager].invitationCode = invitationId;
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"无效的邀请码，请联系管理员" success:NO];
     }];

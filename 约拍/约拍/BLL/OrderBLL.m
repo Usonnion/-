@@ -31,4 +31,25 @@
     }];
 }
 
+- (void)getAllStoreOrders:(NSString *)invitationCode Success:(void (^)(NSArray *result))success failure:(void (^)())failure
+{
+    NSString *urlString = [NSString stringWithFormat:@"/api/StoreOrder?invitationCode=%@", invitationCode];
+    [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure();
+    }];
+}
+
+- (void)updateOrderStatus:(OrderModel *)order Success:(void (^)())success failure:(void (^)())failure
+{
+//    NSLog(order.orderId);
+    NSString *urlString = @"/api/StoreOrder";
+    [[HTTPSessionManager sharedManager] PUT:urlString parameters:[order toDictionary] success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure();
+    }];
+}
+
 @end

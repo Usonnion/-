@@ -78,6 +78,7 @@
     __weak typeof(self) weakSelf = self;
     [self.customerBLLInstance getAllCustomers:^(NSArray *customers) {
         NSMutableArray *customerArrary = [NSMutableArray new];
+        weakSelf.datePicker.hidden = YES;
         if (!customers.count) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有设置预定人信息， 请点击这里设置！" preferredStyle:UIAlertControllerStyleAlert];
             [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -127,6 +128,7 @@
 {
     self.scrollView.hidden = NO;
     self.datePicker.minimumDate = [NSDate new];
+    self.datePicker.hidden = NO;
     
     CustomerModel *selectedCustomer = self.customers[self.selectedIndex];
     self.customerNameLabel.text = selectedCustomer.customerName;
@@ -141,6 +143,7 @@
     [array insertObject:customer atIndex:0];
     self.customers = array;
     self.selectedIndex = 0;
+    [self setContentUI];
 }
 
 @end

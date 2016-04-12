@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ConfirmOrderDelegate <NSObject>
+
+- (void)confirmOrderWithIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface OrderCell : UITableViewCell
+
+@property (nonatomic, assign) BOOL isCustomerOrder;
+
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, weak) id<ConfirmOrderDelegate> delegate;
 
 - (void)setProductItem:(ProductModel *)product;
 - (void)setOrderStatus:(NSString *)status;
+- (void)setCustomerItem:(OrderModel *)order;
 
 @end

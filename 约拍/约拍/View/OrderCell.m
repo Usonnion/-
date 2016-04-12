@@ -15,6 +15,12 @@
 @property (nonatomic, weak) IBOutlet UILabel *productPriceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *orderStatusLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *productImageView;
+@property (nonatomic, weak) IBOutlet UIView *customerView;
+@property (nonatomic, weak) IBOutlet UILabel *customerNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *customerPhoneLabel;
+@property (nonatomic, weak) IBOutlet UILabel *expectedTimeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *customerAddressLabel;
+@property (nonatomic, weak) IBOutlet UIButton *confirmButton;
 
 @end
 
@@ -32,13 +38,35 @@
 
 - (void)setOrderStatus:(NSString *)status
 {
-    self.orderStatusLabel.text = status;
+    self.orderStatusLabel.text = [status orderStatus];
+    self.confirmButton.hidden = ![status isEqualToString:@"NOTRECEIVED"];
+}
+
+- (void)setIsCustomerOrder:(BOOL)isCustomerOrder
+{
+    _isCustomerOrder = isCustomerOrder;
+    self.customerView.hidden = isCustomerOrder;
+}
+
+- (void)setCustomerItem:(OrderModel *)order
+{
+    self.customerNameLabel.text = order.customer.customerName;
+    self.customerPhoneLabel.text = order.customer.customerPhone;
+    self.customerAddressLabel.text = order.customer.customerAddress;
+    self.expectedTimeLabel.text = [NSString stringByDate:order.expectedTime];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)confirm:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderWithIndexPath:)]) {
+        [self.delegate confirmOrderWithIndexPath:self.indexPath];
+    }
 }
 
 @end

@@ -12,6 +12,8 @@
 
 @interface DiskCacheManager : NSObject
 
+@property (nonatomic, strong) NSString *invitationCode;
+
 + (DiskCacheManager *)sharedManager;
 
 - (void)archiveProductInformation:(NSArray *)array;

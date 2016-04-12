@@ -1,16 +1,16 @@
 //
-//  ShoppingCarts.m
+//  StoreOrderViewController.m
 //  约拍
 //
-//  Created by apple on 16/3/24.
+//  Created by apple on 16/4/10.
 //  Copyright © 2016年 ArtisticPhoto. All rights reserved.
 //
 
-#import "ShoppingCarts.h"
+#import "StoreOrderViewController.h"
 #import "OrderCell.h"
 #import "OrderBLL.h"
 
-@interface ShoppingCarts() <UITableViewDataSource, UITableViewDelegate>
+@interface StoreOrderViewController () <ConfirmOrderDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noOrdersLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -19,13 +19,12 @@
 
 @end
 
-@implementation ShoppingCarts
+@implementation StoreOrderViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.tabBarController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, screenBounds.size.width, 0, 0);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
@@ -34,7 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    
     [self refreshData];
 }
 
@@ -52,7 +51,10 @@
     OrderCell *orderCell = [tableView dequeueReusableCellWithIdentifier:@"OrderCell"];
     [orderCell setProductItem:((OrderModel *)cellData).product];
     [orderCell setOrderStatus:((OrderModel *)cellData).status];
-    orderCell.isCustomerOrder = YES;
+    [orderCell setCustomerItem:cellData];
+    orderCell.isCustomerOrder = NO;
+    orderCell.indexPath = indexPath;
+    orderCell.delegate = self;
     return orderCell;
 }
 
@@ -60,7 +62,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120.0;
+    return 250.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,11 +80,13 @@
 - (void)refreshData
 {
     [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
-    __block typeof(self) weakSelf = self;
-    [[[OrderBLL alloc] init] getAllOrdersSuccess:^(NSArray *result) {
+    __weak typeof(self) weakSelf = self;
+    
+    [[[OrderBLL alloc] init] getAllStoreOrders:[DiskCacheManager sharedManager].invitationCode Success:^(NSArray *result) {
         NSMutableArray *array = [NSMutableArray new];
         for (NSDictionary *orderDic in result) {
-            OrderModel *order = [OrderModel fromDictionary:orderDic];
+            OrderModel *order = [OrderModel fromDictionary:orderDic[@"Order"]];
+            order.customer = [CustomerModel fromDictionary:orderDic[@"Customer"]];
             [array addObject:order];
         }
         weakSelf.orders = array;
@@ -92,6 +96,37 @@
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"获取订单失败，请重试。" success:NO];
     }];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+#pragma mark - ConfirmOrderDelegate
+
+- (void)confirmOrderWithIndexPath:(NSIndexPath *)indexPath
+{
+    id cellData = [self.orders objectByIndex:indexPath.row];
+    OrderModel *order = (OrderModel *)cellData;
+    order.status = @"RECEIVED";
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
+    __weak typeof(self) weakSelf = self;
+    if (cellData) {
+        [[[OrderBLL alloc] init] updateOrderStatus:order Success:^{
+//            NSMutableArray *array = [weakSelf.orders mutableCopy];
+//            [array replaceObjectAtIndex:indexPath.row withObject:order];
+//            weakSelf.orders = array;
+            [weakSelf.tableView reloadData];
+            [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        } failure:^{
+            [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        }];
+    }
 }
 
 @end

@@ -7,23 +7,25 @@
 //
 
 #import "OrderModel.h"
+#import "DiskCacheManager.h"
 
 @implementation OrderModel
 
 + (OrderModel *)fromDictionary:(NSDictionary *)dictionary
 {
     OrderModel *order = [[OrderModel alloc] init];
-    order.orderId = [dictionary integerForKey:@"OrderId"];
+    order.orderId = [dictionary stringForKey:@"OrderId"];
     order.productId = [dictionary stringForKey:@"ProductId"];
     order.customerId = [dictionary stringForKey:@"CustomerId"];
     order.status = [dictionary stringForKey:@"Status"];
-    order.expectedTime = [dictionary valueForKey:@"ExpectedTime"];
+    order.expectedTime = [[dictionary stringForKey:@"ExpectedTime"] toDate];
+    order.product = [[DiskCacheManager sharedManager] getProductByProductId:order.productId];
     return order;
 }
 
 - (NSDictionary *)toDictionary
 {
-    return @{@"OrderId" : self.orderId ? @(self.orderId) : @"",
+    return @{@"OrderId" : [NSString getEmptyIfNull:self.orderId],
              @"ProductId" : [NSString getEmptyIfNull:self.productId],
              @"CustomerId" : [NSString getEmptyIfNull:self.customerId],
              @"Status" : [NSString getEmptyIfNull:self.status],

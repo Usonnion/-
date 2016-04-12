@@ -18,5 +18,8 @@
 #import "NSString+Format.h"
 #import "BaseController.h"
 #import "UICKeyChainStore.h"
+#import "NSArray+DataAccess.h"
+#import "OrderModel.h"
+#import "CustomerModel.h"
 
 #endif /* PrefixHeader_pch */

@@ -35,4 +35,23 @@
     return [outputFormatter stringFromDate:date];
 }
 
+- (NSString *)orderStatus
+{
+    if ([self isEqualToString:@"NOTRECEIVED"]) {
+        return @"店家还未接单";
+    } else if ([self isEqualToString:@"RECEIVED"]) {
+        return @"店家已接单";
+    }
+    return @"";
+}
+
+- (NSDate *)toDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd'T'HH:mm:ss"];
+    NSDate *destDate= [dateFormatter dateFromString:self];
+    
+    return destDate;
+}
+
 @end

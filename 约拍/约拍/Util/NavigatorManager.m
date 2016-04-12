@@ -28,8 +28,8 @@
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
     } else if (action.navigatorType == NavigatorTypeToStore) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Store" bundle:nil];
-        StoreManagerViewController *navigatorToViewController = [storyBoard instantiateViewControllerWithIdentifier:@"StoreManagerViewController"];
-        navigatorToViewController.action = action;
+        UIViewController *navigatorToViewController = [storyBoard instantiateInitialViewController];
+//        navigatorToViewController.action = action;
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
     }
 }
