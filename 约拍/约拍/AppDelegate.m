@@ -12,6 +12,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) DeviceBLL *deviceBLLInstance;
+
 @end
 
 @implementation AppDelegate
@@ -28,6 +30,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UICKeyChainStore *keyChainStore = [UICKeyChainStore keyChainStore];
+    [keyChainStore removeItemForKey:@"DeviceIdentity"];
     NSString *deviceIdentity = [keyChainStore stringForKey:@"DeviceIdentity"];
     if ([NSString isNilOrEmpty:deviceIdentity]) {
         CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
@@ -36,7 +39,7 @@
         NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
         CFRelease(uuid_string_ref);
         
-        [[[DeviceBLL alloc] init] registerDevice:uuid Success:^{
+        [self.deviceBLLInstance registerDevice:uuid Success:^{
             [UICKeyChainStore setString:uuid forKey:@"DeviceIdentity"];
             [[HTTPSessionManager sharedManager].requestSerializer setValue:uuid forHTTPHeaderField:@"DeviceIdentity"];
         } failure:^{
@@ -44,7 +47,46 @@
         }];
     }
     
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
+                                                                         settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
+                                                                         categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token = [[[[deviceToken description]
+                       stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                       stringByReplacingOccurrencesOfString:@">" withString:@""]
+                       stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:token forKey:@"DeviceToken"];
+    [userDefaults synchronize];
+    [self.deviceBLLInstance registerRemoteDevice:token];
+}
+
+- (DeviceBLL *)deviceBLLInstance
+{
+    if (!_deviceBLLInstance) {
+        _deviceBLLInstance = [[DeviceBLL alloc] init];
+    }
+    return _deviceBLLInstance;
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

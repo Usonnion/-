@@ -26,6 +26,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorInset = UIEdgeInsetsMake(0, screenBounds.size.width, 0, 0);
+    self.title = @"订单信息";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
 }
@@ -33,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self refreshData];
 }
 

@@ -67,11 +67,6 @@
     [ImagePickHelper imagePickup:self allowsEditing:YES singleSelected:YES];
 }
 
-- (IBAction)cancelEdit:(id)sender
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
@@ -117,8 +112,9 @@
     [self setStoreImage];
     
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(BeginEditting)];
-    self.navigationItem.leftBarButtonItem = editBarButtonItem;
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = editBarButtonItem;
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
 }
 
 - (void)completeEditting

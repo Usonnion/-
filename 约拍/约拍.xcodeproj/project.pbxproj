@@ -10,6 +10,7 @@
 		180DF7321C54B39500DE4C21 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7311C54B39500DE4C21 /* ProductModel.m */; };
 		180DF7351C54B59100DE4C21 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7341C54B59100DE4C21 /* StoreModel.m */; };
 		180DF7391C54BC6500DE4C21 /* NavigatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DF7381C54BC6500DE4C21 /* NavigatorManager.m */; };
+		180F18011CBD3E71002F8319 /* StoreDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F18001CBD3E71002F8319 /* StoreDashboardViewController.m */; };
 		1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645C1CA2C538008BA391 /* CreateOrderViewController.m */; };
 		181764601CA2D8F8008BA391 /* CustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645F1CA2D8F8008BA391 /* CustomerModel.m */; };
 		1840A75A1C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1840A7581C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 		186D4C9C1C57A9E100FF6957 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186D4C9B1C57A9E100FF6957 /* Payment.storyboard */; };
 		186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D4C9E1C57A9F600FF6957 /* PaymentViewController.m */; };
 		186D4CA41C57BB9900FF6957 /* CustomerNavigatorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186D4CA31C57BB9900FF6957 /* CustomerNavigatorItem.xib */; };
+		186F5C151CBFE073003983DC /* BadgeVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 186F5C141CBFE073003983DC /* BadgeVIew.m */; };
 		187DC03C1C45392700D8AE6F /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187DC03B1C45392700D8AE6F /* ProductCell.m */; };
 		187E9C451C3EA3C100DEEA0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C441C3EA3C100DEEA0B /* main.m */; };
 		187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C471C3EA3C100DEEA0B /* AppDelegate.m */; };
@@ -144,6 +146,8 @@
 		180DF7341C54B59100DE4C21 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
 		180DF7371C54BC6500DE4C21 /* NavigatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigatorManager.h; sourceTree = "<group>"; };
 		180DF7381C54BC6500DE4C21 /* NavigatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigatorManager.m; sourceTree = "<group>"; };
+		180F17FF1CBD3E71002F8319 /* StoreDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDashboardViewController.h; sourceTree = "<group>"; };
+		180F18001CBD3E71002F8319 /* StoreDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDashboardViewController.m; sourceTree = "<group>"; };
 		1817645B1CA2C538008BA391 /* CreateOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderViewController.h; sourceTree = "<group>"; };
 		1817645C1CA2C538008BA391 /* CreateOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderViewController.m; sourceTree = "<group>"; };
 		1817645E1CA2D8F8008BA391 /* CustomerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerModel.h; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		186D4C9D1C57A9F600FF6957 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		186D4C9E1C57A9F600FF6957 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		186D4CA31C57BB9900FF6957 /* CustomerNavigatorItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerNavigatorItem.xib; sourceTree = "<group>"; };
+		186F5C131CBFE073003983DC /* BadgeVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeVIew.h; sourceTree = "<group>"; };
+		186F5C141CBFE073003983DC /* BadgeVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeVIew.m; sourceTree = "<group>"; };
 		187DC03A1C45392700D8AE6F /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		187DC03B1C45392700D8AE6F /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		187DC03E1C4549B200D8AE6F /* ConstFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstFile.h; sourceTree = "<group>"; };
@@ -600,6 +606,8 @@
 				18B6292B1CA6956E006A92E4 /* CustomerCell.h */,
 				18B6292C1CA6956E006A92E4 /* CustomerCell.m */,
 				18B6292E1CA6957F006A92E4 /* CustomerCell.xib */,
+				186F5C131CBFE073003983DC /* BadgeVIew.h */,
+				186F5C141CBFE073003983DC /* BadgeVIew.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -746,6 +754,8 @@
 				186BA7931C761C4600D7FA1F /* ProductManagerViewController.m */,
 				18C6A4B41CBA3FDC0054853B /* StoreOrderViewController.h */,
 				18C6A4B51CBA3FDC0054853B /* StoreOrderViewController.m */,
+				180F17FF1CBD3E71002F8319 /* StoreDashboardViewController.h */,
+				180F18001CBD3E71002F8319 /* StoreDashboardViewController.m */,
 				18B36B881C709EA200BF5E38 /* Store.storyboard */,
 			);
 			path = Store;
@@ -989,6 +999,7 @@
 				18F505921CA950DB00B808FB /* CreateCustomerViewController.m in Sources */,
 				186AFB4F1C58EF390099BC6F /* CustomerNavigatorItem.m in Sources */,
 				188C9D341C422E0B00DD1B72 /* SDWebImageDecoder.m in Sources */,
+				180F18011CBD3E71002F8319 /* StoreDashboardViewController.m in Sources */,
 				18DE40E51C96E167000DB3B1 /* DNImagePickerController.m in Sources */,
 				188C9D4D1C42441800DD1B72 /* BaseTableViewCell.m in Sources */,
 				186AAB311CA415D5005D633B /* OrderCell.m in Sources */,
@@ -1005,6 +1016,7 @@
 				180DF7351C54B59100DE4C21 /* StoreModel.m in Sources */,
 				180DF7321C54B39500DE4C21 /* ProductModel.m in Sources */,
 				187E9C451C3EA3C100DEEA0B /* main.m in Sources */,
+				186F5C151CBFE073003983DC /* BadgeVIew.m in Sources */,
 				18A470311C88765C00038F40 /* AFHTTPSessionManager.m in Sources */,
 				188C9D3B1C422E0B00DD1B72 /* UIImage+MultiFormat.m in Sources */,
 				18F5058C1CA7BE2900B808FB /* DeviceBLL.m in Sources */,

@@ -12,6 +12,7 @@
 @interface ImageEdittingCell()
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -48,6 +49,19 @@
 - (void)setImageUrl:(NSString *)imagrUrl
 {
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:imagrUrl]];
+}
+
+- (void)setShowDelete:(BOOL)showDelete
+{
+    _showDelete = showDelete;
+    self.deleteButton.hidden = !showDelete;
+}
+
+- (IBAction)delete:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(deleteImageWithPath:)]) {
+        [self.delegate deleteImageWithPath:_indexPath.row];
+    }
 }
 
 @end

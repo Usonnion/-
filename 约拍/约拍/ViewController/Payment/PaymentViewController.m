@@ -60,7 +60,8 @@
     storeDescription.frame = CGRectMake(0, screenBounds.size.width + productDescriptionHeight, screenBounds.size.width, storeDescriptionHeight);
     [self.scrollView addSubview:storeDescription];
     
-    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + screenBounds.size.height)];
+    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight)];
+    NSLog(@" %@", @(screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight));
 }
 
 - (void)viewWillAppear:(BOOL)animated

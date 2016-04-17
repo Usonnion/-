@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGX-v7-YZY">
-                                <rect key="frame" x="0.0" y="-20" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="-20" width="414" height="716"/>
                                 <connections>
                                     <outlet property="delegate" destination="MKd-uj-ENV" id="HjL-aL-KeJ"/>
                                 </connections>
@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="LGX-v7-YZY" secondAttribute="trailing" id="2FN-7x-MTc"/>
                             <constraint firstAttribute="trailing" secondItem="nTw-CO-2Wz" secondAttribute="trailing" id="9rY-Gm-k8z"/>
                             <constraint firstItem="LGX-v7-YZY" firstAttribute="leading" secondItem="ztV-ae-f2I" secondAttribute="leading" id="Cb0-gg-i51"/>
-                            <constraint firstItem="hS8-85-MDh" firstAttribute="top" secondItem="LGX-v7-YZY" secondAttribute="bottom" id="Qio-N5-qmr"/>
+                            <constraint firstItem="hS8-85-MDh" firstAttribute="top" secondItem="LGX-v7-YZY" secondAttribute="bottom" constant="40" id="Qio-N5-qmr"/>
                             <constraint firstItem="LGX-v7-YZY" firstAttribute="top" secondItem="ztV-ae-f2I" secondAttribute="top" constant="-20" id="YAh-hE-Twt"/>
                             <constraint firstItem="hS8-85-MDh" firstAttribute="top" secondItem="nTw-CO-2Wz" secondAttribute="bottom" id="fKW-J4-Rir"/>
                             <constraint firstItem="nTw-CO-2Wz" firstAttribute="leading" secondItem="ztV-ae-f2I" secondAttribute="leading" id="wPM-h2-gAe"/>

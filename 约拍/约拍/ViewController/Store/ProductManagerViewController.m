@@ -17,7 +17,7 @@
 #import "HTTPSessionManager.h"
 #import "ProductBLL.h"
 
-@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate, UITextFieldDelegate>
+@interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate, UITextFieldDelegate, ImageEditCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
@@ -83,6 +83,9 @@
 {
     ImageEdittingCell *imageEdittingCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageEdittingCell" forIndexPath:indexPath];
     id cellData = self.images[indexPath.row];
+    imageEdittingCell.indexPath = indexPath;
+    imageEdittingCell.delegate = self;
+    imageEdittingCell.showDelete = indexPath.row != self.images.count - 1;
     if ([cellData isKindOfClass:[UIImage class]]) {
         [imageEdittingCell setImage:self.images[indexPath.row]];
     } else if ([cellData isKindOfClass:[NSString class]]) {
@@ -191,6 +194,16 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.productTypeLabel.text = self.productTypes[row];
+}
+
+#pragma mark - ImageEditCellDelegate
+
+- (void)deleteImageWithPath:(NSInteger)index
+{
+    NSMutableArray *imageArray = [self.images mutableCopy];
+    [imageArray removeObjectAtIndex:index];
+    self.images = imageArray;
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UITextFieldDelegate

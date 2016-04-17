@@ -11,5 +11,6 @@
 @interface DeviceBLL : NSObject
 
 - (void)registerDevice:(NSString *)deviceIdentity Success:(void (^)())success failure:(void (^)())failure;
+- (void)registerRemoteDevice:(NSString *)token;
 
 @end

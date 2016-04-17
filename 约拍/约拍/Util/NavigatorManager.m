@@ -10,7 +10,7 @@
 #import "ProductsViewController.h"
 #import "ProductModel.h"
 #import "PaymentViewController.h"
-#import "StoreManagerViewController.h"
+#import "StoreDashboardViewController.h"
 
 @implementation NavigatorManager
 
@@ -28,8 +28,8 @@
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
     } else if (action.navigatorType == NavigatorTypeToStore) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Store" bundle:nil];
-        UIViewController *navigatorToViewController = [storyBoard instantiateInitialViewController];
-//        navigatorToViewController.action = action;
+        StoreDashboardViewController *navigatorToViewController = [storyBoard instantiateInitialViewController];
+        navigatorToViewController.action = action;
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
     }
 }

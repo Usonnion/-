@@ -22,4 +22,20 @@
     }];
 }
 
+- (void)registerRemoteDevice:(NSString *)token
+{
+    NSString *urlString = [NSString stringWithFormat: @"/api/device?deviceToken=%@", token];
+    
+    NSString *deviceIdentity = [[HTTPSessionManager sharedManager].requestSerializer valueForHTTPHeaderField:@"DeviceIdentity"];
+    if ([NSString isNilOrEmpty:deviceIdentity]) {
+        [self performSelector:@selector(registerRemoteDevice:) withObject:token afterDelay:2.0];
+        return;
+    }
+    [[HTTPSessionManager sharedManager] PUT:urlString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
 @end
