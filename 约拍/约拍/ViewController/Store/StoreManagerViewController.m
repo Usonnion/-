@@ -184,6 +184,7 @@
 
 - (BOOL)checkEditting
 {
+    [self endEditting];
     if (!self.storeImage) {
         [[LoadingManager sharedManager] showError:@"请选择图片" toView:self.view];
         return NO;
@@ -206,6 +207,11 @@
     
     if ([NSString isNilOrEmpty:self.store.phoneNumber]) {
         [[LoadingManager sharedManager] showError:@"请选择电话" toView:self.view];
+        return NO;
+    }
+    
+    if (![NSString validatePhone:self.store.phoneNumber]) {
+        [[LoadingManager sharedManager] showError:@"请填写正确的手机号" toView:self.view];
         return NO;
     }
     

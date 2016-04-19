@@ -17,7 +17,7 @@
 #import "UIImageView+WebCache.h"
 #import "CreateOrderViewController.h"
 
-@interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate, PhotosPageViewControllerDelegate>
+@interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate, PhotosPageViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
@@ -58,6 +58,7 @@
     
     StoreDescription *storeDescription = [StoreDescription StoreDescriptionWithStore:store];
     storeDescription.frame = CGRectMake(0, screenBounds.size.width + productDescriptionHeight, screenBounds.size.width, storeDescriptionHeight);
+    storeDescription.superViewController = self;
     [self.scrollView addSubview:storeDescription];
     
     [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight)];
@@ -99,6 +100,27 @@
         [self.pageView setFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width)];
         [self.customerNavigatorItem setOffset:0];
     }
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    NSString *message;
+    if (result == MessageComposeResultCancelled) {
+        return;
+    }
+    
+    if (result == MessageComposeResultSent) {
+        message = @"发送成功。";
+    } else {
+        message = @"发送失败。";
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - PageControlViewControllerDelegate

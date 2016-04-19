@@ -16,5 +16,6 @@
 + (NSString *)jsonByDate:(NSDate *)date;
 - (NSString *)orderStatus;
 - (NSDate *)toDate;
++ (BOOL)validatePhone:(NSString *)phone;
 
 @end

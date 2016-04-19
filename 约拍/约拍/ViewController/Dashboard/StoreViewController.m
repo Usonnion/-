@@ -39,7 +39,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    self.tabBarController.title = @"所有店铺";
 }
 
 #pragma mark - UITableViewDataSource

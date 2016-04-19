@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5r-2X-5Pd">
-                                <rect key="frame" x="0.0" y="-20" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="-68" width="414" height="691"/>
                                 <color key="backgroundColor" red="1" green="0.97433167499999995" blue="0.46723047070000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bto-Eo-WpD" id="TSV-PH-YQH"/>
@@ -166,10 +166,9 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.97433167497503248" blue="0.46723047068276069" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="h5r-2X-5Pd" secondAttribute="trailing" id="R1i-pB-s4S"/>
-                            <constraint firstItem="h5r-2X-5Pd" firstAttribute="top" secondItem="tQQ-bO-xoa" secondAttribute="bottom" constant="-20" id="fkf-jd-qmi"/>
+                            <constraint firstItem="h5r-2X-5Pd" firstAttribute="top" secondItem="tQQ-bO-xoa" secondAttribute="bottom" constant="-68" id="fkf-jd-qmi"/>
                             <constraint firstItem="h5r-2X-5Pd" firstAttribute="leading" secondItem="vEe-I4-bT7" secondAttribute="leading" id="pEk-VG-00W"/>
                             <constraint firstItem="wld-3d-gex" firstAttribute="top" secondItem="h5r-2X-5Pd" secondAttribute="bottom" id="rcE-Th-oKP"/>
                         </constraints>

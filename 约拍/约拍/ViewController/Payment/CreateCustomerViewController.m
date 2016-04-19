@@ -100,6 +100,7 @@
 
 - (BOOL)checkEditting
 {
+    [self endEditting];
     if ([NSString isNilOrEmpty:self.customerNameTextField.text]) {
         [[LoadingManager sharedManager] showError:@"请输入姓名" toView:self.view];
         return NO;
@@ -112,6 +113,11 @@
     
     if ([NSString isNilOrEmpty:self.customerAddressTextView.text]) {
         [[LoadingManager sharedManager] showError:@"请输入地址" toView:self.view];
+        return NO;
+    }
+    
+    if (![NSString validatePhone:self.customerPhoneTextField.text]) {
+        [[LoadingManager sharedManager] showError:@"请填写正确的手机号" toView:self.view];
         return NO;
     }
     

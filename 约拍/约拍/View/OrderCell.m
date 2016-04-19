@@ -69,4 +69,14 @@
     }
 }
 
+- (IBAction)call:(id)sender
+{
+    [ContactHelper callTo:self.customerPhoneLabel.text name:self.customerNameLabel.text view:self.superViewController.view];
+}
+
+- (IBAction)message:(id)sender
+{
+    [ContactHelper messageTo:self.customerPhoneLabel.text viewcontroller:self.superViewController];
+}
+
 @end

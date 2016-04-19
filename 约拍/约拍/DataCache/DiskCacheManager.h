@@ -12,10 +12,12 @@
 
 @interface DiskCacheManager : NSObject
 
+@property (nonatomic, assign) NSInteger badgeCount;
 @property (nonatomic, strong) NSString *invitationCode;
 
 + (DiskCacheManager *)sharedManager;
 
+- (void)updateBadge;
 - (void)archiveProductInformation:(NSArray *)array;
 - (void)removeAllProducts;
 - (NSArray *)getProductByStoreId:(NSString *)storeId;

@@ -47,6 +47,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) images:images scrollCircle:YES autoScroll:YES];
     [self addChildViewController:pageViewController];
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
+    tableViewHeaderView.backgroundColor = [UIColor redColor];
     [tableViewHeaderView addSubview:pageViewController.view];
     self.tableView.tableHeaderView = tableViewHeaderView;
     [self mockData];
@@ -55,7 +56,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    self.tabBarController.title = @"首页";
 }
 
 #pragma mark - UITableViewDataSource

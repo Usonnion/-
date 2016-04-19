@@ -21,5 +21,6 @@
 #import "NSArray+DataAccess.h"
 #import "OrderModel.h"
 #import "CustomerModel.h"
+#import "ContactHelper.h"
 
 #endif /* PrefixHeader_pch */

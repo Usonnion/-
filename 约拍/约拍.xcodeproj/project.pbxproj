@@ -31,6 +31,9 @@
 		186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D4C9E1C57A9F600FF6957 /* PaymentViewController.m */; };
 		186D4CA41C57BB9900FF6957 /* CustomerNavigatorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186D4CA31C57BB9900FF6957 /* CustomerNavigatorItem.xib */; };
 		186F5C151CBFE073003983DC /* BadgeVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 186F5C141CBFE073003983DC /* BadgeVIew.m */; };
+		187A6C7E1CC522030058608A /* BadgeBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A6C7D1CC522030058608A /* BadgeBLL.m */; };
+		187A6C811CC525000058608A /* ContactHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A6C801CC525000058608A /* ContactHelper.m */; };
+		187A6C831CC52A320058608A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187A6C821CC52A320058608A /* MessageUI.framework */; };
 		187DC03C1C45392700D8AE6F /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187DC03B1C45392700D8AE6F /* ProductCell.m */; };
 		187E9C451C3EA3C100DEEA0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C441C3EA3C100DEEA0B /* main.m */; };
 		187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C471C3EA3C100DEEA0B /* AppDelegate.m */; };
@@ -182,6 +185,11 @@
 		186D4CA31C57BB9900FF6957 /* CustomerNavigatorItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerNavigatorItem.xib; sourceTree = "<group>"; };
 		186F5C131CBFE073003983DC /* BadgeVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeVIew.h; sourceTree = "<group>"; };
 		186F5C141CBFE073003983DC /* BadgeVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeVIew.m; sourceTree = "<group>"; };
+		187A6C7C1CC522030058608A /* BadgeBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeBLL.h; sourceTree = "<group>"; };
+		187A6C7D1CC522030058608A /* BadgeBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeBLL.m; sourceTree = "<group>"; };
+		187A6C7F1CC525000058608A /* ContactHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactHelper.h; sourceTree = "<group>"; };
+		187A6C801CC525000058608A /* ContactHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactHelper.m; sourceTree = "<group>"; };
+		187A6C821CC52A320058608A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		187DC03A1C45392700D8AE6F /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		187DC03B1C45392700D8AE6F /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		187DC03E1C4549B200D8AE6F /* ConstFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstFile.h; sourceTree = "<group>"; };
@@ -386,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187A6C831CC52A320058608A /* MessageUI.framework in Frameworks */,
 				18DE40F81C96EB8A000DB3B1 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +411,8 @@
 				18B3080C1C799C7D00851C25 /* ImagePickHelper.m */,
 				18A4704F1C8AF5A200038F40 /* LoadingManager.h */,
 				18A470501C8AF5A200038F40 /* LoadingManager.m */,
+				187A6C7F1CC525000058608A /* ContactHelper.h */,
+				187A6C801CC525000058608A /* ContactHelper.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -459,6 +470,7 @@
 		187E9C371C3EA3C100DEEA0B = {
 			isa = PBXGroup;
 			children = (
+				187A6C821CC52A320058608A /* MessageUI.framework */,
 				18DE40F71C96EB8A000DB3B1 /* AssetsLibrary.framework */,
 				187E9C421C3EA3C100DEEA0B /* 约拍 */,
 				187E9C411C3EA3C100DEEA0B /* Products */,
@@ -728,6 +740,8 @@
 				18F5058E1CA7CED900B808FB /* CustomerBLL.m */,
 				18F505991CAABB4100B808FB /* OrderBLL.h */,
 				18F5059A1CAABB4100B808FB /* OrderBLL.m */,
+				187A6C7C1CC522030058608A /* BadgeBLL.h */,
+				187A6C7D1CC522030058608A /* BadgeBLL.m */,
 			);
 			path = BLL;
 			sourceTree = "<group>";
@@ -948,6 +962,7 @@
 				188C9D3F1C422E0B00DD1B72 /* UIView+WebCacheOperation.m in Sources */,
 				18895D341C47CDAC00586CD9 /* PhotosViewController.m in Sources */,
 				18DE40F01C96E167000DB3B1 /* DNBadgeLabel.m in Sources */,
+				187A6C811CC525000058608A /* ContactHelper.m in Sources */,
 				188C9CFB1C4105A900DD1B72 /* ActionModel.m in Sources */,
 				188C9D391C422E0B00DD1B72 /* UIButton+WebCache.m in Sources */,
 				188C9D311C422E0B00DD1B72 /* NSData+ImageContentType.m in Sources */,
@@ -965,6 +980,7 @@
 				18DE40E21C96E167000DB3B1 /* DNAlbumTableViewController.m in Sources */,
 				188C9D381C422E0B00DD1B72 /* SDWebImagePrefetcher.m in Sources */,
 				186D4C9F1C57A9F600FF6957 /* PaymentViewController.m in Sources */,
+				187A6C7E1CC522030058608A /* BadgeBLL.m in Sources */,
 				18A4704B1C8AECE300038F40 /* MBProgressHUD.m in Sources */,
 				18B6292A1CA6949C006A92E4 /* SelectCustomerViewController.m in Sources */,
 				18D477BE1CB8F5EE00AB5A52 /* NSArray+DataAccess.m in Sources */,

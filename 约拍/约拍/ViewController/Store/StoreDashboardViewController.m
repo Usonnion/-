@@ -9,6 +9,7 @@
 #import "StoreDashboardViewController.h"
 #import "StoreManagerViewController.h"
 #import "MyProductsViewController.h"
+#import "BadgeBLL.h"
 
 @interface StoreDashboardViewController ()
 
@@ -17,6 +18,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *orderButton;
 @property (nonatomic, weak) IBOutlet UIButton *exitButton;
 @property (nonatomic, weak) IBOutlet UILabel *badgeLabel;
+@property (nonatomic, weak) IBOutlet UIView *badgeView;
+
+@property (nonatomic, strong) BadgeBLL *badgeBLL;
 
 @end
 
@@ -26,6 +30,7 @@
     [super viewDidLoad];
     
     [self setContentStyle];
+    self.badgeBLL = [[BadgeBLL alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -33,6 +38,12 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.badgeBLL getBadgeSuccess:^() {
+        self.badgeView.hidden = ![DiskCacheManager sharedManager].badgeCount;
+        self.badgeLabel.text = [NSString stringWithFormat:@"%@", @([DiskCacheManager sharedManager].badgeCount)];
+    } failure:^{
+        self.badgeView.hidden = ![DiskCacheManager sharedManager].badgeCount;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,9 +69,8 @@
     self.exitButton.layer.borderColor = [UIColor brownColor].CGColor;
     self.exitButton.layer.cornerRadius = 8.0;
     
-    [self.badgeLabel sizeToFit];
-    self.badgeLabel.center = CGPointMake(self.productButton.frame.origin.x + self.productButton.frame.size.width, self.productButton.frame.origin.y);
-    self.badgeLabel.layer.cornerRadius = self.badgeLabel.frame.size.height / 2;
+//    self.badgeLabel.text = @"10";
+    self.badgeView.layer.cornerRadius = 15.0;
 }
 
 #pragma mark -Actions

@@ -54,4 +54,12 @@
     return destDate;
 }
 
++ (BOOL)validatePhone:(NSString *)phone
+{
+    NSString *phoneRegex = @"1[3|5|7|8|][0-9]{9}";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    return [phoneTest evaluateWithObject:phone];
+}
+
+
 @end

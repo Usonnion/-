@@ -89,13 +89,6 @@
                                             <action selector="exit:" destination="zdz-aZ-gMA" eventType="touchUpInside" id="iHh-vH-8Zh"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyW-J0-Mpz">
-                                        <rect key="frame" x="125" y="88" width="29" height="21"/>
-                                        <color key="backgroundColor" red="1" green="0.089577327499114401" blue="0.022375814677561778" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-WW-ilw">
                                         <rect key="frame" x="58" y="99" width="80" height="80"/>
                                         <color key="backgroundColor" red="0.027133625450051747" green="0.5576325261780104" blue="0.094146550283295688" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,6 +104,26 @@
                                             <segue destination="a0c-DO-J1r" kind="show" id="F3J-l6-iVp"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xl1-8r-stv">
+                                        <rect key="frame" x="128" y="84" width="25" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyW-J0-Mpz">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.089577327499999998" blue="0.022375814680000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zyW-J0-Mpz" secondAttribute="trailing" id="8vf-7c-13q"/>
+                                            <constraint firstAttribute="width" constant="25" id="Fpi-4o-w2V"/>
+                                            <constraint firstAttribute="bottom" secondItem="zyW-J0-Mpz" secondAttribute="bottom" id="LRM-Sf-3Lu"/>
+                                            <constraint firstItem="zyW-J0-Mpz" firstAttribute="top" secondItem="Xl1-8r-stv" secondAttribute="top" id="PPl-6r-BUT"/>
+                                            <constraint firstItem="zyW-J0-Mpz" firstAttribute="leading" secondItem="Xl1-8r-stv" secondAttribute="leading" id="af5-nf-qG6"/>
+                                            <constraint firstAttribute="height" constant="25" id="chv-HK-MmY"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -120,10 +133,12 @@
                                     <constraint firstAttribute="trailing" secondItem="GSO-sk-FFa" secondAttribute="trailing" constant="58" id="MG9-a5-Q1z"/>
                                     <constraint firstItem="ITw-dY-FXy" firstAttribute="top" secondItem="GSO-sk-FFa" secondAttribute="bottom" constant="19" id="O6M-Fg-eYj"/>
                                     <constraint firstAttribute="bottom" secondItem="SoU-WW-ilw" secondAttribute="bottom" id="QMs-Qz-1Id"/>
+                                    <constraint firstItem="Xl1-8r-stv" firstAttribute="trailing" secondItem="SoU-WW-ilw" secondAttribute="trailing" constant="15" id="RTa-HC-fPo"/>
                                     <constraint firstItem="T0n-Zr-jSg" firstAttribute="top" secondItem="Xdi-1W-GIM" secondAttribute="top" id="fKB-Pk-Lj4"/>
                                     <constraint firstItem="SoU-WW-ilw" firstAttribute="top" secondItem="T0n-Zr-jSg" secondAttribute="bottom" constant="19" id="h5u-QV-tYb"/>
                                     <constraint firstItem="SoU-WW-ilw" firstAttribute="leading" secondItem="T0n-Zr-jSg" secondAttribute="leading" id="kNT-4l-8Ic"/>
                                     <constraint firstItem="GSO-sk-FFa" firstAttribute="top" secondItem="T0n-Zr-jSg" secondAttribute="top" id="soy-GE-LRZ"/>
+                                    <constraint firstItem="Xl1-8r-stv" firstAttribute="top" secondItem="SoU-WW-ilw" secondAttribute="top" constant="-15" id="y4R-pf-FCg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="爱约拍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-cL-Isu">
@@ -150,6 +165,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="badgeLabel" destination="zyW-J0-Mpz" id="QT5-em-IEt"/>
+                        <outlet property="badgeView" destination="Xl1-8r-stv" id="bJw-lf-Ahe"/>
                         <outlet property="exitButton" destination="ITw-dY-FXy" id="VvQ-uo-8EI"/>
                         <outlet property="orderButton" destination="SoU-WW-ilw" id="Z0A-jB-zcl"/>
                         <outlet property="productButton" destination="GSO-sk-FFa" id="G5x-gI-kRo"/>
@@ -288,7 +304,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18801615551" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5c2-P5-0Mv">
                                                 <rect key="frame" x="64" y="28" width="334" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

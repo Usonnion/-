@@ -29,7 +29,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    self.tabBarController.title = @"我的";
 }
 
 - (IBAction)storeInvitation:(id)sender

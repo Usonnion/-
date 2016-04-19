@@ -13,6 +13,7 @@ static CGFloat storeDescriptionHeight = 130.0;
 
 @interface StoreDescription : UIView
 
+@property (nonatomic, weak) UIViewController<MFMessageComposeViewControllerDelegate> *superViewController;
 + (StoreDescription *)StoreDescriptionWithStore:(StoreModel *)Store;
 
 @end

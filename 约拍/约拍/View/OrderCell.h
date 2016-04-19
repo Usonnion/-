@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, weak) id<ConfirmOrderDelegate> delegate;
+@property (nonatomic, weak) UIViewController<MFMessageComposeViewControllerDelegate> *superViewController;
 
 - (void)setProductItem:(ProductModel *)product;
 - (void)setOrderStatus:(NSString *)status;

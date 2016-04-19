@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -54,6 +54,9 @@
                         <constraint firstAttribute="height" constant="50" id="eJC-fT-EWy"/>
                     </constraints>
                     <state key="normal" image="Calling"/>
+                    <connections>
+                        <action selector="call:" destination="6oB-ra-9cI" eventType="touchUpInside" id="6Gi-4l-hFf"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-9K-jBl">
                     <rect key="frame" x="346" y="71" width="50" height="50"/>
@@ -62,6 +65,9 @@
                         <constraint firstAttribute="height" constant="50" id="x1R-3g-hzl"/>
                     </constraints>
                     <state key="normal" image="Chat"/>
+                    <connections>
+                        <action selector="message:" destination="6oB-ra-9cI" eventType="touchUpInside" id="Nsw-mx-LQK"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -33,4 +33,14 @@
     self.storePhoneLabel.text = store.phoneNumber;
 }
 
+- (IBAction)call:(id)sender
+{
+    [ContactHelper callTo:self.storePhoneLabel.text name:self.storeDescriptionLabel.text view:self.superViewController.view];
+}
+
+- (IBAction)message:(id)sender
+{
+    [ContactHelper messageTo:self.storePhoneLabel.text viewcontroller:self.superViewController];
+}
+
 @end

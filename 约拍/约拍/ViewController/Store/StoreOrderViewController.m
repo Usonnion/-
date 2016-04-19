@@ -10,7 +10,7 @@
 #import "OrderCell.h"
 #import "OrderBLL.h"
 
-@interface StoreOrderViewController () <ConfirmOrderDelegate>
+@interface StoreOrderViewController () <ConfirmOrderDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noOrdersLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -56,6 +56,7 @@
     orderCell.isCustomerOrder = NO;
     orderCell.indexPath = indexPath;
     orderCell.delegate = self;
+    orderCell.superViewController = self;
     return orderCell;
 }
 
@@ -119,15 +120,33 @@
     __weak typeof(self) weakSelf = self;
     if (cellData) {
         [[[OrderBLL alloc] init] updateOrderStatus:order Success:^{
-//            NSMutableArray *array = [weakSelf.orders mutableCopy];
-//            [array replaceObjectAtIndex:indexPath.row withObject:order];
-//            weakSelf.orders = array;
             [weakSelf.tableView reloadData];
             [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
         } failure:^{
             [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
         }];
     }
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    NSString *message;
+    if (result == MessageComposeResultCancelled) {
+        return;
+    }
+    
+    if (result == MessageComposeResultSent) {
+        message = @"发送成功。";
+    } else {
+        message = @"发送失败。";
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
