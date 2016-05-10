@@ -126,4 +126,10 @@
     [Store updateStoreInformation:store];
 }
 
+- (void)setBadgeCount:(NSInteger)badgeCount
+{
+    _badgeCount = badgeCount;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeCount;
+}
+
 @end

@@ -14,10 +14,11 @@
 
 @property (nonatomic, assign) NSInteger badgeCount;
 @property (nonatomic, strong) NSString *invitationCode;
+@property (nonatomic, strong) NSArray *productTypes;
+@property (nonatomic, strong) NSArray *rotations;
 
 + (DiskCacheManager *)sharedManager;
 
-- (void)updateBadge;
 - (void)archiveProductInformation:(NSArray *)array;
 - (void)removeAllProducts;
 - (NSArray *)getProductByStoreId:(NSString *)storeId;

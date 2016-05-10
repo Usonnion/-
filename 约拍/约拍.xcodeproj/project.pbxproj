@@ -132,6 +132,10 @@
 		18DE40F51C96E167000DB3B1 /* DNUnAuthorizedTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE40DE1C96E167000DB3B1 /* DNUnAuthorizedTipsView.m */; };
 		18DE40F61C96E167000DB3B1 /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE40E01C96E167000DB3B1 /* JKPromptView.m */; };
 		18DE40F81C96EB8A000DB3B1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DE40F71C96EB8A000DB3B1 /* AssetsLibrary.framework */; };
+		18E7A6451CC68123005860B8 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 18E7A6441CC68123005860B8 /* iTunesArtwork */; };
+		18E7A6481CCCE256005860B8 /* ConfigurationBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A6471CCCE256005860B8 /* ConfigurationBLL.m */; };
+		18E7A64B1CCCE4B9005860B8 /* ProductTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A64A1CCCE4B9005860B8 /* ProductTypeModel.m */; };
+		18E7A64E1CCCE613005860B8 /* RotationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A64D1CCCE613005860B8 /* RotationModel.m */; };
 		18F5058C1CA7BE2900B808FB /* DeviceBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F5058B1CA7BE2900B808FB /* DeviceBLL.m */; };
 		18F5058F1CA7CED900B808FB /* CustomerBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F5058E1CA7CED900B808FB /* CustomerBLL.m */; };
 		18F505921CA950DB00B808FB /* CreateCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F505911CA950DB00B808FB /* CreateCustomerViewController.m */; };
@@ -373,6 +377,13 @@
 		18DE40E01C96E167000DB3B1 /* JKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPromptView.m; sourceTree = "<group>"; };
 		18DE40E11C96E167000DB3B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DNImagePicker.strings"; sourceTree = "<group>"; };
 		18DE40F71C96EB8A000DB3B1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		18E7A6441CC68123005860B8 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		18E7A6461CCCE256005860B8 /* ConfigurationBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationBLL.h; sourceTree = "<group>"; };
+		18E7A6471CCCE256005860B8 /* ConfigurationBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationBLL.m; sourceTree = "<group>"; };
+		18E7A6491CCCE4B9005860B8 /* ProductTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTypeModel.h; sourceTree = "<group>"; };
+		18E7A64A1CCCE4B9005860B8 /* ProductTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTypeModel.m; sourceTree = "<group>"; };
+		18E7A64C1CCCE613005860B8 /* RotationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotationModel.h; sourceTree = "<group>"; };
+		18E7A64D1CCCE613005860B8 /* RotationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotationModel.m; sourceTree = "<group>"; };
 		18F5058A1CA7BE2900B808FB /* DeviceBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceBLL.h; sourceTree = "<group>"; };
 		18F5058B1CA7BE2900B808FB /* DeviceBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceBLL.m; sourceTree = "<group>"; };
 		18F5058D1CA7CED900B808FB /* CustomerBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerBLL.h; sourceTree = "<group>"; };
@@ -508,6 +519,7 @@
 		187E9C431C3EA3C100DEEA0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18E7A6441CC68123005860B8 /* iTunesArtwork */,
 				18F505961CAAAF1400B808FB /* LaunchScreen.storyboard */,
 				189AA66E1C4FCF6300E1915E /* PrefixHeader.pch */,
 				187E9C571C3EA3C100DEEA0B /* Info.plist */,
@@ -639,6 +651,10 @@
 				1817645F1CA2D8F8008BA391 /* CustomerModel.m */,
 				18F505931CA9715E00B808FB /* OrderModel.h */,
 				18F505941CA9715E00B808FB /* OrderModel.m */,
+				18E7A6491CCCE4B9005860B8 /* ProductTypeModel.h */,
+				18E7A64A1CCCE4B9005860B8 /* ProductTypeModel.m */,
+				18E7A64C1CCCE613005860B8 /* RotationModel.h */,
+				18E7A64D1CCCE613005860B8 /* RotationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -742,6 +758,8 @@
 				18F5059A1CAABB4100B808FB /* OrderBLL.m */,
 				187A6C7C1CC522030058608A /* BadgeBLL.h */,
 				187A6C7D1CC522030058608A /* BadgeBLL.m */,
+				18E7A6461CCCE256005860B8 /* ConfigurationBLL.h */,
+				18E7A6471CCCE256005860B8 /* ConfigurationBLL.m */,
 			);
 			path = BLL;
 			sourceTree = "<group>";
@@ -912,6 +930,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18DE40ED1C96E167000DB3B1 /* imageResources.xcassets in Resources */,
+				18E7A6451CC68123005860B8 /* iTunesArtwork in Resources */,
 				186D4CA41C57BB9900FF6957 /* CustomerNavigatorItem.xib in Resources */,
 				18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */,
 				18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */,
@@ -971,6 +990,7 @@
 				18B7BCD81C9983C40083E624 /* ProductBLL.m in Sources */,
 				18895D431C47E9C000586CD9 /* PhotosPageViewController.m in Sources */,
 				18DE40EF1C96E167000DB3B1 /* DNAssetsViewCell.m in Sources */,
+				18E7A64B1CCCE4B9005860B8 /* ProductTypeModel.m in Sources */,
 				18DE40E41C96E167000DB3B1 /* DNImageFlowViewController.m in Sources */,
 				186AFB541C59012A0099BC6F /* ProductDescription.m in Sources */,
 				18DE40EC1C96E167000DB3B1 /* UIViewController+DNImagePicker.m in Sources */,
@@ -1000,6 +1020,7 @@
 				18CBC4F71C75FC7600EEE301 /* MineViewController.m in Sources */,
 				1869C4451C565AC900F02EE7 /* Product+CoreDataProperties.m in Sources */,
 				18A470341C88765C00038F40 /* AFURLRequestSerialization.m in Sources */,
+				18E7A64E1CCCE613005860B8 /* RotationModel.m in Sources */,
 				18DE40F41C96E167000DB3B1 /* DNTapDetectingImageView.m in Sources */,
 				18DE40EB1C96E167000DB3B1 /* UIView+DNImagePicker.m in Sources */,
 				18DE40F11C96E167000DB3B1 /* DNBrowserCell.m in Sources */,
@@ -1045,6 +1066,7 @@
 				188C9D3D1C422E0B00DD1B72 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18DE40F31C96E167000DB3B1 /* DNSendButton.m in Sources */,
 				18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */,
+				18E7A6481CCCE256005860B8 /* ConfigurationBLL.m in Sources */,
 				18697BC81C9E6F7C0028F271 /* BaseController.m in Sources */,
 				18A470511C8AF5A200038F40 /* LoadingManager.m in Sources */,
 				1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */,
@@ -1164,6 +1186,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/约拍/Libray/AlipaySDK",
@@ -1175,6 +1198,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "92fea69a-6ba0-4fa6-8b5d-76236fd23d7c";
 			};
 			name = Debug;
 		};
@@ -1184,6 +1208,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/约拍/Libray/AlipaySDK",
@@ -1195,6 +1220,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "92fea69a-6ba0-4fa6-8b5d-76236fd23d7c";
 			};
 			name = Release;
 		};

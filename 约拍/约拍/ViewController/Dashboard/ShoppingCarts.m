@@ -35,6 +35,7 @@
 {
     [super viewWillAppear:animated];
     self.tabBarController.title = @"订单信息";
+    [self.tabBarController.navigationController setNavigationBarHidden:NO animated:NO];
     [self refreshData];
 }
 

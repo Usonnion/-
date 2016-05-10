@@ -39,7 +39,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tabBarController.navigationController setNavigationBarHidden:NO animated:NO];
     self.tabBarController.title = @"所有店铺";
+    self.stores = [[DiskCacheManager sharedManager] loadAllStores];
+    if (self.stores && self.stores.count > 0) {
+        self.noStoresLabel.hidden = YES;
+    } else {
+        self.noStoresLabel.hidden = NO;
+    }
 }
 
 #pragma mark - UITableViewDataSource

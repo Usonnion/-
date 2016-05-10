@@ -16,6 +16,7 @@
 #import "FileUploadBLL.h"
 #import "HTTPSessionManager.h"
 #import "ProductBLL.h"
+#import "ProductTypeModel.h"
 
 @interface ProductManagerViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, DNImagePickerControllerDelegate, UITextFieldDelegate, ImageEditCellDelegate>
 
@@ -47,7 +48,6 @@
 {
     [super viewDidLoad];
     
-    [self mockData];
     [self setContentData];
     [self setContentStyle];
     
@@ -233,6 +233,12 @@
 
 - (void)setContentData
 {
+    NSMutableArray *productTypes = [NSMutableArray new];
+    for (ProductTypeModel *productType in [DiskCacheManager sharedManager].productTypes) {
+        [productTypes addObject:productType.productTypeName];
+    }
+    self.productTypes = productTypes;
+    
     self.title = @"商品编辑";
     self.images = self.product.images;
     self.productDescriptionTextVIew.text = self.product.productDescription;
@@ -260,11 +266,6 @@
     for (NSInteger index = 0; index < self.images.count - 1; index++) {
         [self imageByIndex:index];
     }
-}
-
-- (void)mockData
-{
-    self.productTypes = @[@"儿童摄影", @"婚纱摄影", @"个人写真", @"其他"];
 }
 
 - (void)longPress:(UILongPressGestureRecognizer *)recognizer;
@@ -373,7 +374,7 @@
              }];
         }
         
-        [self.fileUploadBLLInstance uploadImage:UIImageJPEGRepresentation(image, 0.1) imageIndex:index success:^(NSDictionary *json, NSInteger index) {
+        [self.fileUploadBLLInstance uploadImage:UIImageJPEGRepresentation(image, 0.3) imageIndex:index success:^(NSDictionary *json, NSInteger index) {
             NSString *url = [NSString stringWithFormat:@"%@/Images/%@", [HTTPSessionManager sharedManager].baseUrlStr, json[@"filename"]];
             [weakSelf.imageURLs setObject:url atIndexedSubscript:index];
             weakSelf.successCount ++;

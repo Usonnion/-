@@ -139,12 +139,11 @@
             [[LoadingManager sharedManager] hideLoadingWithmessage:@"对不起，更新失败，请从新尝试" success:NO];
         }];
         [[DiskCacheManager sharedManager] updateStoreInformation:weakSelf.store];
+        [weakSelf endEditting];
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"对不起，上传图片失败，请从新尝试" success:NO];
-        [weakSelf setStoreImage];
+        [weakSelf endEditting];
     }];
-    
-    [self endEditting];
 }
 
 - (void)endEditting:(UIGestureRecognizer *)recognizer
@@ -184,7 +183,7 @@
 
 - (BOOL)checkEditting
 {
-    [self endEditting];
+    [self.view endEditing:YES];
     if (!self.storeImage) {
         [[LoadingManager sharedManager] showError:@"请选择图片" toView:self.view];
         return NO;

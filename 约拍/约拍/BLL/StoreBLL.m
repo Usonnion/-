@@ -13,13 +13,18 @@
 
 - (void)getAllStoresSuccess:(void (^)())success failure:(void (^)())failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
+    NSString *urlString = @"/api/store";
     [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSMutableArray *stores = [NSMutableArray new];
         for (NSDictionary *storeDic in responseObject) {
             [stores addObject:[StoreModel fromDictionary:storeDic]];
         }
-        [[DiskCacheManager sharedManager] archiveStores:stores];
+        
+        if (stores && stores.count) {
+            [[DiskCacheManager sharedManager] removeAllStores];
+            [[DiskCacheManager sharedManager] archiveStores:stores];
+        }
+        
         success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure();
@@ -28,7 +33,7 @@
 
 - (void)getStoreByInvivationId:(NSString *)invivationId success:(void (^)(NSDictionary *json))success failure:(void (^)())failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
+    NSString *urlString = @"/api/store";
     [[HTTPSessionManager sharedManager] PUT:urlString parameters:@{@"InvitationCode":invivationId} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -38,7 +43,7 @@
 
 - (void)updateStore:(StoreModel *)store success:(void (^)(NSDictionary *json))success failure:(void (^)())failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"/api/store?token=%@", [[HTTPSessionManager sharedManager] token]];
+    NSString *urlString = @"/api/store";
     [[HTTPSessionManager sharedManager] POST:urlString parameters:[store toDictionary] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

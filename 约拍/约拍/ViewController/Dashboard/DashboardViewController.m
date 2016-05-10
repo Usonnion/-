@@ -16,6 +16,9 @@
 #import "StoreModel.h"
 #import "StoreBLL.h"
 #import "ProductBLL.h"
+#import "ConfigurationBLL.h"
+#import "ProductTypeModel.h"
+#import "RotationModel.h"
 
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
@@ -27,6 +30,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 @property (nonatomic, strong) NSArray<ActionModel *> *actions;
 @property (nonatomic, assign) BOOL loadingStoreDone;
 @property (nonatomic, assign) BOOL loadingPorudctDone;
+@property (nonatomic, assign) BOOL loadingConfigDone;
 
 @end
 
@@ -41,21 +45,13 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionSummaryCell" bundle:nil] forCellReuseIdentifier:@"ActionSummaryCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionCell" bundle:nil] forCellReuseIdentifier:@"ActionCell"];
     
-    NSArray *images = @[@"http://i4.tietuku.com/ed6c25f8d0c526f8.jpg",
-                        @"http://i11.tietuku.com/59a5e776cdb0a07e.jpg",
-                        @"http://i12.tietuku.com/6255d9b25b0e6fa9.jpg"];
-    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) images:images scrollCircle:YES autoScroll:YES];
-    [self addChildViewController:pageViewController];
-    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
-    tableViewHeaderView.backgroundColor = [UIColor redColor];
-    [tableViewHeaderView addSubview:pageViewController.view];
-    self.tableView.tableHeaderView = tableViewHeaderView;
-    [self mockData];
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tabBarController.navigationController setNavigationBarHidden:NO animated:NO];
     self.tabBarController.title = @"首页";
 }
 
@@ -91,46 +87,43 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 
 #pragma mark - Private methods
 
-- (void)mockData
+- (void)setContent
 {
+    NSMutableArray *actions = [NSMutableArray new];
     ActionModel *action1 = [[ActionModel alloc] init];
     action1.title = @"摄影分类";
     action1.style = kActionStyleSummary;
     action1.cellIdentifier = @"ActionSummaryCell";
+    [actions addObject:action1];
     
-    ActionModel *action2 = [[ActionModel alloc] init];
-    action2.title = @"儿童摄影";
-    action2.style = kActionStyleAction;
-    action2.cellIdentifier = @"ActionCell";
-    action2.navigatorType = NavigatorTypeByType;
-    action2.productType = @"儿童摄影";
+    for (ProductTypeModel *productType  in [DiskCacheManager sharedManager].productTypes) {
+        ActionModel *action = [[ActionModel alloc] init];
+        action.title = productType.productTypeName;
+        action.style = kActionStyleAction;
+        action.navigatorType = NavigatorTypeByType;
+        action.cellIdentifier = @"ActionCell";
+        action.productType = productType.productTypeName;
+        [actions addObject:action];
+    }
+    self.actions = actions;
     
-    ActionModel *action3 = [[ActionModel alloc] init];
-    action3.title = @"婚纱摄影";
-    action3.style = kActionStyleAction;
-    action3.cellIdentifier = @"ActionCell";
-    action3.navigatorType = NavigatorTypeByType;
-    action3.productType = @"婚纱摄影";
+    NSMutableArray *images = [NSMutableArray new];
+    for (RotationModel *rotation in [DiskCacheManager sharedManager].rotations) {
+        [images addObject:rotation.imageUrl];
+    }
     
-    ActionModel *action4 = [[ActionModel alloc] init];
-    action4.title = @"个人写真";
-    action4.style = kActionStyleAction;
-    action4.cellIdentifier = @"ActionCell";
-    action4.navigatorType = NavigatorTypeByType;
-    action4.productType = @"个人写真";
+    PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) images:images scrollCircle:YES autoScroll:YES];
+    [self addChildViewController:pageViewController];
+    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
+    tableViewHeaderView.backgroundColor = [UIColor redColor];
+    [tableViewHeaderView addSubview:pageViewController.view];
+    self.tableView.tableHeaderView = tableViewHeaderView;
     
-    ActionModel *action5 = [[ActionModel alloc] init];
-    action5.title = @"其他";
-    action5.style = kActionStyleAction;
-    action5.cellIdentifier = @"ActionCell";
-    action5.navigatorType = NavigatorTypeByType;
-    action5.productType = @"其他";
-    
-    self.actions = @[action1, action2, action3, action4, action5];
-    
-    [[DiskCacheManager sharedManager] removeAllProducts];
-    [[DiskCacheManager sharedManager] removeAllStores];
-    
+    [self.tableView reloadData];
+}
+
+- (void)loadData
+{
     __weak typeof(self) weakSelf = self;
     self.loadingStoreDone = NO;
     self.loadingPorudctDone = NO;
@@ -151,34 +144,20 @@ NSString *kActionStyleAction = @"ActionStyleAction";
         [weakSelf checkDataLoading];
     }];
     
-//    NSMutableArray *stores = [@[] mutableCopy];
-//    NSMutableArray *products = [@[] mutableCopy];
-//    for (NSInteger storeIndex = 0; storeIndex < 20; storeIndex ++) {
-//        for (NSInteger productIndex = 10; productIndex < 20; productIndex ++) {
-//            NSInteger productType = arc4random() % 4;
-//            NSDictionary *dictionary = @{@"StoreId" : @(storeIndex).stringValue,
-//                                         @"ProductId" : @(productIndex).stringValue,
-//                                         @"Price" : @"300",
-//                                         @"ProductType" : productTypes[productType],
-//                                         @"ProductDescription" : @"沛县第一婚纱影楼 个人写真",
-//                                         @"Images" : @"http://i12.tietuku.com/135887956d5d60e0.jpg, http://i12.tietuku.com/543908eae4e015d2.jpg, http://i13.tietuku.com/a1a296b92e03d115.jpg, http://i12.tietuku.com/3af3552dd6c92720.jpg,http://i11.tietuku.com/a7710901a121e021.jpg, http://i12.tietuku.com/cbfddaa457b1f914.jpg"};
-//            [products addObject:[ProductModel fromDictionary:dictionary]];
-//        }
-//        
-//        NSDictionary *storeDictionary = @{@"StoreId" : @(storeIndex).stringValue,
-//                                          @"StoreName" : @"星星贝贝儿童摄影",
-//                                          @"StoreAddress" : @"汉街南门向西100米",
-//                                          @"StoreImage" : @"http://i12.tietuku.com/cbfddaa457b1f914.jpg",
-//                                          @"PhoneNumber" : @"18801615551"};
-//        [stores addObject:[StoreModel fromDictionary:storeDictionary]];
-//    }
-    
+    [[[ConfigurationBLL alloc] init] getConfigurationSuccess:^{
+        weakSelf.loadingConfigDone = YES;
+        [weakSelf checkDataLoading];
+    } failure:^{
+        weakSelf.loadingConfigDone = YES;
+        [weakSelf checkDataLoading];
+    }];
 }
 
 - (void)checkDataLoading
 {
-    if (self.loadingPorudctDone && self.loadingStoreDone) {
+    if (self.loadingPorudctDone && self.loadingStoreDone && self.loadingConfigDone) {
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"加载数据完成" success:YES];
+        [self setContent];
     }
 }
 

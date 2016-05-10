@@ -29,6 +29,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tabBarController.navigationController setNavigationBarHidden:NO animated:NO];
     self.tabBarController.title = @"我的";
 }
 
