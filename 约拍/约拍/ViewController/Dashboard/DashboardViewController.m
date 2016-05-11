@@ -26,6 +26,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
 @interface DashboardViewController()
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *pageViewHeight;
 
 @property (nonatomic, strong) NSArray<ActionModel *> *actions;
 @property (nonatomic, assign) BOOL loadingStoreDone;
