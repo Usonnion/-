@@ -13,6 +13,8 @@ static CGFloat productDescriptionHeight = 94.0;
 
 @interface ProductDescription : UIView
 
+@property (nonatomic, assign) CGFloat height;
+
 + (ProductDescription *)productDescriptionWithProduct:(ProductModel *)product;
 
 @end

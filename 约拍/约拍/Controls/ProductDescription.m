@@ -27,7 +27,12 @@
 
 - (void)setContentWithProduct:(ProductModel *)product
 {
+    self.descriptionLabel.text = @" ";
+    CGSize singleLine = [self.descriptionLabel sizeThatFits:CGSizeMake(screenBounds.size.width - 32, MAXFLOAT)];
     self.descriptionLabel.text = product.productDescription;
+    CGSize size = [self.descriptionLabel sizeThatFits:CGSizeMake(screenBounds.size.width - 32, MAXFLOAT)];
+    self.height = productDescriptionHeight - singleLine.height + size.height;
+
     self.priceLabel.text = [NSString stringWithFormat:@"%@", @(product.price)];
 }
 

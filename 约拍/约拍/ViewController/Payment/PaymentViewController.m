@@ -53,11 +53,11 @@
     [self.view addSubview:customerNavigatorItem];
     
     ProductDescription *productDescription = [ProductDescription productDescriptionWithProduct:self.product];
-    productDescription.frame = CGRectMake(0, screenBounds.size.width, screenBounds.size.width, productDescriptionHeight);
+    productDescription.frame = CGRectMake(0, screenBounds.size.width, screenBounds.size.width, productDescription.height);
     [self.scrollView addSubview:productDescription];
     
     StoreDescription *storeDescription = [StoreDescription StoreDescriptionWithStore:store];
-    storeDescription.frame = CGRectMake(0, screenBounds.size.width + productDescriptionHeight, screenBounds.size.width, storeDescriptionHeight);
+    storeDescription.frame = CGRectMake(0, screenBounds.size.width + productDescription.height, screenBounds.size.width, storeDescriptionHeight);
     storeDescription.superViewController = self;
     [self.scrollView addSubview:storeDescription];
     
