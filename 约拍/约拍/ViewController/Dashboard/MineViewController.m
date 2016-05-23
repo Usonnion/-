@@ -35,6 +35,15 @@
 
 - (IBAction)storeInvitation:(id)sender
 {
+    NSString *storeId = [UICKeyChainStore stringForKey:@"MyStoreId"];
+    if (storeId && ![NSString isNilOrEmpty:storeId]) {
+        ActionModel *action = [[ActionModel alloc] init];
+        action.navigatorType = NavigatorTypeToStore;
+        action.storeId = storeId;
+        [NavigatorManager navigatorBy:action viewController:self];
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请输入邀请码" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
@@ -62,8 +71,8 @@
         action.navigatorType = NavigatorTypeToStore;
         action.storeId = store.storeId;
         [[DiskCacheManager sharedManager] archiveStores:@[store]];
+        [UICKeyChainStore setString:store.storeId forKey:@"MyStoreId"];
         [NavigatorManager navigatorBy:action viewController:self];
-        [DiskCacheManager sharedManager].invitationCode = invitationId;
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"无效的邀请码，请联系管理员" success:NO];
     }];

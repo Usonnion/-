@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DeviceBLL.h"
 #import "HTTPSessionManager.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AppDelegate ()
 
@@ -30,6 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UICKeyChainStore *keyChainStore = [UICKeyChainStore keyChainStore];
+//    [keyChainStore removeItemForKey:@"MyStoreId"];
 //    [keyChainStore removeItemForKey:@"DeviceIdentity"];
     NSString *deviceIdentity = [keyChainStore stringForKey:@"DeviceIdentity"];
     if ([NSString isNilOrEmpty:deviceIdentity]) {
@@ -86,7 +88,8 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
+    [DiskCacheManager sharedManager].badgeCount = [(NSDictionary *)[userInfo objectForKey:@"aps"] integerForKey:@"badge"];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

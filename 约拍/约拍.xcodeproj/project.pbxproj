@@ -1196,9 +1196,10 @@
 				INFOPLIST_FILE = "约拍/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fea69a-6ba0-4fa6-8b5d-76236fd23d7c";
+				PROVISIONING_PROFILE = "7f2a51fb-5cad-4ac1-96a6-4438ea59fcfe";
 			};
 			name = Debug;
 		};
@@ -1218,9 +1219,10 @@
 				INFOPLIST_FILE = "约拍/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fea69a-6ba0-4fa6-8b5d-76236fd23d7c";
+				PROVISIONING_PROFILE = "7f2a51fb-5cad-4ac1-96a6-4438ea59fcfe";
 			};
 			name = Release;
 		};

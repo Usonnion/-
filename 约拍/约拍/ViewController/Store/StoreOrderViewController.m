@@ -84,7 +84,7 @@
     [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     __weak typeof(self) weakSelf = self;
     
-    [[[OrderBLL alloc] init] getAllStoreOrders:[DiskCacheManager sharedManager].invitationCode Success:^(NSArray *result) {
+    [[[OrderBLL alloc] init] getAllStoreOrdersSuccess:^(NSArray *result) {
         NSMutableArray *array = [NSMutableArray new];
         for (NSDictionary *orderDic in result) {
             OrderModel *order = [OrderModel fromDictionary:orderDic[@"Order"]];

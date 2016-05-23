@@ -31,9 +31,9 @@
     }];
 }
 
-- (void)getAllStoreOrders:(NSString *)invitationCode Success:(void (^)(NSArray *result))success failure:(void (^)())failure
+- (void)getAllStoreOrdersSuccess:(void (^)(NSArray *result))success failure:(void (^)())failure
 {
-    NSString *urlString = [NSString stringWithFormat:@"/api/StoreOrder?invitationCode=%@", invitationCode];
+    NSString *urlString = @"/api/StoreOrder";
     [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

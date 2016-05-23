@@ -13,8 +13,7 @@
 
 - (void)createOrder:(OrderModel *)order success:(void (^)())success failure:(void (^)())failure;
 - (void)getAllOrdersSuccess:(void (^)(NSArray *result))success failure:(void (^)())failure;
-- (void)getAllStoreOrders:(NSString *)invitationCode Success:(void (^)(NSArray *result))success failure:(void (^)())failure
-;
+- (void)getAllStoreOrdersSuccess:(void (^)(NSArray *result))success failure:(void (^)())failure;
 - (void)updateOrderStatus:(OrderModel *)order Success:(void (^)())success failure:(void (^)())failure;
 
 @end

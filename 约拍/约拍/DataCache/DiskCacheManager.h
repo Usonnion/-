@@ -13,7 +13,6 @@
 @interface DiskCacheManager : NSObject
 
 @property (nonatomic, assign) NSInteger badgeCount;
-@property (nonatomic, strong) NSString *invitationCode;
 @property (nonatomic, strong) NSArray *productTypes;
 @property (nonatomic, strong) NSArray *rotations;
 
