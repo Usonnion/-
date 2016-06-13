@@ -13,6 +13,7 @@
 @property (nonatomic, assign) NSInteger maxLoadingImageCount;
 + (LoadingManager *)sharedManager;
 
+- (void)showLoading:(UIView *)view;
 - (void)showError:(NSString *)message toView:(UIView *)view;
 - (void)showSuccessMessage:(NSString *)message toView:(UIView *)view;
 - (void)showLoadingWithBlockUI:(UIView *)view description:(NSString *)description;

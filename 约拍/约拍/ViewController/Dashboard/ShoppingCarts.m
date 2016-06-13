@@ -9,8 +9,9 @@
 #import "ShoppingCarts.h"
 #import "OrderCell.h"
 #import "OrderBLL.h"
+#import "CommentViewController.h"
 
-@interface ShoppingCarts() <UITableViewDataSource, UITableViewDelegate>
+@interface ShoppingCarts() <UITableViewDataSource, UITableViewDelegate, OrderDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noOrdersLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -19,7 +20,9 @@
 
 @end
 
-@implementation ShoppingCarts
+@implementation ShoppingCarts {
+    UIPopoverController *popoverViewController;
+}
 
 - (void)viewDidLoad
 {
@@ -54,6 +57,7 @@
     [orderCell setProductItem:((OrderModel *)cellData).product];
     [orderCell setOrderStatus:((OrderModel *)cellData).status];
     orderCell.isCustomerOrder = YES;
+    orderCell.delegate = self;
     return orderCell;
 }
 
@@ -74,6 +78,27 @@
     action.productId = ((OrderModel *)cellData).productId;
     action.navigatorType = NavigatorTypeToPayment;
     [NavigatorManager navigatorBy:action viewController:self];
+}
+
+#pragma mark - OrderDelegate
+
+- (void)customeAction:(ActionType)actionType WithIndexPath:(NSIndexPath *)indexPath
+{
+    OrderModel *order = self.orders[indexPath.row];
+    if (actionType == ActionTypeWaitingForComments) {
+        UINib *nib = [UINib nibWithNibName:@"CommentViewController" bundle:nil];
+        CommentViewController *commentViewController = [nib instantiateWithOwner:self options:nil][0];
+        commentViewController.order = order;
+        [self presentViewController:commentViewController animated:YES completion:nil];
+    } else if (actionType == ActionTypeCompleted) {
+        order.status = @"WAITINGFORCOMMENTS";
+        [[LoadingManager sharedManager] showLoading:self.view];
+        [[[OrderBLL alloc] init] updateOrderStatus:order Success:^{
+            [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        } failure:^{
+            [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        }];
+    }
 }
 
 - (void)refreshData

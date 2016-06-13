@@ -10,7 +10,7 @@
 #import "OrderCell.h"
 #import "OrderBLL.h"
 
-@interface StoreOrderViewController () <ConfirmOrderDelegate, MFMessageComposeViewControllerDelegate>
+@interface StoreOrderViewController () <OrderDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *noOrdersLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;

@@ -20,6 +20,7 @@
     order.status = [dictionary stringForKey:@"Status"];
     order.expectedTime = [[dictionary stringForKey:@"ExpectedTime"] toDate];
     order.product = [[DiskCacheManager sharedManager] getProductByProductId:order.productId];
+    order.customer = [CustomerModel fromDictionary:dictionary];
     return order;
 }
 

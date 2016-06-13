@@ -14,6 +14,15 @@
 		1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645C1CA2C538008BA391 /* CreateOrderViewController.m */; };
 		181764601CA2D8F8008BA391 /* CustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817645F1CA2D8F8008BA391 /* CustomerModel.m */; };
 		1840A75A1C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1840A7581C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld */; };
+		1865CD141CF47B9300E2467B /* Star.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD131CF47B9300E2467B /* Star.m */; };
+		1865CD1B1CFF0CC600E2467B /* CommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD1A1CFF0CC600E2467B /* CommentsCell.m */; };
+		1865CD1D1CFF0CDA00E2467B /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865CD1C1CFF0CDA00E2467B /* CommentsCell.xib */; };
+		1865CD1F1CFF0FD600E2467B /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865CD1E1CFF0FD600E2467B /* Comments.storyboard */; };
+		1865CD221CFF131600E2467B /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD211CFF131600E2467B /* CommentsViewController.m */; };
+		1865CD251CFF1F5F00E2467B /* CommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD241CFF1F5F00E2467B /* CommentsView.m */; };
+		1865CD271CFF1FDD00E2467B /* CommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865CD261CFF1FDD00E2467B /* CommentsView.xib */; };
+		1865CD2A1CFF26A300E2467B /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD291CFF26A300E2467B /* CommentModel.m */; };
+		1865CD2D1D00682F00E2467B /* CommentsBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865CD2C1D00682F00E2467B /* CommentsBLL.m */; };
 		18697BC81C9E6F7C0028F271 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18697BC71C9E6F7C0028F271 /* BaseController.m */; };
 		18697BD21CA0336E0028F271 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 18697BD01CA0336E0028F271 /* UICKeyChainStore.m */; };
 		1869C4451C565AC900F02EE7 /* Product+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869C4421C565AC900F02EE7 /* Product+CoreDataProperties.m */; };
@@ -34,6 +43,8 @@
 		187A6C7E1CC522030058608A /* BadgeBLL.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A6C7D1CC522030058608A /* BadgeBLL.m */; };
 		187A6C811CC525000058608A /* ContactHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A6C801CC525000058608A /* ContactHelper.m */; };
 		187A6C831CC52A320058608A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187A6C821CC52A320058608A /* MessageUI.framework */; };
+		187C70E31CF33BB10004718F /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C70E21CF33BB10004718F /* CommentViewController.m */; };
+		187C70E51CF33C6B0004718F /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187C70E41CF33C6B0004718F /* CommentViewController.xib */; };
 		187DC03C1C45392700D8AE6F /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187DC03B1C45392700D8AE6F /* ProductCell.m */; };
 		187E9C451C3EA3C100DEEA0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C441C3EA3C100DEEA0B /* main.m */; };
 		187E9C481C3EA3C100DEEA0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E9C471C3EA3C100DEEA0B /* AppDelegate.m */; };
@@ -160,6 +171,21 @@
 		1817645E1CA2D8F8008BA391 /* CustomerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerModel.h; sourceTree = "<group>"; };
 		1817645F1CA2D8F8008BA391 /* CustomerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerModel.m; sourceTree = "<group>"; };
 		1840A7591C4D2407009767C9 /* ArtisticPhoto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArtisticPhoto.xcdatamodel; sourceTree = "<group>"; };
+		1865CD121CF47B9300E2467B /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
+		1865CD131CF47B9300E2467B /* Star.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Star.m; sourceTree = "<group>"; };
+		1865CD191CFF0CC600E2467B /* CommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCell.h; sourceTree = "<group>"; };
+		1865CD1A1CFF0CC600E2467B /* CommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsCell.m; sourceTree = "<group>"; };
+		1865CD1C1CFF0CDA00E2467B /* CommentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
+		1865CD1E1CFF0FD600E2467B /* Comments.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
+		1865CD201CFF131600E2467B /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		1865CD211CFF131600E2467B /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		1865CD231CFF1F5F00E2467B /* CommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsView.h; sourceTree = "<group>"; };
+		1865CD241CFF1F5F00E2467B /* CommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsView.m; sourceTree = "<group>"; };
+		1865CD261CFF1FDD00E2467B /* CommentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsView.xib; sourceTree = "<group>"; };
+		1865CD281CFF26A300E2467B /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		1865CD291CFF26A300E2467B /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		1865CD2B1D00682F00E2467B /* CommentsBLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsBLL.h; sourceTree = "<group>"; };
+		1865CD2C1D00682F00E2467B /* CommentsBLL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsBLL.m; sourceTree = "<group>"; };
 		18697BC61C9E6F7C0028F271 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		18697BC71C9E6F7C0028F271 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		18697BCF1CA0336E0028F271 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
@@ -194,6 +220,9 @@
 		187A6C7F1CC525000058608A /* ContactHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactHelper.h; sourceTree = "<group>"; };
 		187A6C801CC525000058608A /* ContactHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactHelper.m; sourceTree = "<group>"; };
 		187A6C821CC52A320058608A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		187C70E11CF33BB10004718F /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		187C70E21CF33BB10004718F /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		187C70E41CF33C6B0004718F /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		187DC03A1C45392700D8AE6F /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		187DC03B1C45392700D8AE6F /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		187DC03E1C4549B200D8AE6F /* ConstFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstFile.h; sourceTree = "<group>"; };
@@ -444,6 +473,16 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		1865CD151CFF0C6B00E2467B /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				1865CD201CFF131600E2467B /* CommentsViewController.h */,
+				1865CD211CFF131600E2467B /* CommentsViewController.m */,
+				1865CD1E1CFF0FD600E2467B /* Comments.storyboard */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		18697BC51C9E6F4F0028F271 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +513,12 @@
 				188A7F2B1C5DE10100D63BC6 /* StoreDescription.h */,
 				188A7F2C1C5DE10100D63BC6 /* StoreDescription.m */,
 				188A7F2E1C5DE14600D63BC6 /* StoreDescription.xib */,
+				187C70E11CF33BB10004718F /* CommentViewController.h */,
+				187C70E21CF33BB10004718F /* CommentViewController.m */,
+				187C70E41CF33C6B0004718F /* CommentViewController.xib */,
+				1865CD231CFF1F5F00E2467B /* CommentsView.h */,
+				1865CD241CFF1F5F00E2467B /* CommentsView.m */,
+				1865CD261CFF1FDD00E2467B /* CommentsView.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -552,6 +597,7 @@
 		187E9C5E1C3EA69D00DEEA0B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1865CD151CFF0C6B00E2467B /* Comments */,
 				18B36B871C709E8900BF5E38 /* Store */,
 				1840A72D1C4D12C0009767C9 /* Payment */,
 				187E9C641C3EA76300DEEA0B /* Dashboard */,
@@ -632,6 +678,9 @@
 				18B6292E1CA6957F006A92E4 /* CustomerCell.xib */,
 				186F5C131CBFE073003983DC /* BadgeVIew.h */,
 				186F5C141CBFE073003983DC /* BadgeVIew.m */,
+				1865CD191CFF0CC600E2467B /* CommentsCell.h */,
+				1865CD1A1CFF0CC600E2467B /* CommentsCell.m */,
+				1865CD1C1CFF0CDA00E2467B /* CommentsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -639,6 +688,8 @@
 		188C9CF51C41054D00DD1B72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1865CD121CF47B9300E2467B /* Star.h */,
+				1865CD131CF47B9300E2467B /* Star.m */,
 				188C9CF91C4105A900DD1B72 /* ActionModel.h */,
 				188C9CFA1C4105A900DD1B72 /* ActionModel.m */,
 				188C9D0A1C421DFA00DD1B72 /* BaseCellModel.h */,
@@ -655,6 +706,8 @@
 				18E7A64A1CCCE4B9005860B8 /* ProductTypeModel.m */,
 				18E7A64C1CCCE613005860B8 /* RotationModel.h */,
 				18E7A64D1CCCE613005860B8 /* RotationModel.m */,
+				1865CD281CFF26A300E2467B /* CommentModel.h */,
+				1865CD291CFF26A300E2467B /* CommentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -760,6 +813,8 @@
 				187A6C7D1CC522030058608A /* BadgeBLL.m */,
 				18E7A6461CCCE256005860B8 /* ConfigurationBLL.h */,
 				18E7A6471CCCE256005860B8 /* ConfigurationBLL.m */,
+				1865CD2B1D00682F00E2467B /* CommentsBLL.h */,
+				1865CD2C1D00682F00E2467B /* CommentsBLL.m */,
 			);
 			path = BLL;
 			sourceTree = "<group>";
@@ -931,15 +986,18 @@
 			files = (
 				18DE40ED1C96E167000DB3B1 /* imageResources.xcassets in Resources */,
 				18E7A6451CC68123005860B8 /* iTunesArtwork in Resources */,
+				187C70E51CF33C6B0004718F /* CommentViewController.xib in Resources */,
 				186D4CA41C57BB9900FF6957 /* CustomerNavigatorItem.xib in Resources */,
 				18CF31681C5E00040094BF7F /* StoreCell.xib in Resources */,
 				18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */,
+				1865CD271CFF1FDD00E2467B /* CommentsView.xib in Resources */,
 				186D4C9C1C57A9E100FF6957 /* Payment.storyboard in Resources */,
 				186AAB331CA415EB005D633B /* OrderCell.xib in Resources */,
 				18B6292F1CA6957F006A92E4 /* CustomerCell.xib in Resources */,
 				18F505981CAAAF1400B808FB /* LaunchScreen.storyboard in Resources */,
 				18DE40E61C96E167000DB3B1 /* DNImagePickerController.strings in Resources */,
 				186AFB511C5900F10099BC6F /* ProductDescription.xib in Resources */,
+				1865CD1F1CFF0FD600E2467B /* Comments.storyboard in Resources */,
 				188C9CF41C41040900DD1B72 /* ActionCell.xib in Resources */,
 				189610AD1C44015900F3F037 /* ProductCell.xib in Resources */,
 				18A4704A1C8AECE300038F40 /* 37x-Checkmark.png in Resources */,
@@ -955,6 +1013,7 @@
 				18FD7C271C91BC64008B85A6 /* MBProgressHUD.bundle in Resources */,
 				18DE40EE1C96E167000DB3B1 /* ImagesPicker.xcassets in Resources */,
 				187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */,
+				1865CD1D1CFF0CDA00E2467B /* CommentsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1052,8 @@
 				18E7A64B1CCCE4B9005860B8 /* ProductTypeModel.m in Sources */,
 				18DE40E41C96E167000DB3B1 /* DNImageFlowViewController.m in Sources */,
 				186AFB541C59012A0099BC6F /* ProductDescription.m in Sources */,
+				1865CD251CFF1F5F00E2467B /* CommentsView.m in Sources */,
+				1865CD141CF47B9300E2467B /* Star.m in Sources */,
 				18DE40EC1C96E167000DB3B1 /* UIViewController+DNImagePicker.m in Sources */,
 				18B36B8F1C70A4AD00BF5E38 /* StoreManagerViewController.m in Sources */,
 				18DE40F21C96E167000DB3B1 /* DNFullImageButton.m in Sources */,
@@ -1014,6 +1075,7 @@
 				1840A75A1C4D2407009767C9 /* ArtisticPhoto.xcdatamodeld in Sources */,
 				188C9CFE1C41067900DD1B72 /* ActionCell.m in Sources */,
 				1888FD361C4BB6970071ABFD /* UIImage+WebCache.m in Sources */,
+				1865CD2A1CFF26A300E2467B /* CommentModel.m in Sources */,
 				188C9D3C1C422E0B00DD1B72 /* UIImage+WebP.m in Sources */,
 				18F5058F1CA7CED900B808FB /* CustomerBLL.m in Sources */,
 				18A4703E1C8877B200038F40 /* HTTPSessionManager.m in Sources */,
@@ -1033,6 +1095,7 @@
 				18B3080D1C799C7D00851C25 /* ImagePickHelper.m in Sources */,
 				18FD7C251C91B8A0008B85A6 /* MBProgressHUD+NJ.m in Sources */,
 				188C9D3E1C422E0B00DD1B72 /* UIImageView+WebCache.m in Sources */,
+				187C70E31CF33BB10004718F /* CommentViewController.m in Sources */,
 				18F505921CA950DB00B808FB /* CreateCustomerViewController.m in Sources */,
 				186AFB4F1C58EF390099BC6F /* CustomerNavigatorItem.m in Sources */,
 				188C9D341C422E0B00DD1B72 /* SDWebImageDecoder.m in Sources */,
@@ -1065,15 +1128,18 @@
 				18C6A4B61CBA3FDC0054853B /* StoreOrderViewController.m in Sources */,
 				188C9D3D1C422E0B00DD1B72 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18DE40F31C96E167000DB3B1 /* DNSendButton.m in Sources */,
+				1865CD221CFF131600E2467B /* CommentsViewController.m in Sources */,
 				18CBC4FA1C760CFD00EEE301 /* MyProductsViewController.m in Sources */,
 				18E7A6481CCCE256005860B8 /* ConfigurationBLL.m in Sources */,
 				18697BC81C9E6F7C0028F271 /* BaseController.m in Sources */,
+				1865CD2D1D00682F00E2467B /* CommentsBLL.m in Sources */,
 				18A470511C8AF5A200038F40 /* LoadingManager.m in Sources */,
 				1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */,
 				18DE40E31C96E167000DB3B1 /* DNAsset.m in Sources */,
 				18A470541C8AFE3B00038F40 /* FileUploadBLL.m in Sources */,
 				189610A71C43D9CE00F3F037 /* ProductsViewController.m in Sources */,
 				188C9D3A1C422E0B00DD1B72 /* UIImage+GIF.m in Sources */,
+				1865CD1B1CFF0CC600E2467B /* CommentsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

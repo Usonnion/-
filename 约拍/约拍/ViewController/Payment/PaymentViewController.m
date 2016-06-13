@@ -16,6 +16,7 @@
 #import "PhotosPageViewController.h"
 #import "UIImageView+WebCache.h"
 #import "CreateOrderViewController.h"
+#import "CommentsView.h"
 
 @interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate, PhotosPageViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
@@ -61,8 +62,11 @@
     storeDescription.superViewController = self;
     [self.scrollView addSubview:storeDescription];
     
-    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight)];
-    NSLog(@" %@", @(screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight));
+    CommentsView *comemntsView = [CommentsView commentsViewWithComment:@"11"];
+    [self.scrollView addSubview:comemntsView];
+    
+    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescription.height + storeDescriptionHeight + comemntsView.height)];
+//    NSLog(@" %@", @(screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight));
 }
 
 - (void)viewWillAppear:(BOOL)animated

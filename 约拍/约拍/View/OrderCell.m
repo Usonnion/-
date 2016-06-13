@@ -8,9 +8,11 @@
 
 #import "OrderCell.h"
 #import "UIImageView+WebCache.h"
+#import "CommentViewController.h"
 
 @interface OrderCell()
 
+@property (nonatomic, assign) ActionType actionType;
 @property (nonatomic, weak) IBOutlet UILabel *productDescriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *productPriceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *orderStatusLabel;
@@ -21,6 +23,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *expectedTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *customerAddressLabel;
 @property (nonatomic, weak) IBOutlet UIButton *confirmButton;
+@property (nonatomic, weak) IBOutlet UIButton *customerActionButton;
 
 @end
 
@@ -40,12 +43,23 @@
 {
     self.orderStatusLabel.text = [status orderStatus];
     self.confirmButton.hidden = ![status isEqualToString:@"NOTRECEIVED"];
+    
+    if ([status isEqualToString:@"WAITINGFORCOMMENTS"]) {
+        [self.customerActionButton setTitle:@"待评价" forState:UIControlStateNormal];
+        self.actionType = ActionTypeWaitingForComments;
+    } else if ([status isEqualToString:@"RECEIVED"]) {
+        [self.customerActionButton setTitle:@"完成" forState:UIControlStateNormal];
+        self.actionType = ActionTypeCompleted;
+    } else {
+//        self.customerActionButton.hidden = YES;
+    }
 }
 
 - (void)setIsCustomerOrder:(BOOL)isCustomerOrder
 {
     _isCustomerOrder = isCustomerOrder;
     self.customerView.hidden = isCustomerOrder;
+    self.customerActionButton.hidden = !isCustomerOrder;
 }
 
 - (void)setCustomerItem:(OrderModel *)order
@@ -77,6 +91,13 @@
 - (IBAction)message:(id)sender
 {
     [ContactHelper messageTo:self.customerPhoneLabel.text viewcontroller:self.superViewController];
+}
+
+- (IBAction)action:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(customeAction:WithIndexPath:)]) {
+        [self.delegate customeAction:self.actionType WithIndexPath:self.indexPath];
+    }
 }
 
 @end

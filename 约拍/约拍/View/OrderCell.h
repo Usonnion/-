@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ConfirmOrderDelegate <NSObject>
+typedef NS_ENUM(NSInteger, ActionType) {
+    ActionTypeWaitingForComments,
+    ActionTypeCompleted,
+};
 
+@protocol OrderDelegate <NSObject>
+
+@optional
 - (void)confirmOrderWithIndexPath:(NSIndexPath *)indexPath;
+- (void)customeAction:(ActionType)actionType WithIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -19,7 +26,7 @@
 @property (nonatomic, assign) BOOL isCustomerOrder;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, weak) id<ConfirmOrderDelegate> delegate;
+@property (nonatomic, weak) id<OrderDelegate> delegate;
 @property (nonatomic, weak) UIViewController<MFMessageComposeViewControllerDelegate> *superViewController;
 
 - (void)setProductItem:(ProductModel *)product;

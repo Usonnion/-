@@ -40,6 +40,14 @@
     [MBProgressHUD showError:message toView:view];
 }
 
+- (void)showLoading:(UIView *)view
+{
+    UIActivityIndicatorView *normalProcessView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(view.bounds.size.width / 2, view.bounds.size.height / 2, 15.0, 15.0)];
+    [normalProcessView startAnimating];
+    [view addSubview:normalProcessView];
+    self.normalProcessView = normalProcessView;
+}
+
 - (void)showLoadingWithBlockUI:(UIView *)view description:(NSString *)description
 {
     self.processView = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -60,6 +68,10 @@
                 [MBProgressHUD showError:message toView:self.superView];
             }
         }
+    }
+    
+    if (self.normalProcessView) {
+        [self.normalProcessView removeFromSuperview];
     }
 }
 

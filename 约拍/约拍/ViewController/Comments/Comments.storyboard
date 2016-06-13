@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZQV-Am-Oox">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="PU4-FU-eRg">
+            <objects>
+                <navigationController id="ZQV-Am-Oox" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JDw-bE-qEK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nkq-GP-qus" kind="relationship" relationship="rootViewController" id="O8E-LN-n98"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyx-i1-mWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-586" y="282"/>
+        </scene>
+        <!--评价-->
+        <scene sceneID="N7M-sM-v7I">
+            <objects>
+                <viewController id="nkq-GP-qus" customClass="CommentsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gs0-hz-l0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="fxX-gd-ofZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GH7-zB-ZFu">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-qx-zHZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nkq-GP-qus" id="Lfp-XB-P1r"/>
+                                    <outlet property="delegate" destination="nkq-GP-qus" id="rdI-9h-gnZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Nvk-qx-zHZ" secondAttribute="trailing" id="0QI-iN-rfm"/>
+                            <constraint firstItem="Nvk-qx-zHZ" firstAttribute="leading" secondItem="GH7-zB-ZFu" secondAttribute="leading" id="KXb-yq-REl"/>
+                            <constraint firstItem="Nvk-qx-zHZ" firstAttribute="top" secondItem="Gs0-hz-l0e" secondAttribute="bottom" id="rHu-0w-OFI"/>
+                            <constraint firstItem="fxX-gd-ofZ" firstAttribute="top" secondItem="Nvk-qx-zHZ" secondAttribute="bottom" id="vmd-h4-xTh"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="评价" id="Tm4-49-Ya3"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="tableView" destination="Nvk-qx-zHZ" id="FnK-jN-65v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pWu-dX-Fpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-109" y="275"/>
+        </scene>
+    </scenes>
+</document>
