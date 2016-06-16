@@ -12,5 +12,6 @@
 @interface CommentsBLL : NSObject
 
 - (void)createdComment:(CommentModel *)comment success:(void(^)())success failure:(void(^)())failure;
+- (void)getComments:(NSString *)productId page:(NSInteger)page success:(void(^)(NSArray *json))success failure:(void(^)())failure;
 
 @end

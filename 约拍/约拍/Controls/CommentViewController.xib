@@ -30,6 +30,9 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                        <connections>
+                            <outlet property="delegate" destination="X4E-43-wSV" id="hF4-1t-OWG"/>
+                        </connections>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tM2-Oo-deY">
                         <rect key="frame" x="60" y="79" width="338" height="40"/>

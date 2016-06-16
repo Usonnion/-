@@ -27,20 +27,27 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-bn-0hu">
-                    <rect key="frame" x="32" y="51" width="399" height="27"/>
+                    <rect key="frame" x="32" y="51" width="51" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                     <color key="textColor" red="0.84006871729999999" green="0.41178251230000001" blue="0.15916600920000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mo9-Xc-SJm">
+                    <rect key="frame" x="392" y="58" width="39" height="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                    <color key="textColor" red="0.25098039215686274" green="0.20000000000000001" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="2uv-bn-0hu" secondAttribute="trailing" constant="16" id="ARQ-v1-Msa"/>
                 <constraint firstAttribute="trailing" secondItem="VRI-jc-BxT" secondAttribute="trailing" constant="16" id="Eb2-Vl-Y0m"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="bottom" secondItem="sgy-hm-t6U" secondAttribute="bottom" id="OEG-Re-Nhv"/>
                 <constraint firstItem="VRI-jc-BxT" firstAttribute="top" secondItem="7iM-AL-rTC" secondAttribute="top" constant="16" id="SBP-h5-6G9"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="top" secondItem="VRI-jc-BxT" secondAttribute="bottom" constant="8" id="WCP-YQ-nio"/>
+                <constraint firstItem="mo9-Xc-SJm" firstAttribute="bottom" secondItem="2uv-bn-0hu" secondAttribute="bottom" id="c9H-zj-rNe"/>
                 <constraint firstItem="VRI-jc-BxT" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="dsT-BU-Z0M"/>
+                <constraint firstAttribute="trailing" secondItem="mo9-Xc-SJm" secondAttribute="trailing" constant="16" id="hei-bh-OGH"/>
                 <constraint firstItem="2uv-bn-0hu" firstAttribute="leading" secondItem="sgy-hm-t6U" secondAttribute="trailing" constant="5" id="pqW-ef-hQA"/>
                 <constraint firstItem="sgy-hm-t6U" firstAttribute="leading" secondItem="7iM-AL-rTC" secondAttribute="leading" constant="16" id="udX-C6-DS5"/>
             </constraints>
@@ -48,6 +55,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="VRI-jc-BxT" id="OJf-QZ-Wyv"/>
                 <outlet property="priceLabel" destination="2uv-bn-0hu" id="Xil-ee-std"/>
+                <outlet property="salesLabel" destination="mo9-Xc-SJm" id="HhZ-0z-nTo"/>
             </connections>
             <point key="canvasLocation" x="229.5" y="63"/>
         </view>

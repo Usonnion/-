@@ -42,4 +42,14 @@
     }];
 }
 
+- (void)getProductSales:(NSString *)productId success:(void(^)(NSInteger sales))success failure:(void(^)())failure
+{
+    NSString *urlString = [NSString stringWithFormat:@"/api/products?productId=%@", productId];
+    [[HTTPSessionManager sharedManager] GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success([responseObject integerForKey:@"sales"]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure();
+    }];
+}
+
 @end

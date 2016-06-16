@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, NavigatorType) {
     NavigatorTypeByType,
     NavigatorTypeByStore,
     NavigatorTypeToPayment,
-    NavigatorTypeToStore
+    NavigatorTypeToStore,
+    NavigatorTypeToComments
 };
 
 #define separatorLineColor [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1];

@@ -68,6 +68,7 @@
                 [MBProgressHUD showError:message toView:self.superView];
             }
         }
+        self.processView = nil;
     }
     
     if (self.normalProcessView) {

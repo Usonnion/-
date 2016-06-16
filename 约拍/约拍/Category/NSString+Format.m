@@ -23,8 +23,14 @@
 + (NSString *)stringByDate:(NSDate *)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateStyle = NSDateIntervalFormatterMediumStyle;
-    dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    return [dateFormatter stringFromDate:date];
+}
+
++ (NSString *)dateStringByDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     return [dateFormatter stringFromDate:date];
 }
 
@@ -41,6 +47,8 @@
         return @"店家还未接单";
     } else if ([self isEqualToString:@"RECEIVED"]) {
         return @"店家已接单";
+    } else if ([self isEqualToString:@"WAITINGFORCOMMENTS"]) {
+        return @"待评价";
     }
     return @"";
 }

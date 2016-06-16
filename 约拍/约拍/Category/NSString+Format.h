@@ -17,5 +17,6 @@
 - (NSString *)orderStatus;
 - (NSDate *)toDate;
 + (BOOL)validatePhone:(NSString *)phone;
++ (NSString *)dateStringByDate:(NSDate *)date;
 
 @end

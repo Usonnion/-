@@ -10,4 +10,6 @@
 
 @interface CommentsViewController : UIViewController
 
+@property (nonatomic, strong) ActionModel *action;
+
 @end

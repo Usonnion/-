@@ -9,6 +9,7 @@
 #import "StoreOrderViewController.h"
 #import "OrderCell.h"
 #import "OrderBLL.h"
+#import "MJRefresh.h"
 
 @interface StoreOrderViewController () <OrderDelegate, MFMessageComposeViewControllerDelegate>
 
@@ -29,12 +30,15 @@
     self.title = @"订单信息";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
+    
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     [self refreshData];
 }
 
@@ -64,7 +68,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250.0;
+    return 230.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +85,6 @@
 
 - (void)refreshData
 {
-    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     __weak typeof(self) weakSelf = self;
     
     [[[OrderBLL alloc] init] getAllStoreOrdersSuccess:^(NSArray *result) {
@@ -94,9 +97,12 @@
         weakSelf.orders = array;
         [weakSelf.tableView reloadData];
         weakSelf.noOrdersLabel.hidden = array.count;
+        [self.tableView headerEndRefreshing];
         [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
     } failure:^{
+        weakSelf.noOrdersLabel.hidden = NO;
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"获取订单失败，请重试。" success:NO];
+        [self.tableView headerEndRefreshing];
     }];
 }
 /*
@@ -147,6 +153,11 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)headerRereshing
+{
+    [self refreshData];
 }
 
 @end

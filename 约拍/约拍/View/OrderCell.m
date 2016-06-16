@@ -45,13 +45,10 @@
     self.confirmButton.hidden = ![status isEqualToString:@"NOTRECEIVED"];
     
     if ([status isEqualToString:@"WAITINGFORCOMMENTS"]) {
-        [self.customerActionButton setTitle:@"待评价" forState:UIControlStateNormal];
+        [self.customerActionButton setTitle:@"评价" forState:UIControlStateNormal];
         self.actionType = ActionTypeWaitingForComments;
-    } else if ([status isEqualToString:@"RECEIVED"]) {
-        [self.customerActionButton setTitle:@"完成" forState:UIControlStateNormal];
-        self.actionType = ActionTypeCompleted;
     } else {
-//        self.customerActionButton.hidden = YES;
+        self.customerActionButton.hidden = YES;
     }
 }
 

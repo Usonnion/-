@@ -11,6 +11,7 @@
 #import "ProductModel.h"
 #import "PaymentViewController.h"
 #import "StoreDashboardViewController.h"
+#import "CommentsViewController.h"
 
 @implementation NavigatorManager
 
@@ -31,6 +32,11 @@
         StoreDashboardViewController *navigatorToViewController = [storyBoard instantiateInitialViewController];
         navigatorToViewController.action = action;
         [viewController.navigationController pushViewController:navigatorToViewController animated:YES];
+    } else if (action.navigatorType == NavigatorTypeToComments) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Comments" bundle:nil];
+        CommentsViewController *commentsViewController = [storyBoard instantiateViewControllerWithIdentifier:@"CommentsViewController"];
+        commentsViewController.action = action;
+        [viewController.navigationController pushViewController:commentsViewController animated:YES];
     }
 }
 

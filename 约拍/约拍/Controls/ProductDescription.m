@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
+@property (nonatomic, weak) IBOutlet UILabel *salesLabel;
 
 @end
 
@@ -36,6 +37,11 @@
     self.priceLabel.text = [NSString stringWithFormat:@"%@", @(product.price)];
 }
 
-
+- (void)setSales:(NSInteger)sales
+{
+    _sales = sales;
+    self.salesLabel.hidden = NO;
+    self.salesLabel.text = [NSString stringWithFormat:@"销售量: %@", @(sales)];
+}
 
 @end

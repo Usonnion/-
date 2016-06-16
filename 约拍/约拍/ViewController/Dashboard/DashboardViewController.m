@@ -19,6 +19,7 @@
 #import "ConfigurationBLL.h"
 #import "ProductTypeModel.h"
 #import "RotationModel.h"
+#import "MJRefresh.h"
 
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
@@ -45,7 +46,9 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionSummaryCell" bundle:nil] forCellReuseIdentifier:@"ActionSummaryCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActionCell" bundle:nil] forCellReuseIdentifier:@"ActionCell"];
     
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.tabBarController.view description:@"加载数据中"];
     [self loadData];
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,7 +130,6 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     __weak typeof(self) weakSelf = self;
     self.loadingStoreDone = NO;
     self.loadingPorudctDone = NO;
-    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.tabBarController.view description:@"加载数据中"];
     [[[StoreBLL alloc] init] getAllStoresSuccess:^{
         weakSelf.loadingStoreDone = YES;
         [weakSelf checkDataLoading];
@@ -158,7 +160,13 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     if (self.loadingPorudctDone && self.loadingStoreDone && self.loadingConfigDone) {
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"加载数据完成" success:YES];
         [self setContent];
+        [self.tableView headerEndRefreshing];
     }
+}
+
+- (void)headerRereshing
+{
+    [self loadData];
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentModel.h"
 
 @interface CommentsCell : UITableViewCell
+
+@property (nonatomic, strong) CommentModel *comment;
 
 @end

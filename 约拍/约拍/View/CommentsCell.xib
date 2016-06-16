@@ -29,7 +29,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="CommentsCell" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXo-4x-c0C">
-                        <rect key="frame" x="16" y="54" width="374" height="102"/>
+                        <rect key="frame" x="16" y="54" width="374" height="78"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.25098039215686274" green="0.20000000000000001" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -43,9 +43,16 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKH-WG-Nfz">
+                        <rect key="frame" x="16" y="147" width="35" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="1xJ-u2-qZE" secondAttribute="trailing" constant="16" id="0G4-N1-57P"/>
+                    <constraint firstAttribute="bottom" secondItem="TKH-WG-Nfz" secondAttribute="bottom" constant="8" id="1Ib-Ja-yee"/>
                     <constraint firstItem="1xJ-u2-qZE" firstAttribute="bottom" secondItem="MNI-GH-udm" secondAttribute="bottom" id="3PS-be-r6I"/>
                     <constraint firstItem="Xgu-3L-hvS" firstAttribute="bottom" secondItem="MNI-GH-udm" secondAttribute="bottom" id="MJZ-dU-zrK"/>
                     <constraint firstAttribute="trailing" secondItem="sXo-4x-c0C" secondAttribute="trailing" constant="16" id="coF-Ui-fTb"/>
@@ -54,10 +61,12 @@
                     <constraint firstItem="sXo-4x-c0C" firstAttribute="top" secondItem="1xJ-u2-qZE" secondAttribute="bottom" constant="12" id="ihY-dF-IiD"/>
                     <constraint firstItem="MNI-GH-udm" firstAttribute="leading" secondItem="ajc-x1-eee" secondAttribute="leading" constant="16" id="lNB-kP-uIe"/>
                     <constraint firstItem="MNI-GH-udm" firstAttribute="top" secondItem="ajc-x1-eee" secondAttribute="top" constant="16" id="pTa-II-j4C"/>
-                    <constraint firstAttribute="bottom" secondItem="sXo-4x-c0C" secondAttribute="bottom" constant="16" id="xKQ-4n-wCM"/>
+                    <constraint firstItem="TKH-WG-Nfz" firstAttribute="leading" secondItem="ajc-x1-eee" secondAttribute="leading" constant="16" id="tS3-od-1L7"/>
+                    <constraint firstAttribute="bottom" secondItem="sXo-4x-c0C" secondAttribute="bottom" constant="40" id="xKQ-4n-wCM"/>
                     <constraint firstItem="Xgu-3L-hvS" firstAttribute="leading" secondItem="MNI-GH-udm" secondAttribute="trailing" constant="8" id="zju-rw-oAa"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="commentsLabel" destination="sXo-4x-c0C" id="E9M-E0-Tvu"/>
                 <outlet property="nameLabel" destination="Xgu-3L-hvS" id="OvY-7l-AfY"/>

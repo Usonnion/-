@@ -11,6 +11,7 @@
 @interface ProductBLL : NSString
 
 - (void)getAllProductsSuccess:(void (^)())success failure:(void (^)())failure;
+- (void)getProductSales:(NSString *)productId success:(void(^)(NSInteger sales))success failure:(void(^)())failure;
 - (void)updateProduct:(ProductModel *)product success:(void (^)(NSDictionary *json))success failure:(void (^)())failure;
 
 @end

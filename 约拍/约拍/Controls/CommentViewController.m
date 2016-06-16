@@ -11,7 +11,7 @@
 #import "CommentModel.h"
 #import "CommentsBLL.h"
 
-@interface CommentViewController()
+@interface CommentViewController() <UITextViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *startsView;
 @property (nonatomic, weak) IBOutlet UITextView *commentsTextView;
@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     Star *star = [[Star alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 40.0f)];
-    star.show_star = 40;
+    star.show_star = 100;
     star.isSelect = YES;
     star.font_size = 40;
     [self.startsView addSubview:star];
@@ -58,6 +58,7 @@
     comment.comment = self.commentsTextView.text;
     comment.customer = self.order.customer;
     comment.product = self.order.product;
+    comment.orderId = self.order.orderId;
     
     [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     [[[CommentsBLL alloc] init] createdComment:comment success:^{
@@ -66,6 +67,25 @@
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"评价失败，请稍后重试！" success:NO];
     }];
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length > 200) {
+        textView.text = [textView.text substringToIndex:200];
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

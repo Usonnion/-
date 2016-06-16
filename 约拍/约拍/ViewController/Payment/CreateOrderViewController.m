@@ -110,7 +110,7 @@
     order.customerId = ((CustomerModel *)self.customers[self.selectedIndex]).customerId;
     order.productId = self.product.productId;
     order.expectedTime = self.datePicker.date;
-    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:@"正在创建订单，请稍等。"];
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.navigationController.view description:@"正在创建订单，请稍等。"];
     [[[OrderBLL alloc] init] createOrder:order success:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
         [self.navigationController popToRootViewControllerAnimated:YES];

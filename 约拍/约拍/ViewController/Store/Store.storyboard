@@ -380,9 +380,18 @@
                                     <outlet property="delegate" destination="a0c-DO-J1r" id="hyW-i8-fGD"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无订单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3Y-Tz-acs">
+                                <rect key="frame" x="173" y="326" width="68" height="21"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Q3Y-Tz-acs" firstAttribute="centerX" secondItem="8fx-hm-SNb" secondAttribute="centerX" id="Fch-BY-UwZ"/>
+                            <constraint firstItem="Q3Y-Tz-acs" firstAttribute="centerY" secondItem="8fx-hm-SNb" secondAttribute="centerY" id="GmA-8c-IHJ"/>
                             <constraint firstItem="xg9-jv-jIM" firstAttribute="leading" secondItem="8fx-hm-SNb" secondAttribute="leading" id="IvR-Q1-iT2"/>
                             <constraint firstAttribute="trailing" secondItem="xg9-jv-jIM" secondAttribute="trailing" id="Mqh-uo-W0Q"/>
                             <constraint firstItem="Kmv-Vx-a6e" firstAttribute="top" secondItem="xg9-jv-jIM" secondAttribute="bottom" id="UWW-KL-pyv"/>
@@ -392,6 +401,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="noOrdersLabel" destination="Q3Y-Tz-acs" id="3q4-kz-wo9"/>
                         <outlet property="tableView" destination="xg9-jv-jIM" id="m6V-MT-1d5"/>
                     </connections>
                 </viewController>

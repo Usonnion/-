@@ -10,6 +10,7 @@
 #import "OrderCell.h"
 #import "OrderBLL.h"
 #import "CommentViewController.h"
+#import "MJRefresh.h"
 
 @interface ShoppingCarts() <UITableViewDataSource, UITableViewDelegate, OrderDelegate>
 
@@ -32,6 +33,8 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, screenBounds.size.width, 0, 0);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
+    
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,6 +42,7 @@
     [super viewWillAppear:animated];
     self.tabBarController.title = @"订单信息";
     [self.tabBarController.navigationController setNavigationBarHidden:NO animated:NO];
+    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     [self refreshData];
 }
 
@@ -54,10 +58,12 @@
     id cellData = [self.orders objectByIndex:indexPath.row];
     if (!cellData) return [UITableViewCell new];
     OrderCell *orderCell = [tableView dequeueReusableCellWithIdentifier:@"OrderCell"];
+    orderCell.isCustomerOrder = YES;
     [orderCell setProductItem:((OrderModel *)cellData).product];
     [orderCell setOrderStatus:((OrderModel *)cellData).status];
-    orderCell.isCustomerOrder = YES;
+    [orderCell setCustomerItem:cellData];
     orderCell.delegate = self;
+    orderCell.indexPath = indexPath;
     return orderCell;
 }
 
@@ -103,7 +109,6 @@
 
 - (void)refreshData
 {
-    [[LoadingManager sharedManager] showLoadingWithBlockUI:self.view description:nil];
     __block typeof(self) weakSelf = self;
     [[[OrderBLL alloc] init] getAllOrdersSuccess:^(NSArray *result) {
         NSMutableArray *array = [NSMutableArray new];
@@ -115,9 +120,16 @@
         [weakSelf.tableView reloadData];
         weakSelf.noOrdersLabel.hidden = array.count;
         [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        [self.tableView headerEndRefreshing];
     } failure:^{
         [[LoadingManager sharedManager] hideLoadingWithmessage:@"获取订单失败，请重试。" success:NO];
+        [self.tableView headerEndRefreshing];
     }];
+}
+
+- (void)headerRereshing
+{
+    [self refreshData];
 }
 
 @end

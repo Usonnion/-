@@ -15,9 +15,11 @@
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSDate *createdDate;
+@property (nonatomic, strong) NSString *orderId;
 @property (nonatomic, strong) CustomerModel *customer;
 @property (nonatomic, strong) ProductModel *product;
 
++ (CommentModel *)fromDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)toDictionary;
 
 @end

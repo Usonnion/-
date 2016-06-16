@@ -47,6 +47,7 @@
     } else {
         self.noStoresLabel.hidden = NO;
     }
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource

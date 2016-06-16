@@ -17,6 +17,7 @@
 #import "UIImageView+WebCache.h"
 #import "CreateOrderViewController.h"
 #import "CommentsView.h"
+#import "ProductBLL.h"
 
 @interface PaymentViewController() <CustomerNavigatorItemDelegate, UIScrollViewDelegate, PageControlViewControllerDelegate, PhotosPageViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
@@ -27,6 +28,7 @@
 @property (nonatomic, weak) UIImageView *maskImageView;
 @property (nonatomic, weak) PageControlViewController *pageControlViewController;
 @property (nonatomic, weak) CustomerNavigatorItem *customerNavigatorItem;
+@property (nonatomic, weak) ProductDescription *productDescrption;
 
 @property (nonatomic, strong) ProductModel *product;
 
@@ -56,6 +58,7 @@
     ProductDescription *productDescription = [ProductDescription productDescriptionWithProduct:self.product];
     productDescription.frame = CGRectMake(0, screenBounds.size.width, screenBounds.size.width, productDescription.height);
     [self.scrollView addSubview:productDescription];
+    self.productDescrption = productDescription;
     
     StoreDescription *storeDescription = [StoreDescription StoreDescriptionWithStore:store];
     storeDescription.frame = CGRectMake(0, screenBounds.size.width + productDescription.height, screenBounds.size.width, storeDescriptionHeight);
@@ -63,16 +66,27 @@
     [self.scrollView addSubview:storeDescription];
     
     CommentsView *comemntsView = [CommentsView commentsViewWithComment:@"11"];
+    comemntsView.frame = CGRectMake(0, screenBounds.size.width + productDescription.height + storeDescriptionHeight, screenBounds.size.width, 40.0);
     [self.scrollView addSubview:comemntsView];
     
-    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescription.height + storeDescriptionHeight + comemntsView.height)];
+    [self.scrollView setContentSize:CGSizeMake(screenBounds.size.width, screenBounds.size.width + productDescription.height + storeDescriptionHeight + 40.0)];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(comments)];
+    [comemntsView addGestureRecognizer:recognizer];
 //    NSLog(@" %@", @(screenBounds.size.width + productDescriptionHeight + storeDescriptionHeight));
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[LoadingManager sharedManager] showLoading:self.view];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [[[ProductBLL alloc] init]getProductSales:self.product.productId success:^(NSInteger sales) {
+        [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:YES];
+        self.productDescrption.sales = sales;
+    } failure:^{
+        [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:NO];
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -96,14 +110,14 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat yPozition = scrollView.contentOffset.y;
-    if (0.0 <= yPozition &&  yPozition < screenBounds.size.width) {
-        [self.pageView setFrame:CGRectMake(0, yPozition / 2, screenBounds.size.width, screenBounds.size.width)];
-        [self.customerNavigatorItem setOffset:yPozition * 2 / screenBounds.size.width];
-    } else if (0.0 > yPozition) {
-        [self.pageView setFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width)];
-        [self.customerNavigatorItem setOffset:0];
-    }
+//    CGFloat yPozition = scrollView.contentOffset.y;
+//    if (0.0 <= yPozition &&  yPozition < screenBounds.size.width) {
+//        [self.pageView setFrame:CGRectMake(0, yPozition / 2, screenBounds.size.width, screenBounds.size.width)];
+//        [self.customerNavigatorItem setOffset:yPozition * 2 / screenBounds.size.width];
+//    } else if (0.0 > yPozition) {
+//        [self.pageView setFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width)];
+//        [self.customerNavigatorItem setOffset:0];
+//    }
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate
@@ -171,6 +185,14 @@
     } completion:^(BOOL finished) {
         [self.maskView removeFromSuperview];
     }];
+}
+
+- (void)comments
+{
+    ActionModel *action = [[ActionModel alloc] init];
+    action.productId = self.product.productId;
+    action.navigatorType = NavigatorTypeToComments;
+    [NavigatorManager navigatorBy:action viewController:self];
 }
 
 @end
