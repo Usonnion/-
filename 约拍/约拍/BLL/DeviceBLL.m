@@ -13,9 +13,10 @@
 
 - (void)registerDevice:(NSString *)deviceIdentity Success:(void (^)())success failure:(void (^)())failure
 {
-    NSString *urlString = [NSString stringWithFormat: @"/api/device?deviceIdentity=%@", deviceIdentity];
+    NSString *urlString = [NSString stringWithFormat: @"/api/device"];
+    NSDictionary *json = @{@"DeviceIdentity": deviceIdentity, @"DeviceType": @"iOS"};
     
-    [[HTTPSessionManager sharedManager] PUT:urlString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[HTTPSessionManager sharedManager] POST:urlString parameters:json progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

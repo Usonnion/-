@@ -1314,6 +1314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1327,7 +1328,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ccabe531-f3dd-4993-bcf0-efc19876da25";
+				PROVISIONING_PROFILE = "12b6cbc2-bcba-44ff-a5fd-61565aacdf2e";
 			};
 			name = Debug;
 		};
@@ -1337,6 +1338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1350,7 +1352,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ccabe531-f3dd-4993-bcf0-efc19876da25";
+				PROVISIONING_PROFILE = "12b6cbc2-bcba-44ff-a5fd-61565aacdf2e";
 			};
 			name = Release;
 		};

@@ -32,7 +32,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UICKeyChainStore *keyChainStore = [UICKeyChainStore keyChainStore];
 //    [keyChainStore removeItemForKey:@"MyStoreId"];
-//    [keyChainStore removeItemForKey:@"DeviceIdentity"];
     NSString *deviceIdentity = [keyChainStore stringForKey:@"DeviceIdentity"];
     if ([NSString isNilOrEmpty:deviceIdentity]) {
         CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
@@ -41,13 +40,15 @@
         NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
         CFRelease(uuid_string_ref);
         
-        [self.deviceBLLInstance registerDevice:uuid Success:^{
-            [UICKeyChainStore setString:uuid forKey:@"DeviceIdentity"];
-            [[HTTPSessionManager sharedManager].requestSerializer setValue:uuid forHTTPHeaderField:@"DeviceIdentity"];
-        } failure:^{
-            
-        }];
+        deviceIdentity = uuid;
     }
+    
+    [self.deviceBLLInstance registerDevice:deviceIdentity Success:^{
+        [UICKeyChainStore setString:deviceIdentity forKey:@"DeviceIdentity"];
+        [[HTTPSessionManager sharedManager].requestSerializer setValue:deviceIdentity forHTTPHeaderField:@"DeviceIdentity"];
+    } failure:^{
+        
+    }];
     
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
                                                                          settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)

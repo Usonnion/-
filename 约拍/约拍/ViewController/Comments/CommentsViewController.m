@@ -80,6 +80,7 @@
                 self.noDataLabel.hidden = NO;
             } else if (json.count >= 20) {
                 [self.tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
+                self.noDataLabel.hidden = YES;
                 self.page++;
             }
         } else {
@@ -90,13 +91,13 @@
             } else {
                 self.page++;
             }
+            self.noDataLabel.hidden = YES;
         }
         for (NSDictionary *commentDic in json) {
             [comments addObject:[CommentModel fromDictionary:commentDic]];
         }
         self.comments = comments;
         [self.tableView reloadData];
-        self.noDataLabel.hidden = YES;
         [self.tableView headerEndRefreshing];
         [self.tableView footerEndRefreshing];
         [[LoadingManager sharedManager] hideLoadingWithmessage:nil success:NO];

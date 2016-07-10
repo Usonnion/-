@@ -160,7 +160,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5r-2X-5Pd">
                                 <rect key="frame" x="0.0" y="-68" width="414" height="691"/>
-                                <color key="backgroundColor" red="1" green="0.97433167499999995" blue="0.46723047070000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.97254901960784312" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bto-Eo-WpD" id="TSV-PH-YQH"/>
                                     <outlet property="delegate" destination="bto-Eo-WpD" id="zNV-Sn-5Bs"/>

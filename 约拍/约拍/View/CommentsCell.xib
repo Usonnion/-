@@ -68,7 +68,8 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="commentsLabel" destination="sXo-4x-c0C" id="E9M-E0-Tvu"/>
+                <outlet property="commentTimeLabel" destination="TKH-WG-Nfz" id="pSO-V4-HOo"/>
+                <outlet property="commentsLabel" destination="sXo-4x-c0C" id="vZW-0S-4HR"/>
                 <outlet property="nameLabel" destination="Xgu-3L-hvS" id="OvY-7l-AfY"/>
                 <outlet property="starView" destination="1xJ-u2-qZE" id="zNn-h2-Pgj"/>
             </connections>
