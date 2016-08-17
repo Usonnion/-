@@ -30,16 +30,16 @@
 {
     ProductTypeModel *productType1 = [[ProductTypeModel alloc] init];
     productType1.id = 0;
-    productType1.productTypeName = @"";
+    productType1.productTypeName = @"儿童摄影";
     ProductTypeModel *productType2 = [[ProductTypeModel alloc] init];
     productType2.id = 1;
-    productType2.productTypeName = @"";
+    productType2.productTypeName = @"婚纱摄影";
     ProductTypeModel *productType3 = [[ProductTypeModel alloc] init];
     productType3.id = 2;
-    productType3.productTypeName = @"";
+    productType3.productTypeName = @"个人写真";
     ProductTypeModel *productType4 = [[ProductTypeModel alloc] init];
     productType4.id = 4;
-    productType4.productTypeName = @"";
+    productType4.productTypeName = @"其他";
     
     NSMutableArray *productTypes = [NSMutableArray new];
     [productTypes addObject:productType1];

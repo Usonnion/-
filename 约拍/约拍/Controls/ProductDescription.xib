@@ -29,7 +29,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-bn-0hu">
                     <rect key="frame" x="32" y="51" width="51" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                    <color key="textColor" red="0.84006871729999999" green="0.41178251230000001" blue="0.15916600920000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.83921568627450982" green="0.41176470588235292" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mo9-Xc-SJm">

@@ -60,6 +60,7 @@
 		187E9C531C3EA3C100DEEA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C521C3EA3C100DEEA0B /* Assets.xcassets */; };
 		187E9C661C3EA77000DEEA0B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */; };
 		187F262A1C4E76510007FA4E /* DiskCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F26291C4E76510007FA4E /* DiskCacheManager.m */; };
+		18812C3B1D4D91850075FE6B /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 18812C3A1D4D91850075FE6B /* Configuration.m */; };
 		1888FD331C4B94980071ABFD /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1888FD321C4B94980071ABFD /* UIView+Snapshot.m */; };
 		1888FD361C4BB6970071ABFD /* UIImage+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1888FD351C4BB6970071ABFD /* UIImage+WebCache.m */; };
 		18895D2E1C47CC7F00586CD9 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18895D2D1C47CC7F00586CD9 /* PhotoCell.xib */; };
@@ -262,6 +263,8 @@
 		187E9C651C3EA77000DEEA0B /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = "约拍/ViewController/Dashboard/Dashboard.storyboard"; sourceTree = SOURCE_ROOT; };
 		187F26281C4E76510007FA4E /* DiskCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskCacheManager.h; sourceTree = "<group>"; };
 		187F26291C4E76510007FA4E /* DiskCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskCacheManager.m; sourceTree = "<group>"; };
+		18812C391D4D91850075FE6B /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		18812C3A1D4D91850075FE6B /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		1888FD311C4B94980071ABFD /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		1888FD321C4B94980071ABFD /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		1888FD341C4BB6970071ABFD /* UIImage+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebCache.h"; sourceTree = "<group>"; };
@@ -760,6 +763,8 @@
 				1865CD291CFF26A300E2467B /* CommentModel.m */,
 				1865CD2E1D1179CB00E2467B /* PagnationModel.h */,
 				1865CD2F1D1179CB00E2467B /* PagnationModel.m */,
+				18812C391D4D91850075FE6B /* Configuration.h */,
+				18812C3A1D4D91850075FE6B /* Configuration.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1198,6 +1203,7 @@
 				18A470511C8AF5A200038F40 /* LoadingManager.m in Sources */,
 				1817645D1CA2C538008BA391 /* CreateOrderViewController.m in Sources */,
 				18DE40E31C96E167000DB3B1 /* DNAsset.m in Sources */,
+				18812C3B1D4D91850075FE6B /* Configuration.m in Sources */,
 				18A470541C8AFE3B00038F40 /* FileUploadBLL.m in Sources */,
 				189610A71C43D9CE00F3F037 /* ProductsViewController.m in Sources */,
 				188C9D3A1C422E0B00DD1B72 /* UIImage+GIF.m in Sources */,
@@ -1313,8 +1319,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1326,9 +1332,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12b6cbc2-bcba-44ff-a5fd-61565aacdf2e";
+				PROVISIONING_PROFILE = "b9656137-10d6-47ae-8fdf-b934510770e9";
 			};
 			name = Debug;
 		};
@@ -1337,8 +1343,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YouSheng Wang (KEKS2JL43W)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1350,9 +1356,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhotos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.apps.ArtisticPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12b6cbc2-bcba-44ff-a5fd-61565aacdf2e";
+				PROVISIONING_PROFILE = "b9656137-10d6-47ae-8fdf-b934510770e9";
 			};
 			name = Release;
 		};

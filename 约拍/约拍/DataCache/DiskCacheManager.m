@@ -9,6 +9,7 @@
 #import "DiskCacheManager.h"
 #import "Product.h"
 #import "Store.h"
+#import "Configuration.h"
 
 @interface DiskCacheManager ()
 
@@ -27,6 +28,16 @@
     });
     
     return manager;
+}
+
+- (NSString *)getConfig:(NSString *)key;
+{
+    for (Configuration * config in self.configs) {
+        if ([config.key isEqualToString:key]) {
+            return config.value;
+        }
+    }
+    return @"";
 }
 
 #pragma mark - Product

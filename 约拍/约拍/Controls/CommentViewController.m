@@ -53,6 +53,10 @@
 
 - (IBAction)submit:(id)sender
 {
+    if (self.commentsTextView.text.length > 200) {
+        [[LoadingManager sharedManager] showError:@"评价必须在200字内。" toView:self.view];
+        return;
+    }
     CommentModel *comment = [[CommentModel alloc] init];
     comment.score = self.star.show_star;
     comment.comment = self.commentsTextView.text;

@@ -5,6 +5,6 @@
 	<key>Token</key>
 	<string>123</string>
 	<key>ServiceUrl</key>
-	<string>http://192.168.3.13:8090</string>
+	<string>http://115.28.39.199:8080</string>
 </dict>
 </plist>

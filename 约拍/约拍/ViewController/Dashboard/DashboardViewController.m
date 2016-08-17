@@ -24,7 +24,7 @@
 NSString *kActionStyleSummary = @"ActionStyleSummary";
 NSString *kActionStyleAction = @"ActionStyleAction";
 
-@interface DashboardViewController()
+@interface DashboardViewController() <PageControlViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -88,6 +88,19 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     [NavigatorManager navigatorBy:action viewController:self];
 }
 
+#pragma mark - PageControlViewControllerDelegate
+
+- (void)pagePressed:(NSInteger)page
+{
+    RotationModel *rotation = [[DiskCacheManager sharedManager].rotations objectByIndex:page];
+    if (rotation && ![NSString isNilOrEmpty:rotation.productId]) {
+        ActionModel *action = [[ActionModel alloc] init];
+        action.productId = rotation.productId;
+        action.navigatorType = NavigatorTypeToPayment;
+        [NavigatorManager navigatorBy:action viewController:self];
+    }
+}
+
 #pragma mark - Private methods
 
 - (void)setContent
@@ -117,6 +130,7 @@ NSString *kActionStyleAction = @"ActionStyleAction";
     
     PageControlViewController *pageViewController = [PageControlViewController pageControlViewControllerWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2) images:images scrollCircle:YES autoScroll:YES];
     [self addChildViewController:pageViewController];
+    pageViewController.delegate = self;
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.width / 2)];
     tableViewHeaderView.backgroundColor = [UIColor redColor];
     [tableViewHeaderView addSubview:pageViewController.view];

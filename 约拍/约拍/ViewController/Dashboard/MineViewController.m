@@ -33,15 +33,28 @@
     self.tabBarController.title = @"我的";
 }
 
+- (IBAction)connect:(id)sender
+{
+    NSString *phone = [[DiskCacheManager sharedManager] getConfig:@"phone"];
+    if (![NSString isNilOrEmpty:phone]) {
+        [ContactHelper callTo:phone name:@"客服" view:self.view];
+    }
+}
+
 - (IBAction)storeInvitation:(id)sender
 {
     NSString *storeId = [UICKeyChainStore stringForKey:@"MyStoreId"];
     if (storeId && ![NSString isNilOrEmpty:storeId]) {
-        ActionModel *action = [[ActionModel alloc] init];
-        action.navigatorType = NavigatorTypeToStore;
-        action.storeId = storeId;
-        [NavigatorManager navigatorBy:action viewController:self];
-        return;
+        StoreModel *store = [[DiskCacheManager sharedManager] getStoreByStoreId:storeId];
+        if (store) {
+            ActionModel *action = [[ActionModel alloc] init];
+            action.navigatorType = NavigatorTypeToStore;
+            action.storeId = storeId;
+            [NavigatorManager navigatorBy:action viewController:self];
+            return;
+        }
+        
+        [UICKeyChainStore removeItemForKey:@"MyStoreId"];
     }
     
     __weak typeof(self) weakSelf = self;

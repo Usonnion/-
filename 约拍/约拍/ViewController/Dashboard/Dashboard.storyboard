@@ -43,7 +43,7 @@
                             <constraint firstItem="Twn-WX-EcA" firstAttribute="centerY" secondItem="n3C-Mh-AZ2" secondAttribute="centerY" id="vuq-ei-0bK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="所有店铺" image="MineIcon" id="Mn6-bk-3zv"/>
+                    <tabBarItem key="tabBarItem" title="所有店铺" image="StoreIcon" id="Mn6-bk-3zv"/>
                     <connections>
                         <outlet property="noStoresLabel" destination="Twn-WX-EcA" id="dwb-HC-h5k"/>
                         <outlet property="tableView" destination="xGh-nC-SBT" id="37x-qE-xFa"/>
@@ -80,11 +80,29 @@
                                     <action selector="storeInvitation:" destination="lzS-et-SoV" eventType="touchUpInside" id="Dvx-NF-LIO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMa-V2-ZvG">
+                                <rect key="frame" x="0.0" y="158" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9l5-2J-QlL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="联系客服">
+                                    <color key="titleColor" red="0.25098039220000001" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="connect:" destination="lzS-et-SoV" eventType="touchUpInside" id="MSc-WE-E4f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="OMa-V2-ZvG" firstAttribute="top" secondItem="xmu-ej-sdc" secondAttribute="bottom" constant="30" id="9P7-py-eHp"/>
                             <constraint firstItem="xmu-ej-sdc" firstAttribute="top" secondItem="5Cm-21-6Gn" secondAttribute="bottom" constant="20" id="b4e-Mw-rRI"/>
+                            <constraint firstItem="OMa-V2-ZvG" firstAttribute="leading" secondItem="Rwi-Wy-y65" secondAttribute="leading" id="ly5-2V-QxS"/>
                             <constraint firstItem="xmu-ej-sdc" firstAttribute="leading" secondItem="Rwi-Wy-y65" secondAttribute="leading" id="ofT-Yp-Rry"/>
+                            <constraint firstAttribute="trailing" secondItem="OMa-V2-ZvG" secondAttribute="trailing" id="upa-lZ-NWo"/>
                             <constraint firstAttribute="trailing" secondItem="xmu-ej-sdc" secondAttribute="trailing" id="zsG-xH-9I8"/>
                         </constraints>
                     </view>
@@ -250,5 +268,6 @@
         <image name="HomeIcon" width="30" height="30"/>
         <image name="MineIcon" width="30" height="30"/>
         <image name="OrderIcon" width="30" height="30"/>
+        <image name="StoreIcon" width="30" height="30"/>
     </resources>
 </document>

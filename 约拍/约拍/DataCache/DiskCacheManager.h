@@ -15,9 +15,11 @@
 @property (nonatomic, assign) NSInteger badgeCount;
 @property (nonatomic, strong) NSArray *productTypes;
 @property (nonatomic, strong) NSArray *rotations;
+@property (nonatomic, strong) NSArray *configs;
 
 + (DiskCacheManager *)sharedManager;
 
+- (NSString *)getConfig:(NSString *)key;
 - (void)archiveProductInformation:(NSArray *)array;
 - (void)removeAllProducts;
 - (NSArray *)getProductByStoreId:(NSString *)storeId;

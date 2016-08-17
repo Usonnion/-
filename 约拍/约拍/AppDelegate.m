@@ -32,6 +32,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UICKeyChainStore *keyChainStore = [UICKeyChainStore keyChainStore];
 //    [keyChainStore removeItemForKey:@"MyStoreId"];
+//    [UICKeyChainStore setString:@"821047a9-4383-4124-b9d7-48ad1c22a3e1" forKey:@"MyStoreId"];
     NSString *deviceIdentity = [keyChainStore stringForKey:@"DeviceIdentity"];
     if ([NSString isNilOrEmpty:deviceIdentity]) {
         CFUUIDRef uuid_ref = CFUUIDCreate(NULL);

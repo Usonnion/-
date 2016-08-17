@@ -10,6 +10,7 @@
 #import "HTTPSessionManager.h"
 #import "RotationModel.h"
 #import "ProductTypeModel.h"
+#import "Configuration.h"
 
 @implementation ConfigurationBLL
 
@@ -21,6 +22,7 @@
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             [DiskCacheManager sharedManager].productTypes = [ProductTypeModel fromArray:[(NSDictionary *)responseObject objectForKey:@"productType"]];
             [DiskCacheManager sharedManager].rotations = [RotationModel fromArray:[(NSDictionary *)responseObject objectForKey:@"rotations"]];
+            [DiskCacheManager sharedManager].configs = [Configuration fromArray:[(NSDictionary *)responseObject objectForKey:@"configuration"]];
         }
         success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
